@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react';
+import { CRow, CCol, CCard, CCardHeader, CCardBody, CButton } from '@coreui/react';
 import Creatable from 'react-select/creatable';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
@@ -38,11 +38,11 @@ export default function App() {
                       autoComplete="off"
                       options={optionList(excelFile)}
                       onChange={(choose) => {
-                        console.log(choose.value);
                         const chooseGroup = excelFile.find((group) => { return group[0] === choose.value });
                         console.log(chooseGroup);
                       }}
                     />
+                    <CButton size='sm' variant="outline" color="danger" onClick={() => setExcelFile('')}>Apagar o Ficheiro</CButton>
                   </CCol>
                 )}
               </CCardBody>
