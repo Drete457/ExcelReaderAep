@@ -12,7 +12,6 @@ const InputFile = ({ setExcelFile, setIsLoading }) => {
         onChange={(event) => {
           setIsLoading(true);
           exceltojson(event).then((result) => {
-            console.log(result);
             setExcelFile(result);
             setIsLoading(false);
           });
