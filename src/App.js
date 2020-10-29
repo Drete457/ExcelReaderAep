@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import {
-  CRow,
-  CCol,
-  CCard,
-  CCardHeader,
-  CCardBody,
-  CInputFile,
-  CLabel,
-} from '@coreui/react';
-import exceltojson from './Components/exceltojson';
+import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
+import InputFile from './Components/inputfile';
+import Creatable from 'react-select/creatable';
 import './scss/style.scss';
 
 export default function App() {
@@ -30,28 +23,21 @@ export default function App() {
               <CCardBody>
                 {isLoading && <LoadingScreen />}
                 {!excelFile && (
-                  <CCol>
-                    <CInputFile
-                      custom
-                      id="custom-file-input"
-                      accept=".xlsx"
-                      onChange={(event) => {
-                        setIsLoading(true);
-                        exceltojson(event).then((result) => {
-                          console.log(result);
-                          setExcelFile(result);
-                          setIsLoading(false);
-                        });
-                      }}
-                    />
-                    <CLabel htmlFor="custom-file-input" variant="custom-file">
-                      Pressiona aqui para escolheres o ficheiro
-                    </CLabel>
-                  </CCol>
+                  <InputFile
+                    setExcelFile={setExcelFile}
+                    setIsLoading={setIsLoading}
+                  />
                 )}
                 {excelFile.length > 0 && (
                   <CCol>
-                    <p>teste</p>
+                    <Creatable
+                      className="w-50"
+                      isClearable
+                      placeholder="Escolhe o grupo pretendido"
+                      autoComplete="off"
+                      options={}
+                      onChange={() => {}}
+                    />
                   </CCol>
                 )}
               </CCardBody>
@@ -62,14 +48,3 @@ export default function App() {
     </>
   );
 }
-
-/* <input
-type="file"
-accept=".xlsx"
-onChange={(event) => {
-  exceltojson(event).then((result) => {
-    console.log(result);
-    setExcelFile(result);
-  });
-}}
-/> */
