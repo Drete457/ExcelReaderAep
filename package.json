@@ -1,14 +1,16 @@
 {
   "name": "excelreader",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@ramonak/react-excel": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "read-excel-file": "^4.0.7",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

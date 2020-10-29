@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import xlsxFile from 'read-excel-file';
 import './App.css';
 
-function App() {
+export default function App() {
+  const [excelFile, setExcelFile] = useState('');
+  const [currentSheet, setCurrentSheet] = useState({});
+
+  const handleUpload = (event) => {
+    const file = event.target.files[0];
+    //read excel file
+    xlsxFile(file).then((rows) => {
+      setExcelFile(rows)
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <input
+      type='file'
+      accept='.xlsx'
+      onChange={handleUpload}
+    />
+     
+  </>
   );
 }
-
-export default App;
