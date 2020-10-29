@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@coreui/coreui-pro": "^3.3.0",
+    "@coreui/react": "^3.3.1",
     "@ramonak/react-excel": "^1.0.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
