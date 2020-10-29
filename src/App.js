@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   CRow,
   CCol,
   CCard,
   CCardHeader,
   CCardBody,
-  CFormGroup,
-  CLabel,
-  CFormText,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
-  CBadge 
-} from '@coreui/react'
+  CInputFile,
+  CLabel
+} from '@coreui/react';
 import exceltojson from './Components/exceltojson';
 import DefaultLayout from './View/DefaultLayout';
+import './scss/style.scss';
 
 export default function App() {
   const [excelFile, setExcelFile] = useState('');
@@ -23,17 +19,33 @@ export default function App() {
   return (
     <>
       <DefaultLayout>
-      <CRow className='c-app c-default-layout flex-row align-items-center'>
-      <CCol sm={12} md={6} className='justify-content-center'>
-        <CCard>
-              <CCardHeader>blabla</CCardHeader>
+        <CRow className="p-3">
+          <CCol sm="12" className="d-flex justify-content-center">
+            <CCard>
+              <CCardHeader className="h1 p-4">
+                Conselho Jurisdicional - Visualizador do Controlo de Nomeações
+              </CCardHeader>
               <CCardBody>
-                blabla
+              <CCol>
+                <CInputFile
+                  custom
+                  id="custom-file-input"
+                  accept=".xlsx"
+                  onChange={(event) => {
+                    exceltojson(event).then((result) => {
+                      console.log(result);
+                      setExcelFile(result);
+                    });
+                  }}
+                />
+                <CLabel htmlFor="custom-file-input" variant="custom-file">
+                    Pressiona aqui para escolheres o ficheiro
+                    </CLabel>
+                    </CCol>
               </CCardBody>
             </CCard>
           </CCol>
-          </CRow>
-       
+        </CRow>
       </DefaultLayout>
     </>
   );
