@@ -5,12 +5,18 @@ import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
 import InputFile from './Components/inputfile';
 import optionList from './Components/optionlist';
+import Result from './View/Result';
 import './scss/style.scss';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [excelFile, setExcelFile] = useState('');
-  const [currentline, setLine] = useState({});
+  const [currentline, setLine] = useState(undefined);
+
+  function reset() {
+    setExcelFile('');
+    setLine(undefined);
+  }
 
   return (
     <>
@@ -40,11 +46,13 @@ export default function App() {
                       onChange={(choose) => {
                         const chooseGroup = excelFile.find((group) => { return group[0] === choose.value });
                         console.log(chooseGroup);
+                        setLine(chooseGroup)
                       }}
                     />
-                    <CButton size='sm' variant="outline" color="danger" onClick={() => setExcelFile('')}>Apagar o Ficheiro</CButton>
+                    <CButton size='sm' variant="outline" color="danger" onClick={() => reset()}>Apagar o Ficheiro</CButton>
                   </CCol>
                 )}
+                { currentline && <Result result={currentline} />}
               </CCardBody>
             </CCard>
           </CCol>
