@@ -2,6 +2,7 @@ import React from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 import ChefiaDeGrupo from '../../Components/chefiadegrupo';
 import ChefiaDaAlcateia from '../../Components/chefiadaalcateia';
+import TribodeEscoteiros from '../../Components/tribodeescoteiros';
 
 const Result = ({ result }) => {
   return (
@@ -16,7 +17,8 @@ const Result = ({ result }) => {
         Região: {result[1]}
       </CLabel>
       <ChefiaDeGrupo result={result} />
-      <ChefiaDaAlcateia result={result} />
+          <ChefiaDaAlcateia result={result} />
+          <TribodeEscoteiros result={result} />
     </>
   );
 };
