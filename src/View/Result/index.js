@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CLabel } from '@coreui/react';
 import allbo from '../../Components/allbo';
 import allleaders from '../../Components/allleaders';
@@ -31,11 +31,21 @@ const Result = ({ result }) => {
     othersNames,
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
-  const useCountVotes = () => {
-    setVotes(votes + 1);
-  };
-  console.log(votes);
 
+  useEffect(() => {
+    const allTheNames = [
+      ...alcateiaNames,
+      ...tesNames,
+      ...texNames,
+      ...claNames,
+      ...groupNames,
+      ...othersNames,
+    ];
+    const count = allTheNames.filter((value) => value).length;
+
+    setVotes(count);
+  }, [alcateiaNames, tesNames, texNames, claNames, groupNames, othersNames]);
+  
   return (
     <>
       <p></p>
@@ -47,7 +57,7 @@ const Result = ({ result }) => {
       <CLabel className="h3 d-flex justify-content-center">
         Região: {result[1]}
       </CLabel>
-      <ChefiaDeGrupo names={groupNames} bo={groupBO} />
+      <ChefiaDeGrupo names={groupNames} bo={groupBO} votes={votes} />
       <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} />
       <TribodeEscoteiros names={tesNames} bo={tesBO} />
       <TribodeExploradores names={texNames} bo={texBO} />

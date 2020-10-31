@@ -52,7 +52,10 @@ export default function App() {
                       options={optionList(excelFile)}
                       onChange={(choose) => {
                         const chooseGroup = excelFile.find((group) => {
-                          return group[0] === choose.value;
+                          if (group && group[0]) {
+                            return group[0] === choose.value;
+                          }
+                          return null;
                         });
                         setLine(chooseGroup);
                       }}
