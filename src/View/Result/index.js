@@ -1,10 +1,11 @@
 import React from 'react';
-import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
+import { CLabel } from '@coreui/react';
 import ChefiaDeGrupo from '../../Components/chefiadegrupo';
 import ChefiaDaAlcateia from '../../Components/chefiadaalcateia';
 import TribodeEscoteiros from '../../Components/tribodeescoteiros';
 import TribodeExploradores from '../../Components/tribodeexploradores';
 import Cla from '../../Components/cla';
+import RestoDaChefia from '../../Components/restodachefia';
 
 const Result = ({ result }) => {
   return (
@@ -23,6 +24,7 @@ const Result = ({ result }) => {
       <TribodeEscoteiros result={result} />
       <TribodeExploradores result={result} />
       <Cla result={result} />
+      <RestoDaChefia result={result} />
     </>
   );
 };
