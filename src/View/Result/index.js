@@ -51,7 +51,7 @@ const Result = ({ result }) => {
   const claBO = [result[137], result[142], result[147], result[152], result[157], result[162]];
   const groupBO = [result[12], result[17], result[22], result[27], result[32]];
   const othersBO = [result[167], result[172], result[177], result[182], result[187]];
-
+console.log(result)
   return (
     <>
       <p></p>
