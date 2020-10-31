@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CRow, CModal, CSpinner } from '@coreui/react';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ choose }) => {
   const [modal, setModal] = useState(true);
 
   return (

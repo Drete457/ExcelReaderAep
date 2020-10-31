@@ -1,14 +1,24 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { CLabel } from '@coreui/react';
 import allbo from '../../Components/allbo';
 import allleaders from '../../Components/allleaders';
 
-const ChefiaDeGrupo = React.lazy(() => import('../../Components/chefiadegrupo'));
-const ChefiaDaAlcateia = React.lazy(() => import('../../Components/chefiadaalcateia'));
-const TribodeEscoteiros = React.lazy(() => import('../../Components/tribodeescoteiros'));
-const TribodeExploradores = React.lazy(() => import('../../Components/tribodeexploradores'));
+const ChefiaDeGrupo = React.lazy(() =>
+  import('../../Components/chefiadegrupo'),
+);
+const ChefiaDaAlcateia = React.lazy(() =>
+  import('../../Components/chefiadaalcateia'),
+);
+const TribodeEscoteiros = React.lazy(() =>
+  import('../../Components/tribodeescoteiros'),
+);
+const TribodeExploradores = React.lazy(() =>
+  import('../../Components/tribodeexploradores'),
+);
 const Cla = React.lazy(() => import('../../Components/cla'));
-const RestoDaChefia = React.lazy(() => import('../../Components/restodachefia'));
+const RestoDaChefia = React.lazy(() =>
+  import('../../Components/restodachefia'),
+);
 
 const Result = ({ result }) => {
   const [votes, setVotes] = useState(0);
@@ -21,6 +31,10 @@ const Result = ({ result }) => {
     othersNames,
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
+  const useCountVotes = () => {
+    setVotes(votes + 1);
+  };
+  console.log(votes);
 
   return (
     <>
@@ -44,8 +58,3 @@ const Result = ({ result }) => {
 };
 
 export default Result;
-
-/* const countVotes = useCallback(() => {
-  setVotes(votes + 1);
-});
-console.log(votes) */

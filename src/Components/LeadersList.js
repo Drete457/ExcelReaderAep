@@ -3,6 +3,7 @@ import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
 const LeadersList = ({ names, bo }) => {
   return names.map((name, index) => {
+
     return (
       <>
         {name && (

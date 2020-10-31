@@ -16,6 +16,7 @@ export default function App() {
   function reset() {
     setExcelFile('');
     setLine(undefined);
+    setIsLoading(false);
   }
 
   return (
