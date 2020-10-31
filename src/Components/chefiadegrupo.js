@@ -1,10 +1,11 @@
 import React from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
-const ChefiaDeGrupo = ({ result }) => {
+const ChefiaDeGrupo = ({ names, bo }) => {
+
   return (
     <>
-      {result[4] || result[13] || result[18] || result[23] || result[28] ? (
+      {names[0] || names[1] || names[2] || names[3] || names[4] ? (
         <CLabel className="h3 d-flex justify-content-center pt-5">
           Chefia de Grupo
         </CLabel>
@@ -13,14 +14,14 @@ const ChefiaDeGrupo = ({ result }) => {
           Não há Chefia de Grupo
         </CLabel>
       )}
-      {result[4] && (
+      {names[0] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe de Grupo</CLabel>
             <CInput
               id="1"
               name="disabled-input"
-              placeholder={result[4]}
+              placeholder={names[0]}
               disabled
             />
           </CCol>
@@ -29,20 +30,20 @@ const ChefiaDeGrupo = ({ result }) => {
             <CInput
               id="2"
               name="disabled-input"
-              placeholder={result[12]}
+              placeholder={bo[0]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[13] && (
+      {names[1] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe de Grupo - 1</CLabel>
             <CInput
               id="3"
               name="disabled-input"
-              placeholder={result[13]}
+              placeholder={names[1]}
               disabled
             />
           </CCol>
@@ -51,20 +52,20 @@ const ChefiaDeGrupo = ({ result }) => {
             <CInput
               id="4"
               name="disabled-input"
-              placeholder={result[17]}
+              placeholder={bo[1]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[18] && (
+      {names[2] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe de Grupo - 2</CLabel>
             <CInput
               id="5"
               name="disabled-input"
-              placeholder={result[18]}
+              placeholder={names[2]}
               disabled
             />
           </CCol>
@@ -73,20 +74,20 @@ const ChefiaDeGrupo = ({ result }) => {
             <CInput
               id="6"
               name="disabled-input"
-              placeholder={result[22]}
+              placeholder={bo[2]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[23] && (
+      {names[3] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe de Grupo - 3</CLabel>
             <CInput
               id="7"
               name="disabled-input"
-              placeholder={result[23]}
+              placeholder={names[3]}
               disabled
             />
           </CCol>
@@ -95,20 +96,20 @@ const ChefiaDeGrupo = ({ result }) => {
             <CInput
               id="8"
               name="disabled-input"
-              placeholder={result[27]}
+              placeholder={bo[3]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[28] && (
+      {names[4] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe de Grupo - 4</CLabel>
             <CInput
               id="9"
               name="disabled-input"
-              placeholder={result[28]}
+              placeholder={names[4]}
               disabled
             />
           </CCol>
@@ -117,7 +118,7 @@ const ChefiaDeGrupo = ({ result }) => {
             <CInput
               id="10"
               name="disabled-input"
-              placeholder={result[32]}
+              placeholder={bo[4]}
               disabled
             />
           </CCol>

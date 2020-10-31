@@ -1,15 +1,16 @@
 import React from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
-const TribodeEscoteiros = ({ result }) => {
+const TribodeEscoteiros = ({ names, bo }) => {
+  
   return (
     <>
-      {result[68] ||
-      result[73] ||
-      result[78] ||
-      result[83] ||
-      result[88] ||
-      result[93] ? (
+      {names[0] ||
+      names[1] ||
+      names[2] ||
+      names[3] ||
+      names[4] ||
+      names[5] ? (
         <CLabel className="h3 d-flex justify-content-center pt-2">
           Chefia da Tribo de Escoteiros
         </CLabel>
@@ -18,14 +19,14 @@ const TribodeEscoteiros = ({ result }) => {
           Não há Chefia da Tribo de Escoteiros
         </CLabel>
       )}
-      {result[68] && (
+      {names[0] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe da Tribo de Escoteiros</CLabel>
             <CInput
               id="21"
               name="disabled-input"
-              placeholder={result[68]}
+              placeholder={names[0]}
               disabled
             />
           </CCol>
@@ -34,20 +35,20 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="22"
               name="disabled-input"
-              placeholder={result[72]}
+              placeholder={bo[0]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[73] && (
+      {names[1] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe da Tribo de Escoteiros - 1</CLabel>
             <CInput
               id="23"
               name="disabled-input"
-              placeholder={result[73]}
+              placeholder={names[1]}
               disabled
             />
           </CCol>
@@ -56,20 +57,20 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="24"
               name="disabled-input"
-              placeholder={result[77]}
+              placeholder={bo[1]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[78] && (
+      {names[2] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe da Tribo de Escoteiros - 2</CLabel>
             <CInput
               id="25"
               name="disabled-input"
-              placeholder={result[78]}
+              placeholder={names[2]}
               disabled
             />
           </CCol>
@@ -78,20 +79,20 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="26"
               name="disabled-input"
-              placeholder={result[82]}
+              placeholder={bo[2]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[83] && (
+      {names[3] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe da Tribo de Escoteiros - 3</CLabel>
             <CInput
               id="27"
               name="disabled-input"
-              placeholder={result[83]}
+              placeholder={names[3]}
               disabled
             />
           </CCol>
@@ -100,20 +101,20 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="28"
               name="disabled-input"
-              placeholder={result[87]}
+              placeholder={bo[3]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[88] && (
+      {names[4] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe da Tribo de Escoteiros - 4</CLabel>
             <CInput
               id="29"
               name="disabled-input"
-              placeholder={result[88]}
+              placeholder={names[4]}
               disabled
             />
           </CCol>
@@ -122,20 +123,20 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="30"
               name="disabled-input"
-              placeholder={result[92]}
+              placeholder={bo[4]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[93] && (
+      {names[5] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro SubChefe da Tribo de Escoteiros - 5</CLabel>
             <CInput
               id="30A"
               name="disabled-input"
-              placeholder={result[93]}
+              placeholder={names[5]}
               disabled
             />
           </CCol>
@@ -144,7 +145,7 @@ const TribodeEscoteiros = ({ result }) => {
             <CInput
               id="30B"
               name="disabled-input"
-              placeholder={result[97]}
+              placeholder={bo[5]}
               disabled
             />
           </CCol>

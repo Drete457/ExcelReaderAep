@@ -1,14 +1,15 @@
 import React from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
-const RestoDaChefia = ({ result }) => {
+const RestoDaChefia = ({ names, bo }) => {
+  
   return (
     <>
-      {result[163] ||
-      result[168] ||
-      result[173] ||
-      result[178] ||
-      result[183] ? (
+      {names[0] ||
+      names[1] ||
+      names[2] ||
+      names[3] ||
+      names[4] ? (
         <CLabel className="h3 d-flex justify-content-center pt-2">
           Outros Dirigentes
         </CLabel>
@@ -17,14 +18,14 @@ const RestoDaChefia = ({ result }) => {
           Não há Outros Dirigentes
         </CLabel>
       )}
-      {result[163] && (
+      {names[0] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe dos Serviços Admin.</CLabel>
             <CInput
               id="51"
               name="disabled-input"
-              placeholder={result[163]}
+              placeholder={names[0]}
               disabled
             />
           </CCol>
@@ -33,20 +34,20 @@ const RestoDaChefia = ({ result }) => {
             <CInput
               id="52"
               name="disabled-input"
-              placeholder={result[167]}
+              placeholder={bo[0]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[168] && (
+      {names[1] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 1</CLabel>
             <CInput
               id="53"
               name="disabled-input"
-              placeholder={result[168]}
+              placeholder={names[1]}
               disabled
             />
           </CCol>
@@ -55,20 +56,20 @@ const RestoDaChefia = ({ result }) => {
             <CInput
               id="54"
               name="disabled-input"
-              placeholder={result[172]}
+              placeholder={bo[1]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[173] && (
+      {names[2] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 2</CLabel>
             <CInput
               id="55"
               name="disabled-input"
-              placeholder={result[173]}
+              placeholder={names[2]}
               disabled
             />
           </CCol>
@@ -77,20 +78,20 @@ const RestoDaChefia = ({ result }) => {
             <CInput
               id="56"
               name="disabled-input"
-              placeholder={result[177]}
+              placeholder={bo[2]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[178] && (
+      {names[3] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 3</CLabel>
             <CInput
               id="57"
               name="disabled-input"
-              placeholder={result[178]}
+              placeholder={names[3]}
               disabled
             />
           </CCol>
@@ -99,20 +100,20 @@ const RestoDaChefia = ({ result }) => {
             <CInput
               id="58"
               name="disabled-input"
-              placeholder={result[182]}
+              placeholder={bo[3]}
               disabled
             />
           </CCol>
         </CFormGroup>
       )}
-      {result[183] && (
+      {names[4] && (
         <CFormGroup row className="pt-2 justify-content-center">
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 4</CLabel>
             <CInput
               id="59"
               name="disabled-input"
-              placeholder={result[183]}
+              placeholder={names[4]}
               disabled
             />
           </CCol>
@@ -121,7 +122,7 @@ const RestoDaChefia = ({ result }) => {
             <CInput
               id="60"
               name="disabled-input"
-              placeholder={result[187]}
+              placeholder={bo[4]}
               disabled
             />
           </CCol>
