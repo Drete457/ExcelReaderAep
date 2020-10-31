@@ -44,7 +44,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 1</CLabel>
             <CInput
-              id="51"
+              id="53"
               name="disabled-input"
               placeholder={result[168]}
               disabled
@@ -53,7 +53,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>BO</CLabel>
             <CInput
-              id="52"
+              id="54"
               name="disabled-input"
               placeholder={result[172]}
               disabled
@@ -66,7 +66,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 2</CLabel>
             <CInput
-              id="51"
+              id="55"
               name="disabled-input"
               placeholder={result[173]}
               disabled
@@ -75,7 +75,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>BO</CLabel>
             <CInput
-              id="52"
+              id="56"
               name="disabled-input"
               placeholder={result[177]}
               disabled
@@ -88,7 +88,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 3</CLabel>
             <CInput
-              id="51"
+              id="57"
               name="disabled-input"
               placeholder={result[178]}
               disabled
@@ -97,7 +97,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>BO</CLabel>
             <CInput
-              id="52"
+              id="58"
               name="disabled-input"
               placeholder={result[182]}
               disabled
@@ -110,7 +110,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>Escoteiro Chefe Adjunto da CG - 4</CLabel>
             <CInput
-              id="51"
+              id="59"
               name="disabled-input"
               placeholder={result[183]}
               disabled
@@ -119,7 +119,7 @@ const RestoDaChefia = ({ result }) => {
           <CCol md="4">
             <CLabel>BO</CLabel>
             <CInput
-              id="52"
+              id="60"
               name="disabled-input"
               placeholder={result[187]}
               disabled
