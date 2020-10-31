@@ -14,7 +14,7 @@ const RestoDaChefia = ({ names, bo }) => {
           Não há Outros Dirigentes
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe Dos Serviços Admin.' t2='Escoteiro Chefe Adj da CG - ' />
     </>
   );
 };

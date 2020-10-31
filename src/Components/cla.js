@@ -14,7 +14,7 @@ const Cla = ({ names, bo }) => {
           Não há Chefia de Clã
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe De Clã' t2='Escoteiro Sub-Chefe De clã - '/>
     </>
   );
 };

@@ -15,7 +15,7 @@ const ChefiaDeGrupo = ({ names, bo, votes }) => {
           Não há Chefia de Grupo
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe de Grupo' t2='Escoteiro Sub-Chefe de Grupo - '/>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
-const LeadersList = ({ names, bo }) => {
+const LeadersList = ({ names, bo, t1, t2 }) => {
   return names.map((name, index) => {
     return (
       <>
@@ -10,8 +10,8 @@ const LeadersList = ({ names, bo }) => {
             <CCol md="4">
               <CLabel>
                 {index === 0
-                  ? 'Escoteiro Chefe da Tribo de Escoteiros'
-                  : `Escoteiro SubChefe da Tribo de Escoteiros - ${index}`}
+                  ? t1
+                  : t2 + index}
               </CLabel>
               <CInput id={name} placeholder={name} disabled />
             </CCol>

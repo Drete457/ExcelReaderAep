@@ -14,7 +14,7 @@ const TribodeExploradores = ({ names, bo }) => {
           Não há Chefia da Tribo de Exploradores
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe da Tribo de Exploradores' t2='Escoteiro Sub-Chefe Da Tribo de Exploradores - ' />
     </>
   );
 };

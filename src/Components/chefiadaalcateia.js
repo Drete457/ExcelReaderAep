@@ -14,7 +14,7 @@ const ChefiaDaAlcateia = ({ names, bo }) => {
           Não há Chefia da Alcateia
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe da Alcateia' t2='Escoteiro Sub-Chefe da Alcateia -' />
     </>
   );
 };

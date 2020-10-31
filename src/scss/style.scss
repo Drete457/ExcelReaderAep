@@ -1,2 +1,16 @@
 // Import CoreUI styles
 @import "~@coreui/coreui-pro/scss/coreui.scss";
+
+.c-app {
+    --primary: #53a1a3;
+    color: #000000;
+    background-color: #a3c3c6;
+}
+
+.card, .card-header{
+    background-color: #e7eeef;
+}
+
+.form-control, label {
+    font-weight: bold;
+}

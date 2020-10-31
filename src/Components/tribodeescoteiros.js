@@ -14,7 +14,7 @@ const TribodeEscoteiros = ({ names, bo }) => {
           Não há Chefia da Tribo de Escoteiros
         </CLabel>
       )}
-      <LeadersList names={names} bo={bo} />
+      <LeadersList names={names} bo={bo} t1='Escoteiro Chefe da Tribo de Escoteiros' t2='Escoteiro Sub-Chefe Da Tribo de Escoteiros - ' />
     </>
   );
 };

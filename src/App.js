@@ -63,7 +63,7 @@ export default function App() {
                     <CButton
                       size="sm"
                       variant="outline"
-                      color="danger"
+                      color="primary"
                       onClick={() => reset()}
                     >
                       Apagar o Ficheiro
