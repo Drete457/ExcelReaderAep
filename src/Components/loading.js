@@ -1,21 +1,16 @@
-import React, { useState } from 'react';
-import { CRow, CModal, CSpinner } from '@coreui/react';
+import React from 'react';
+import { CRow, CSpinner } from '@coreui/react';
 
-const LoadingScreen = ({ choose }) => {
-  const [modal, setModal] = useState(true);
-
+const LoadingScreen = () => {
   return (
     <>
-      <CModal show={modal} onClose={setModal} centered size="sm">
-        <CRow md="12" className="d-flex flex-row justify-content-center">
-          <CSpinner
-            size="xl"
-            style={{ width: '4rm', height: '4rm' }}
-            color="primary"
-            variant="grow"
-          />
-        </CRow>
-      </CModal>
+      <CRow className="d-flex flex-row justify-content-center">
+        <CSpinner
+          style={{ width: '4rem', height: '4rem' }}
+          color="primary"
+          variant="grow"
+        />
+      </CRow>
     </>
   );
 };

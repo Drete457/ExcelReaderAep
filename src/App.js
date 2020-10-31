@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { CRow, CCol, CCard, CCardHeader, CCardBody, CButton } from '@coreui/react';
+import {
+  CRow,
+  CCol,
+  CCard,
+  CCardHeader,
+  CCardBody,
+  CButton,
+} from '@coreui/react';
 import Creatable from 'react-select/creatable';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
@@ -29,7 +36,6 @@ export default function App() {
                 Conselho Jurisdicional - Visualizador do Controlo de Nomeações
               </CCardHeader>
               <CCardBody>
-                {isLoading && <LoadingScreen />}
                 {!excelFile && (
                   <InputFile
                     setExcelFile={setExcelFile}
@@ -45,14 +51,24 @@ export default function App() {
                       autoComplete="off"
                       options={optionList(excelFile)}
                       onChange={(choose) => {
-                        const chooseGroup = excelFile.find((group) => { return group[0] === choose.value });
-                        setLine(chooseGroup)
+                        const chooseGroup = excelFile.find((group) => {
+                          return group[0] === choose.value;
+                        });
+                        setLine(chooseGroup);
                       }}
                     />
-                    <CButton size='sm' variant="outline" color="danger" onClick={() => reset()}>Apagar o Ficheiro</CButton>
+                    <CButton
+                      size="sm"
+                      variant="outline"
+                      color="danger"
+                      onClick={() => reset()}
+                    >
+                      Apagar o Ficheiro
+                    </CButton>
                   </CCol>
                 )}
-                { currentline && <Result result={currentline} />}
+                {currentline && <Result result={currentline} />}
+                {isLoading && <LoadingScreen />}
               </CCardBody>
             </CCard>
           </CCol>
