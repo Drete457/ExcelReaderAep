@@ -4,6 +4,7 @@ import ChefiaDeGrupo from '../../Components/chefiadegrupo';
 import ChefiaDaAlcateia from '../../Components/chefiadaalcateia';
 import TribodeEscoteiros from '../../Components/tribodeescoteiros';
 import TribodeExploradores from '../../Components/tribodeexploradores';
+import Cla from '../../Components/cla';
 
 const Result = ({ result }) => {
   return (
@@ -21,6 +22,7 @@ const Result = ({ result }) => {
       <ChefiaDaAlcateia result={result} />
       <TribodeEscoteiros result={result} />
       <TribodeExploradores result={result} />
+      <Cla result={result} />
     </>
   );
 };
