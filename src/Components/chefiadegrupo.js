@@ -9,7 +9,7 @@ const ChefiaDeGrupo = ({ result }) => {
           Chefia de Grupo
         </CLabel>
       ) : (
-        <CLabel className="h3 d-flex justify-content-center">
+        <CLabel className="h3 d-flex justify-content-center pt-5">
           Não há Chefia de Grupo
         </CLabel>
       )}

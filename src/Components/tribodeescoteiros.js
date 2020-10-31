@@ -14,7 +14,7 @@ const TribodeEscoteiros = ({ result }) => {
           Chefia da Tribo de Escoteiros
         </CLabel>
       ) : (
-        <CLabel className="h3 d-flex justify-content-center">
+        <CLabel className="h3 d-flex justify-content-center pt-2">
           Não há Chefia da Tribo de Escoteiros
         </CLabel>
       )}

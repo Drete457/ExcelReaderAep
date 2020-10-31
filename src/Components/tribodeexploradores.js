@@ -14,7 +14,7 @@ const TribodeExploradores = ({ result }) => {
           Chefia da Tribo de Exploradores
         </CLabel>
       ) : (
-        <CLabel className="h3 d-flex justify-content-center">
+        <CLabel className="h3 d-flex justify-content-center pt-2">
           Não há Chefia da Tribo de Exploradores
         </CLabel>
       )}

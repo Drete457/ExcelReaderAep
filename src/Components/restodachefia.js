@@ -13,7 +13,7 @@ const RestoDaChefia = ({ result }) => {
           Outros Dirigentes
         </CLabel>
       ) : (
-        <CLabel className="h3 d-flex justify-content-center">
+        <CLabel className="h3 d-flex justify-content-center pt-2">
           Não há Outros Dirigentes
         </CLabel>
       )}
