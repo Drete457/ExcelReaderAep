@@ -7,16 +7,15 @@ const LeadersList = ({ names, bo, t1, t2 }) => {
       <>
         {name && (
           <CFormGroup row className="pt-1 justify-content-center">
-            <CCol md="4">
-              <CLabel>
+            <CCol md="5">
+            <CLabel>
                 {index === 0
                   ? t1
                   : t2 + index}
               </CLabel>
               <CInput id={name} placeholder={name} disabled />
             </CCol>
-            <CCol md="4">
-              <CLabel>BO</CLabel>
+            <CCol md="2" className='mt-auto'>
               <CInput id={index + name} placeholder={bo[index]} disabled />
             </CCol>
           </CFormGroup>
