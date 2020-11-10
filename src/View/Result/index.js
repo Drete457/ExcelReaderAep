@@ -1,5 +1,4 @@
 import React, { useState, useEffect, lazy } from 'react';
-import { CLabel } from '@coreui/react';
 import allbo from '../../Components/handle-data/allbo';
 import allleaders from '../../Components/handle-data/allleaders';
 import cfRegionalData from '../../Components/handle-data/cfRegional';
@@ -20,7 +19,9 @@ const Cla = lazy(() => import('../../Components/groups/cla'));
 const RestoDaChefia = lazy(() =>
   import('../../Components/groups/restodachefia'),
 );
-const ChefiaRegional = lazy(() => import('../../Components/regional/chefiaregional'));
+const ChefiaRegional = lazy(() =>
+  import('../../Components/regional/chefiaregional'),
+);
 
 const Result = ({ result }) => {
   const [votes, setVotes] = useState(0);
@@ -49,23 +50,40 @@ const Result = ({ result }) => {
     const count = allTheNames.filter((value) => value).length;
 
     setVotes(count);
-  }, [alcateiaNames, tesNames, texNames, claNames, groupNames, othersNames, cfRegional]);
-  
+  }, [
+    alcateiaNames,
+    tesNames,
+    texNames,
+    claNames,
+    groupNames,
+    othersNames,
+    cfRegional,
+  ]);
+
   return (
     <>
-      <CLabel className="h2 d-flex justify-content-center p-3 pt-3">
-        Grupo Nº: {result[0]} - Localidade: {result[2]}
-      </CLabel>
-      <CLabel className="h3 d-flex justify-content-center">
-        Região: {result[1]}
-      </CLabel>
-      <ChefiaDeGrupo names={groupNames} bo={groupBO} votes={votes} cgData={cgData} />
+      <ChefiaDeGrupo
+        names={groupNames}
+        bo={groupBO}
+        votes={votes}
+        cgData={cgData}
+        groupName={result[0]}
+        location={result[2]}
+        region={result[1]}
+      />
       <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} />
       <TribodeEscoteiros names={tesNames} bo={tesBO} />
       <TribodeExploradores names={texNames} bo={texBO} />
       <Cla names={claNames} bo={claBO} />
       <RestoDaChefia names={othersNames} bo={othersBO} />
-      <ChefiaRegional names={cfRegional} bo={cfBO} votes={votes} cfRData={cfRData} />
+
+      <ChefiaRegional
+        names={cfRegional}
+        bo={cfBO}
+        votes={votes}
+        cfRData={cfRData}
+        region={result[0]}
+      />
     </>
   );
 };
