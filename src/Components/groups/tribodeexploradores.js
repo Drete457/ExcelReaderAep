@@ -1,5 +1,5 @@
 import React from 'react';
-import LeadersList from './LeadersList';
+import LeadersList from '../../helpers/LeadersList';
 
 const TribodeExploradores = ({ names, bo }) => {
   return (

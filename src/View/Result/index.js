@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { CLabel } from '@coreui/react';
-import allbo from '../../Components/allbo';
-import allleaders from '../../Components/allleaders';
+import allbo from '../../Components/handle-data/allbo';
+import allleaders from '../../Components/handle-data/allleaders';
+import cfRegionalData from '../../Components/handle-data/cfRegional';
 
-const ChefiaDeGrupo = React.lazy(() =>
-  import('../../Components/chefiadegrupo'),
+const ChefiaDeGrupo = lazy(() =>
+  import('../../Components/groups/chefiadegrupo'),
 );
-const ChefiaDaAlcateia = React.lazy(() =>
-  import('../../Components/chefiadaalcateia'),
+const ChefiaDaAlcateia = lazy(() =>
+  import('../../Components/groups/chefiadaalcateia'),
 );
-const TribodeEscoteiros = React.lazy(() =>
-  import('../../Components/tribodeescoteiros'),
+const TribodeEscoteiros = lazy(() =>
+  import('../../Components/groups/tribodeescoteiros'),
 );
-const TribodeExploradores = React.lazy(() =>
-  import('../../Components/tribodeexploradores'),
+const TribodeExploradores = lazy(() =>
+  import('../../Components/groups/tribodeexploradores'),
 );
-const Cla = React.lazy(() => import('../../Components/cla'));
-const RestoDaChefia = React.lazy(() =>
-  import('../../Components/restodachefia'),
+const Cla = lazy(() => import('../../Components/groups/cla'));
+const RestoDaChefia = lazy(() =>
+  import('../../Components/groups/restodachefia'),
 );
+const ChefiaRegional = lazy(() => import('../../Components/regional/chefiaregional'));
 
 const Result = ({ result }) => {
   const [votes, setVotes] = useState(0);
@@ -32,6 +34,7 @@ const Result = ({ result }) => {
     cgData,
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
+  const { cfRegional, cfBO, cfRData } = cfRegionalData(result);
 
   useEffect(() => {
     const allTheNames = [
@@ -41,18 +44,16 @@ const Result = ({ result }) => {
       ...claNames,
       ...groupNames,
       ...othersNames,
+      ...cfRegional,
     ];
     const count = allTheNames.filter((value) => value).length;
 
     setVotes(count);
-  }, [alcateiaNames, tesNames, texNames, claNames, groupNames, othersNames]);
+  }, [alcateiaNames, tesNames, texNames, claNames, groupNames, othersNames, cfRegional]);
   
   return (
     <>
-      <p></p>
-      <p></p>
-
-      <CLabel className="h2 d-flex justify-content-center p-3">
+      <CLabel className="h2 d-flex justify-content-center p-3 pt-3">
         Grupo Nº: {result[0]} - Localidade: {result[2]}
       </CLabel>
       <CLabel className="h3 d-flex justify-content-center">
@@ -64,6 +65,7 @@ const Result = ({ result }) => {
       <TribodeExploradores names={texNames} bo={texBO} />
       <Cla names={claNames} bo={claBO} />
       <RestoDaChefia names={othersNames} bo={othersBO} />
+      <ChefiaRegional names={cfRegional} bo={cfBO} votes={votes} cfRData={cfRData} />
     </>
   );
 };

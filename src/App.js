@@ -10,8 +10,8 @@ import {
 import Select from 'react-select/creatable';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
-import InputFile from './Components/inputfile';
-import optionList from './Components/optionlist';
+import InputFile from './Components/handle-data/inputfile';
+import optionList from './helpers/optionlist';
 import Result from './View/Result';
 import './scss/style.scss';
 
