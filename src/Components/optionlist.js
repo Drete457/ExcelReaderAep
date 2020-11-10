@@ -1,16 +1,33 @@
 const optionList = (list) => {
   let array = [];
 
-  list.map((group) => {
+  list.map((data) => {
     if (
-      group[3] !== 'Suspenso' &&
-      group[3] !== 'Inativo' &&
-      group[3] !== 'Extinto'
+      data[3] &&
+      data[3] !== 'Suspenso' &&
+      data[3] !== 'Inativo' &&
+      data[3] !== 'Extinto'
     ) {
-      array.push({
-        value: group[0],
-        label: `Grupo: ${group[0]} Região: ${group[1]}`,
-      });
+      if (
+        typeof data[0] === 'string' &&
+        (data[0] === 'ENFIM' ||
+          data[0] === 'Chefia Nacional' ||
+          data[0] === 'MCN' || data[0].includes('Núcleo'))
+      ) {
+        return undefined;
+      }
+      
+      if (isNaN(data[0])) {
+        array.push({
+          value: data[0],
+          label: `Chefia Regional: ${data[0]}`,
+        });
+      } else {
+        array.push({
+          value: data[0],
+          label: `Grupo: ${data[0]} Região: ${data[1]}`,
+        });
+      }
     }
     return undefined;
   });

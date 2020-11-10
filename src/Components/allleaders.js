@@ -38,6 +38,7 @@ const allleaders = (result) => {
     result[23],
     result[28],
   ];
+  const cgData = [result[5], result[9]];
   const othersNames = [
     result[163],
     result[168],
@@ -53,6 +54,7 @@ const allleaders = (result) => {
     claNames,
     groupNames,
     othersNames,
+    cgData,
   };
 };
 

@@ -29,6 +29,7 @@ const Result = ({ result }) => {
     claNames,
     groupNames,
     othersNames,
+    cgData,
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
 
@@ -57,7 +58,7 @@ const Result = ({ result }) => {
       <CLabel className="h3 d-flex justify-content-center">
         Região: {result[1]}
       </CLabel>
-      <ChefiaDeGrupo names={groupNames} bo={groupBO} votes={votes} />
+      <ChefiaDeGrupo names={groupNames} bo={groupBO} votes={votes} cgData={cgData} />
       <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} />
       <TribodeEscoteiros names={tesNames} bo={tesBO} />
       <TribodeExploradores names={texNames} bo={texBO} />

@@ -7,7 +7,7 @@ import {
   CCardBody,
   CButton,
 } from '@coreui/react';
-import Creatable from 'react-select/creatable';
+import Select from 'react-select/creatable';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
 import InputFile from './Components/inputfile';
@@ -44,7 +44,7 @@ export default function App() {
                 )}
                 {excelFile.length > 0 && (
                   <CCol className="d-flex justify-content-center">
-                    <Creatable
+                    <Select
                       className="w-50"
                       isClearable
                       placeholder="Escolhe o grupo pretendido"
