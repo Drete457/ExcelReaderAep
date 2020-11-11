@@ -29,8 +29,9 @@ const cfRegionalData = (result) => {
     result[270],
     result[276],
   ];
+  const mcr = [result[332], result[336], result[337]];
 
-  return { cfRegional, cfBO, cfRData };
+  return { cfRegional, cfBO, cfRData, mcr };
 };
 
 export default cfRegionalData;

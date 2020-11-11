@@ -2,7 +2,7 @@ import React from 'react';
 import { CLabel } from '@coreui/react';
 import RegionalList from '../../helpers/RegionalList';
 
-const ChefiaRegional = ({ names, bo, votes, cfRData, region }) => {
+const ChefiaRegional = ({ names, bo, votes, cfRData, region, mcr }) => {
   const show = names.some((value) => value);
   return (
     show && (
@@ -21,6 +21,13 @@ const ChefiaRegional = ({ names, bo, votes, cfRData, region }) => {
           t1="Escoteiro Chefe Regional"
           t2="Escoteiro Sub-Chefe Regional - "
           cfRData={cfRData}
+        />
+        <RegionalList
+          names={[mcr[0]]}
+          bo={[mcr[2]]}
+          t1="Presidente da Mesa do Conselho Regional"
+          t2=" "
+          cfRData={[mcr[1]]}
         />
       </>
     )

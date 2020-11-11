@@ -35,7 +35,7 @@ const Result = ({ result }) => {
     cgData,
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
-  const { cfRegional, cfBO, cfRData } = cfRegionalData(result);
+  const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result);
 
   useEffect(() => {
     const allTheNames = [
@@ -83,6 +83,7 @@ const Result = ({ result }) => {
         votes={votes}
         cfRData={cfRData}
         region={result[0]}
+        mcr={mcr}
       />
     </>
   );
