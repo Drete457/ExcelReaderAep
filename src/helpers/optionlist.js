@@ -12,12 +12,16 @@ const optionList = (list) => {
         typeof data[0] === 'string' &&
         (data[0] === 'ENFIM' ||
           data[0] === 'Chefia Nacional' ||
-          data[0] === 'MCN' || data[0].includes('Núcleo'))
+          data[0] === 'MCN')
       ) {
         return undefined;
       }
-      
-      if (isNaN(data[0])) {
+      if (typeof data[0] === 'string' && data[0].includes('Núcleo')) {
+        array.push({
+          value: data[0],
+          label: data[0],
+        });
+      } else if (isNaN(data[0])) {
         array.push({
           value: data[0],
           label: `Chefia Regional: ${data[0]}`,
