@@ -5,7 +5,6 @@ const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
     return names.map((name, index) => {
         let dataText = '';
       if (cfRData[index]) {
-          console.log('entrou')
             const date = new Date(cfRData[index]);
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
