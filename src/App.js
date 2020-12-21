@@ -50,13 +50,13 @@ export default function App() {
                       autoComplete="off"
                       options={optionList(excelFile)}
                       onChange={(choose) => {
-                        const chooseGroup = excelFile.find((group) => {
-                          if (group && group[0]) {
-                            return group[0] === choose.value;
+                        const select = excelFile.find((value) => {
+                          if (value && value[0]) {
+                            return value[0] === choose.value;
                           }
                           return null;
                         });
-                        setLine(chooseGroup);
+                        setLine(select);
                       }}
                     />
                     <CButton

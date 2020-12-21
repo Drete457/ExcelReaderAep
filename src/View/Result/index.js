@@ -2,6 +2,7 @@ import React, { useState, useEffect, lazy } from 'react';
 import allbo from '../../Components/handle-data/allbo';
 import allleaders from '../../Components/handle-data/allleaders';
 import cfRegionalData from '../../Components/handle-data/cfRegional';
+import nData from '../../Components/handle-data/nucleos';
 
 const ChefiaDeGrupo = lazy(() =>
   import('../../Components/groups/chefiadegrupo'),
@@ -22,6 +23,7 @@ const RestoDaChefia = lazy(() =>
 const ChefiaRegional = lazy(() =>
   import('../../Components/regional/chefiaregional'),
 );
+//const Nucleo = lazy(() => import('../../Components/nucleos'));
 
 const Result = ({ result }) => {
   const [votes, setVotes] = useState(0);
@@ -36,6 +38,10 @@ const Result = ({ result }) => {
   } = allleaders(result);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
   const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result);
+  const { ncf, nValidade, nBO } = nData(result);
+  console.log(ncf)
+  console.log(nValidade)
+  console.log(nBO)
 
   useEffect(() => {
     const allTheNames = [
@@ -46,6 +52,7 @@ const Result = ({ result }) => {
       ...groupNames,
       ...othersNames,
       ...cfRegional,
+      ...ncf
     ];
     const count = allTheNames.filter((value) => value).length;
 
@@ -57,7 +64,8 @@ const Result = ({ result }) => {
     claNames,
     groupNames,
     othersNames,
-    cfRegional,
+      cfRegional,
+    ncf
   ]);
 
   return (
