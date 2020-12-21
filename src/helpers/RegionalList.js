@@ -4,7 +4,8 @@ import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
     return names.map((name, index) => {
         let dataText = '';
-        if (cfRData[index]) {
+      if (cfRData[index]) {
+          console.log('entrou')
             const date = new Date(cfRData[index]);
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
@@ -42,11 +43,3 @@ const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
 };
 
 export default RegionalList;
-/* let dataText = '';
-if (cfRData) {
-  const date = new Date(cgData[1]);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  dataText = day + '/' + month + '/' + year;
-} */

@@ -23,7 +23,7 @@ const RestoDaChefia = lazy(() =>
 const ChefiaRegional = lazy(() =>
   import('../../Components/regional/chefiaregional'),
 );
-//const Nucleo = lazy(() => import('../../Components/nucleos'));
+const Nucleo = lazy(() => import('../../Components/nucleo/nucleo'));
 
 const Result = ({ result }) => {
   const [votes, setVotes] = useState(0);
@@ -39,9 +39,6 @@ const Result = ({ result }) => {
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
   const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result);
   const { ncf, nValidade, nBO } = nData(result);
-  console.log(ncf)
-  console.log(nValidade)
-  console.log(nBO)
 
   useEffect(() => {
     const allTheNames = [
@@ -64,7 +61,7 @@ const Result = ({ result }) => {
     claNames,
     groupNames,
     othersNames,
-      cfRegional,
+    cfRegional,
     ncf
   ]);
 
@@ -92,6 +89,14 @@ const Result = ({ result }) => {
         cfRData={cfRData}
         region={result[0]}
         mcr={mcr}
+      />
+
+      <Nucleo
+        names={ncf}
+        bo={nBO}
+        validation={nValidade}
+        votes={votes}
+        title={result[0]}
       />
     </>
   );
