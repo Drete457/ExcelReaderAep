@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
 const LeadersList = ({ names, bo, t1, t2, cgData }) => {
   let dataText = '';
+  const [checkbox, setCheckbox] = useState({})
+
+  useEffect(() => {
+    if(names) {
+      const inicialCheckbox = {};
+      
+      names.forEach((index) => {
+        inicialCheckbox[index] = false;
+      })
+
+      setCheckbox(inicialCheckbox);
+    }
+  },[names])
+  
+  
   if (cgData) {
     const date = new Date(cgData[1]);
     const year = date.getFullYear();
@@ -10,7 +25,9 @@ const LeadersList = ({ names, bo, t1, t2, cgData }) => {
     const day = date.getDate();
     dataText = (day + '/' + month + '/' + year)    
   }
+
   return names.map((name, index) => {
+    
     return (
       <>
         {name && (
@@ -26,6 +43,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData }) => {
                 {index === 0
                   ? t1
                   : t2 + index}
+                <input type="checkbox" className="ml-2" checked={checkbox[index]} onChange={() => setCheckbox({...checkbox, [index]: !checkbox[index]})}/>
               </CLabel>
               <CInput id={name} placeholder={name} disabled />
             </CCol>
