@@ -5,7 +5,7 @@ import NucleoList from '../../helpers/NucleoList';
 const Nucleo = ({ names, bo, votes, validation, title }) => {
   const show = names.some((value) => value);
   return (
-    show ? (
+    show && (
       <>
         <CLabel className="h2 d-flex justify-content-center p-3 pt-5">
           {title}
@@ -23,10 +23,6 @@ const Nucleo = ({ names, bo, votes, validation, title }) => {
           t2="Escoteiro Sub-Chefe de Núcleo - "
         />
       </>
-    ) : (
-      <CLabel className="h2 d-flex justify-content-center p-3 pt-5">
-         Núcleo não tem chefia
-    </CLabel>
     )
   );
 };
