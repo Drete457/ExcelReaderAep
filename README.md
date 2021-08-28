@@ -10,8 +10,8 @@ With Git and Node.js installed on your machine, choose location and clone reposi
 ```
 git clone https://github.com/Drete457/ExcelReaderAep.git
 cd excelreaderaep
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 ## Tecnologies
