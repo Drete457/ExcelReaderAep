@@ -1,4 +1,3 @@
-import React from 'react';
 import { CLabel } from '@coreui/react';
 import RegionalList from '../../helpers/RegionalList';
 

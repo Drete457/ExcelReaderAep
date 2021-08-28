@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import allbo from '../../Components/handle-data/allbo';
 import allleaders from '../../Components/handle-data/allleaders';
 import cfRegionalData from '../../Components/handle-data/cfRegional';

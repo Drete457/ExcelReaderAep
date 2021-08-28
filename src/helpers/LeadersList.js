@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 
 const LeadersList = ({ names, bo, t1, t2, cgData }) => {
@@ -16,15 +16,14 @@ const LeadersList = ({ names, bo, t1, t2, cgData }) => {
       setCheckbox(inicialCheckbox);
     }
   },[names])
-  
-  
+   
   if (cgData) {
     const date = new Date(cgData[1]);
     const year = date.getFullYear();
     const month = date.getMonth()+1;
     const day = date.getDate();
     dataText = (day + '/' + month + '/' + year)    
-  }
+  } 
 
   return names.map((name, index) => {
     

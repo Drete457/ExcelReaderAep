@@ -1,4 +1,3 @@
-import React from 'react';
 import { CCol, CInputFile, CLabel } from '@coreui/react';
 import exceltojson from './exceltojson';
 

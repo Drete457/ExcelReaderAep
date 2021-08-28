@@ -1,4 +1,3 @@
-import React from 'react';
 import LeadersList from '../../helpers/LeadersList';
 
 const Cla = ({ names, bo }) => {

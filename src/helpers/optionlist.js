@@ -35,8 +35,10 @@ const optionList = (list) => {
         });
       }
     }
+
     return undefined;
   });
+  
   return array;
 };
 

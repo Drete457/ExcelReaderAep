@@ -1,4 +1,3 @@
-import React from 'react';
 import { CRow, CSpinner } from '@coreui/react';
 
 const LoadingScreen = () => {
