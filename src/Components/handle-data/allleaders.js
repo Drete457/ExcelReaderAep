@@ -6,30 +6,34 @@ const allleaders = (result) => {
     result[48],
     result[53],
     result[58],
-  ];
-  const tesNames = [
+    result[63],
     result[68],
     result[73],
+  ];
+  const tesNames = [
     result[78],
     result[83],
     result[88],
     result[93],
-  ];
-  const texNames = [
+    result[98],
     result[103],
     result[108],
+  ];
+  const texNames = [
     result[113],
     result[118],
     result[123],
     result[128],
-  ];
-  const claNames = [
     result[133],
     result[138],
-    result[143],
-    result[148],
-    result[153],
-    result[158],
+  ];
+  const claNames = [
+    result[144],
+    result[149],
+    result[154],
+    result[159],
+    result[164],
+    result[169],
   ];
   const groupNames = [
     result[4],
@@ -40,11 +44,12 @@ const allleaders = (result) => {
   ];
   const cgData = [result[5], result[9]];
   const othersNames = [
-    result[163],
-    result[168],
-    result[173],
-    result[178],
-    result[183],
+    result[174],
+    result[179],
+    result[184],
+    result[189],
+    result[194],
+    result[199],
   ];
 
   return {

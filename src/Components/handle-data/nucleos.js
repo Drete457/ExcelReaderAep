@@ -1,19 +1,19 @@
 const nData = (result) => {
      const ncf = [
-         result[314],
-         result[320],
-         result[326],
+         result[325],
+         result[331],
+         result[337],
     ];
     const nValidade = [
-        result[318],
-        result[324],
-        result[330],
+        result[329],
+        result[335],
+        result[341],
       
     ];
     const nBO = [
-        result[319],
-        result[325],
-        result[331],
+        result[330],
+        result[336],
+        result[342],
     ]
   
     return { ncf, nValidade, nBO };
