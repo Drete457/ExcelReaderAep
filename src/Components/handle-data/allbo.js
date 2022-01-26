@@ -28,21 +28,21 @@ const allbo = (result) => {
     result[143],
   ];
   const claBO = [
-    result[148],
-    result[153],
-    result[158],
-    result[163],
-    result[168],
-    result[173],
+    result[147],
+    result[152],
+    result[157],
+    result[162],
+    result[167],
+    result[172],
   ];
   const groupBO = [result[12], result[17], result[22], result[27], result[32]];
   const othersBO = [
-    result[178],
-    result[183],
-    result[188],
-    result[193],
-    result[198],
-    result[203],
+    result[177],
+    result[182],
+    result[187],
+    result[192],
+    result[197],
+    result[202],
   ];
 
   return { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO };

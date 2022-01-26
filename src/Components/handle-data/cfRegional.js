@@ -1,15 +1,6 @@
 const cfRegionalData = (result) => {
   const cfRegional = [
-    result[239],
-    result[247],
-    result[253],
-    result[259],
-    result[265],
-    result[271],
-    result[277],
-    result[283],
-  ];
-  const cfBO = [
+    result[238],
     result[246],
     result[252],
     result[258],
@@ -17,10 +8,9 @@ const cfRegionalData = (result) => {
     result[270],
     result[276],
     result[282],
-    result[288],
   ];
-  const cfRData = [
-    result[243],
+  const cfBO = [
+    result[245],
     result[251],
     result[257],
     result[263],
@@ -29,7 +19,17 @@ const cfRegionalData = (result) => {
     result[281],
     result[287],
   ];
-  const mcr = [result[343], result[347], result[348]];
+  const cfRData = [
+    result[242],
+    result[250],
+    result[256],
+    result[262],
+    result[268],
+    result[274],
+    result[280],
+    result[286],
+  ];
+  const mcr = [result[342], result[346], result[347]];
 
   return { cfRegional, cfBO, cfRData, mcr };
 };

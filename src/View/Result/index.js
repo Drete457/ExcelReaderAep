@@ -64,7 +64,7 @@ const Result = ({ result }) => {
     cfRegional,
     ncf
   ]);
-
+ 
   return (
     <>
       <ChefiaDeGrupo
