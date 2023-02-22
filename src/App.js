@@ -15,12 +15,12 @@ import optionList from './helpers/optionlist';
 import Result from './View/Result';
 import './scss/style.scss';
 
-export default function App() {
+export default function App () {
   const [isLoading, setIsLoading] = useState(false);
   const [excelFile, setExcelFile] = useState('');
   const [currentline, setLine] = useState(undefined);
 
-  function reset() {
+  function reset () {
     setExcelFile('');
     setLine(undefined);
     setIsLoading(false);

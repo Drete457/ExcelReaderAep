@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
+import BotaoDeCopiar from '../Components/botao-de-copiar/botao-de-copiar';
 
 const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
   const [checkbox, setCheckbox] = useState({})
@@ -27,12 +28,15 @@ const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
     }
 
     return (
-      <>
+      <section key={index}>
         {name && (
           <CFormGroup row className="pt-1 justify-content-center">
             <CCol md="5">
               <CLabel>{index === 0 ? t1 : t2 + index}
                 <input type="checkbox" className="ml-2" checked={checkbox[index]} onChange={() => setCheckbox({ ...checkbox, [index]: !checkbox[index] })} />
+              </CLabel>
+              <CLabel className="ml-2">
+                <BotaoDeCopiar texto={name} />
               </CLabel>
               <CInput id={name} placeholder={name} disabled />
             </CCol>
@@ -52,7 +56,7 @@ const RegionalList = ({ names, bo, t1, t2, cfRData }) => {
             )}
           </CFormGroup>
         )}
-      </>
+      </section>
     );
   });
 };

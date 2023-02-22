@@ -17,17 +17,17 @@ const optionList = (list) => {
         return undefined;
       }
       if (isNaN(data[0])) {
-          if (data[0].includes('Núcleo')) {
-            array.push({
-              value: data[0],
-              label: data[0],
-            })
-          } else {
-            array.push({
+        if (data[0].includes('Núcleo')) {
+          array.push({
+            value: data[0],
+            label: data[0],
+          })
+        } else {
+          array.push({
             value: data[0],
             label: `Chefia Regional: ${data[0]}`,
-        });
-      }
+          });
+        }
       } else {
         array.push({
           value: data[0],
@@ -38,7 +38,7 @@ const optionList = (list) => {
 
     return undefined;
   });
-  
+
   return array;
 };
 

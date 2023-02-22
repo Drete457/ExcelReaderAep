@@ -7,10 +7,29 @@
     background-color: #a3c3c6;
 }
 
-.card, .card-header{
+.card,
+.card-header {
     background-color: #e7eeef;
 }
 
-.form-control, label {
+.form-control,
+label {
     font-weight: bold;
+}
+
+.botao-copiar {
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 3px;
+    width: max-content;
+}
+
+.botao-copiar-copiado {
+    background-color: #a3c3c6;
+}
+
+.botao-copiar-nao-copiado {
+    background-color: #53a1a3;
 }
