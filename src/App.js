@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import {
   CRow,
   CCol,
@@ -12,18 +12,23 @@ import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
 import InputFile from './Components/handle-data/inputfile';
 import optionList from './helpers/optionlist';
+import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copiar-todos';
 import Result from './View/Result';
 import './scss/style.scss';
 
-export default function App () {
+const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [excelFile, setExcelFile] = useState('');
   const [currentline, setLine] = useState(undefined);
+  const [listaDosNomes, setListaDosNomes] = useState([]);
+  const [totalDeNomes, setTotalDeNomes] = useState(0);
 
   function reset () {
     setExcelFile('');
     setLine(undefined);
     setIsLoading(false);
+    setListaDosNomes([]);
+    setTotalDeNomes(0);
   }
 
   return (
@@ -43,33 +48,48 @@ export default function App () {
                   />
                 )}
                 {excelFile.length > 0 && (
-                  <CCol className="d-flex justify-content-center">
-                    <Select
-                      className="w-50"
-                      placeholder="Escolhe o grupo pretendido"
-                      autoComplete="off"
-                      options={optionList(excelFile)}
-                      onChange={(choose) => {
-                        const select = excelFile.find((value) => {
-                          if (value && value[0]) {
-                            return value[0] === choose.value;
-                          }
-                          return null;
-                        });
-                        setLine(select);
-                      }}
-                    />
-                    <CButton
-                      size="sm"
-                      variant="outline"
-                      color="primary"
-                      onClick={() => reset()}
-                    >
-                      Apagar o Ficheiro
-                    </CButton>
-                  </CCol>
+                  <Suspense>
+                    <CCol className="d-flex justify-content-center">
+                      <Select
+                        className="w-50"
+                        placeholder="Escolhe o grupo pretendido"
+                        autoComplete="off"
+                        options={optionList(excelFile)}
+                        onChange={(choose) => {
+                          const select = excelFile.find((value) => {
+                            if (value && value[0]) {
+                              return value[0] === choose.value;
+                            }
+                            return null;
+                          });
+                          setLine(select);
+                          setListaDosNomes([]);
+                          setTotalDeNomes(0);
+                        }}
+                      />
+                      <CButton
+                        size="sm"
+                        variant="outline"
+                        color="primary"
+                        onClick={() => reset()}
+                      >
+                        Apagar o Ficheiro
+                      </CButton>
+                    </CCol>
+                  </Suspense>
                 )}
-                {currentline && <Result result={currentline} />}
+                {currentline && (<>
+                  <div className='botao-copiar-todos-div' hidden={listaDosNomes.length === totalDeNomes}>
+                    <BotaoDeCopiarTodos texto={listaDosNomes} />
+                  </div>
+                  <Suspense>
+                    <Result
+                      result={currentline}
+                      setListaDosNomes={setListaDosNomes}
+                      setTotalDeNomes={setTotalDeNomes}
+                    />
+                  </Suspense>
+                </>)}
                 {isLoading && <LoadingScreen />}
               </CCardBody>
             </CCard>
@@ -79,3 +99,5 @@ export default function App () {
     </>
   );
 }
+
+export default App;

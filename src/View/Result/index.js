@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy } from 'react';
+import { useState, useEffect, lazy, memo } from 'react';
 import allbo from '../../Components/handle-data/allbo';
 import allleaders from '../../Components/handle-data/allleaders';
 import cfRegionalData from '../../Components/handle-data/cfRegional';
@@ -25,7 +25,7 @@ const ChefiaRegional = lazy(() =>
 );
 const Nucleo = lazy(() => import('../../Components/nucleo/nucleo'));
 
-const Result = ({ result }) => {
+const Result = ({ result, setListaDosNomes, setTotalDeNomes }) => {
   const [votes, setVotes] = useState(0);
   const {
     alcateiaNames,
@@ -51,20 +51,13 @@ const Result = ({ result }) => {
       ...cfRegional,
       ...ncf
     ];
-    const count = allTheNames.filter((value) => value).length;
+    const allTheNamesNoNull = allTheNames.filter((value) => value);
 
-    setVotes(count);
-  }, [
-    alcateiaNames,
-    tesNames,
-    texNames,
-    claNames,
-    groupNames,
-    othersNames,
-    cfRegional,
-    ncf
-  ]);
- 
+    setVotes(allTheNamesNoNull.length);
+    setListaDosNomes(allTheNamesNoNull);
+    setTotalDeNomes(allTheNamesNoNull.length);
+  }, [alcateiaNames, tesNames, texNames, claNames, groupNames, othersNames, cfRegional, ncf, setListaDosNomes, setTotalDeNomes]);
+
   return (
     <>
       <ChefiaDeGrupo
@@ -75,12 +68,14 @@ const Result = ({ result }) => {
         groupName={result[0]}
         location={result[2]}
         region={result[1]}
+        setListaDosNomes={setListaDosNomes}
       />
-      <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} />
-      <TribodeEscoteiros names={tesNames} bo={tesBO} />
-      <TribodeExploradores names={texNames} bo={texBO} />
-      <Cla names={claNames} bo={claBO} />
-      <RestoDaChefia names={othersNames} bo={othersBO} />
+
+      <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} setListaDosNomes={setListaDosNomes} />
+      <TribodeEscoteiros names={tesNames} bo={tesBO} setListaDosNomes={setListaDosNomes} />
+      <TribodeExploradores names={texNames} bo={texBO} setListaDosNomes={setListaDosNomes} />
+      <Cla names={claNames} bo={claBO} setListaDosNomes={setListaDosNomes} />
+      <RestoDaChefia names={othersNames} bo={othersBO} setListaDosNomes={setListaDosNomes} />
 
       <ChefiaRegional
         names={cfRegional}
@@ -89,6 +84,7 @@ const Result = ({ result }) => {
         cfRData={cfRData}
         region={result[0]}
         mcr={mcr}
+        setListaDosNomes={setListaDosNomes}
       />
 
       <Nucleo
@@ -97,9 +93,10 @@ const Result = ({ result }) => {
         validation={nValidade}
         votes={votes}
         title={result[0]}
+        setListaDosNomes={setListaDosNomes}
       />
     </>
   );
 };
 
-export default Result;
+export default memo(Result);

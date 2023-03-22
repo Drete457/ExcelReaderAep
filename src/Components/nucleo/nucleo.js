@@ -1,8 +1,9 @@
 import { CLabel } from '@coreui/react';
 import NucleoList from '../../helpers/NucleoList';
 
-const Nucleo = ({ names, bo, votes, validation, title }) => {
+const Nucleo = ({ names, bo, votes, validation, title, setListaDosNomes }) => {
   const show = names.some((value) => value);
+
   return (
     show && (
       <>
@@ -20,6 +21,7 @@ const Nucleo = ({ names, bo, votes, validation, title }) => {
           validation={validation}
           t1="Escoteiro Chefe de Núcleo"
           t2="Escoteiro Sub-Chefe de Núcleo - "
+          setListaDosNomes={setListaDosNomes}
         />
       </>
     )

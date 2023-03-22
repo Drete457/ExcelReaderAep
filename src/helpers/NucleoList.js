@@ -2,15 +2,34 @@ import { useState, useEffect } from 'react';
 import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
 import BotaoDeCopiar from '../Components/botao-de-copiar/botao-de-copiar';
 
-const NucleoList = ({ names, bo, t1, t2, validation }) => {
-  const [checkbox, setCheckbox] = useState({})
+const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
+  const [checkbox, setCheckbox] = useState([])
+
+  const handleCheckbox = (index) => {
+    const newData = [...checkbox];
+    newData[index].checked = !newData[index].checked;
+
+    setCheckbox(newData);
+    setListaDosNomes(info => {
+      const newInfo = [];
+
+      info.forEach((item) => {
+        const isCheckedInfo = newData.find((check) => check.name === item);
+
+        if (!isCheckedInfo?.checked)
+          newInfo.push(item);
+      })
+
+      return newInfo;
+    })
+  }
 
   useEffect(() => {
     if (names) {
-      const inicialCheckbox = {};
+      const inicialCheckbox = [];
 
-      names.forEach((index) => {
-        inicialCheckbox[index] = false;
+      names.forEach((name, index) => {
+        inicialCheckbox[index] = { name, checked: false };
       })
 
       setCheckbox(inicialCheckbox);
@@ -34,7 +53,7 @@ const NucleoList = ({ names, bo, t1, t2, validation }) => {
           <CFormGroup row className="pt-1 justify-content-center">
             <CCol md="5">
               <CLabel>{index === 0 ? t1 : t2 + index}
-                <input type="checkbox" className="ml-2" checked={checkbox[index]} onChange={() => setCheckbox({ ...checkbox, [index]: !checkbox[index] })} />
+                <input type="checkbox" className="ml-2" checked={checkbox[index]?.checked} onChange={() => handleCheckbox(index)} />
               </CLabel>
               <CLabel className="ml-2">
                 <BotaoDeCopiar texto={name} />

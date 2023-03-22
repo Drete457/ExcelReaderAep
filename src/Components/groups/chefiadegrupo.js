@@ -9,8 +9,10 @@ const ChefiaDeGrupo = ({
   groupName,
   location,
   region,
+  setListaDosNomes,
 }) => {
   const show = names.some((value) => value);
+  
   return (
     show && (
       <>
@@ -29,6 +31,7 @@ const ChefiaDeGrupo = ({
           t1="Escoteiro Chefe de Grupo"
           t2="Escoteiro Sub-Chefe de Grupo - "
           cgData={cgData}
+          setListaDosNomes={setListaDosNomes}
         />
       </>
     )

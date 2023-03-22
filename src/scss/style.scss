@@ -17,13 +17,20 @@ label {
     font-weight: bold;
 }
 
-.botao-copiar {
+.botao-copiar,
+.botao-copiar-todos {
     border: none;
     border-radius: 10px;
     color: #ffffff;
     font-weight: bold;
     padding: 3px;
     width: max-content;
+}
+
+.botao-copiar-todos-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 .botao-copiar-copiado {
