@@ -19,6 +19,7 @@ import './scss/style.scss';
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [excelFile, setExcelFile] = useState('');
+  console.log("excelFile: ", excelFile)
   const [currentline, setLine] = useState(undefined);
   const [listaDosNomes, setListaDosNomes] = useState([]);
   const [totalDeNomes, setTotalDeNomes] = useState(0);

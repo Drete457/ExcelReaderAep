@@ -1,55 +1,55 @@
 const allleaders = (result) => {
   const alcateiaNames = [
-    result[33],
-    result[38],
+    result[37],
     result[43],
-    result[48],
-    result[53],
-    result[58],
-    result[63],
-    result[68],
+    result[49],
+    result[55],
+    result[61],
+    result[67],
     result[73],
+    result[79],
+    result[85],
   ];
   const tesNames = [
-    result[78],
-    result[83],
-    result[88],
-    result[93],
-    result[98],
+    result[91],
+    result[97],
     result[103],
-    result[108],
+    result[109],
+    result[115],
+    result[121],
+    result[127],
   ];
   const texNames = [
-    result[113],
-    result[118],
-    result[123],
-    result[128],
     result[133],
-    result[138],
+    result[139],
+    result[145],
+    result[151],
+    result[157],
+    result[163],
   ];
   const claNames = [
-    result[143],
-    result[148],
-    result[153],
-    result[158],
-    result[163],
-    result[168],
+    result[169],
+    result[175],
+    result[181],
+    result[187],
+    result[193],
+    result[199],
   ];
   const groupNames = [
     result[4],
     result[13],
-    result[18],
-    result[23],
-    result[28],
+    result[19],
+    result[25],
+    result[31],
   ];
   const cgData = [result[5], result[9]];
   const othersNames = [
-    result[173],
-    result[178],
-    result[183],
-    result[188],
-    result[193],
-    result[198],
+    result[205],
+    result[211],
+    result[217],
+    result[223],
+    result[229],
+    result[235],
   ];
 
   return {

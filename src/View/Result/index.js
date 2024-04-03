@@ -27,6 +27,7 @@ const Nucleo = lazy(() => import('../../Components/nucleo/nucleo'));
 
 const Result = ({ result, setListaDosNomes, setTotalDeNomes }) => {
   const [votes, setVotes] = useState(0);
+  console.log("0")
   const {
     alcateiaNames,
     tesNames,
@@ -36,9 +37,13 @@ const Result = ({ result, setListaDosNomes, setTotalDeNomes }) => {
     othersNames,
     cgData,
   } = allleaders(result);
+  console.log("1")
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(result);
+  console.log("2")
   const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result);
+  console.log("3")
   const { ncf, nValidade, nBO } = nData(result);
+  console.log("4")
 
   useEffect(() => {
     const allTheNames = [

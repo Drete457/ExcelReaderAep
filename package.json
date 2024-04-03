@@ -1,7 +1,6 @@
 {
   "name": "excelreaderaep",
   "version": "1.0.0",
-  "private": false,
   "dependencies": {
     "@coreui/coreui-pro": "^3.4.2",
     "@coreui/react": "^3.4.6",
@@ -38,8 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": "16.x"
   }
 }
