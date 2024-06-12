@@ -1,38 +1,21 @@
 const cfRegionalData = (result) => {
   const cfRegional = [
-    result[276],
-    result[285],
-    result[292],
-    result[299],
-    result[306],
-    result[313],
-    result[320],
-    result[327],
-    result[334],
-    result[341],
-    result[348],
-    result[355],
-    result[362],
-    result[369],
+    result[282],
+    result[291],
+    result[298],
+    result[305],
+    result[312],
+    result[319],
+    result[326],
+    result[333],
+    result[340],
+    result[347],
+    result[354],
+    result[361],
+    result[368],
+    result[375],
   ];
   const cfBO = [
-    result[283],
-    result[290],
-    result[297],
-    result[304],
-    result[311],
-    result[318],
-    result[325],
-    result[332],
-    result[339],
-    result[346],
-    result[353],
-    result[360],
-    result[367],
-    result[374],
-  ];
-  const cfRData = [
-    result[280],
     result[289],
     result[296],
     result[303],
@@ -46,8 +29,25 @@ const cfRegionalData = (result) => {
     result[359],
     result[366],
     result[373],
+    result[380],
   ];
-  const mcr = [result[397], result[401], result[402]];
+  const cfRData = [
+    result[286],
+    result[295],
+    result[302],
+    result[309],
+    result[316],
+    result[323],
+    result[330],
+    result[337],
+    result[344],
+    result[351],
+    result[358],
+    result[365],
+    result[372],
+    result[379],
+  ];
+  const mcr = [result[403], result[407], result[408]];
 
   return { cfRegional, cfBO, cfRData, mcr };
 };
