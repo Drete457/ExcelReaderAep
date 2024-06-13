@@ -1,7 +1,7 @@
 import { CCol, CInputFile, CLabel } from '@coreui/react';
 import exceltojson from './exceltojson';
 
-const InputFile = ({ setExcelFile, setIsLoading }) => {
+const InputFile = ({ setExcelFile, setPositionOfEachInformation,setIsLoading }) => {
 
   return (
     <CCol className="d-flex justify-content-between">
@@ -11,7 +11,7 @@ const InputFile = ({ setExcelFile, setIsLoading }) => {
         accept=".xlsx"
         onChange={(event) => {
           setIsLoading(true);
-          exceltojson(event).then((result) => {
+          exceltojson(event, setPositionOfEachInformation).then((result) => {
             setExcelFile(result);
             setIsLoading(false);
           });

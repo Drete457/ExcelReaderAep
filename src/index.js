@@ -1,11 +1,14 @@
 import { Suspense } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import LoadingScreen from './Components/loading';
 import App from './App';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') || document.createElement('div'),
+);
+
+root.render(
   <Suspense fallback={LoadingScreen}>
     <App />
-  </Suspense>,
-  document.getElementById('root'),
+  </Suspense>
 );

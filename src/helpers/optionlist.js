@@ -8,6 +8,7 @@ const optionList = (list) => {
       data[3] !== 'Inativo' &&
       data[3] !== 'Extinto'
     ) {
+      
       if (
         typeof data[0] === 'string' &&
         (data[0] === 'ENFIM' ||
@@ -16,6 +17,7 @@ const optionList = (list) => {
       ) {
         return undefined;
       }
+
       if (isNaN(data[0])) {
         if (data[0].includes('Núcleo')) {
           array.push({
@@ -28,6 +30,7 @@ const optionList = (list) => {
             label: `Chefia Regional: ${data[0]}`,
           });
         }
+
       } else {
         array.push({
           value: data[0],

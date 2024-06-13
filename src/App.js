@@ -16,13 +16,28 @@ import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copi
 import Result from './View/Result';
 import './scss/style.scss';
 
+const namesToSearch = {
+  ecg: "ecg", // Escoteiro Chefe de Grupo
+  escg: "escg", // Escoteiro Sub-Chefe de Grupo
+  eca: "eca", // Escoteiro Chefe de Alcateia
+  esca: "esca", // Escoteiro Sub-Chefe de Alcateia
+  ectes: "ectes", // Escoteiro Chefe de Tribo de Escoteiros
+  esctes: "esctes", // Escoteiro Sub-Chefe de Tribo de Escoteiros
+  ectex: "ectex", // Escoteiro Chefe de Tribo de Exploradores
+  esctex: "esctex", // Escoteiro Sub-Chefe de Tribo de Exploradores
+  ecc: "ecc", // Escoteiro Chefe de Clã
+  escc: "escc", // Escoteiro Sub-Chefe de Clã
+  ecsa: "ecsa", // Escoteiro Chefe Dos Serviços Administrativos
+  ecacg: "ecacg", // Escoteiro Chefe Adjunto de Chefe de Grupo
+}
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [excelFile, setExcelFile] = useState('');
+  const [positionsOfEachInformation, setPositionOfEachInformation] = useState(undefined);
   const [currentline, setLine] = useState(undefined);
   const [listaDosNomes, setListaDosNomes] = useState([]);
   const [totalDeNomes, setTotalDeNomes] = useState(0);
-
+console.log('positionsOfEachInformation', positionsOfEachInformation)
   function reset () {
     setExcelFile('');
     setLine(undefined);
@@ -44,6 +59,7 @@ const App = () => {
                 {!excelFile && (
                   <InputFile
                     setExcelFile={setExcelFile}
+                    setPositionOfEachInformation={setPositionOfEachInformation}
                     setIsLoading={setIsLoading}
                   />
                 )}
