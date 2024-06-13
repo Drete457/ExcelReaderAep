@@ -1,8 +1,19 @@
-import { CCol, CInputFile, CLabel } from '@coreui/react';
-import exceltojson from './exceltojson';
+import { CCol, CInputFile, CLabel } from "@coreui/react";
+import exceltojson from "./exceltojson";
 
-const InputFile = ({ setExcelFile, setIsLoading }) => {
+const getRandomTime = () => {
+  const min = 10;
+  const max = 45;
+  const randomTime = Math.floor(Math.random() * (max - min + 1) + min);
 
+  return randomTime * 1000;
+};
+
+const InputFile = ({
+  setExcelFile,
+  setPositionOfEachInformation,
+  setIsLoading,
+}) => {
   return (
     <CCol className="d-flex justify-content-between">
       <CInputFile
@@ -11,9 +22,11 @@ const InputFile = ({ setExcelFile, setIsLoading }) => {
         accept=".xlsx"
         onChange={(event) => {
           setIsLoading(true);
-          exceltojson(event).then((result) => {
+          exceltojson(event, setPositionOfEachInformation).then((result) => {
             setExcelFile(result);
-            setIsLoading(false);
+            setTimeout(() => {
+              setIsLoading(false);
+            }, getRandomTime());
           });
         }}
       />

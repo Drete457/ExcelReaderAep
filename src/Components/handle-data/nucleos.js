@@ -1,22 +1,15 @@
-const nData = (result) => {
-    const ncf = [
-        result[382],
-        result[389],
-        result[396],
-    ];
-    const nValidade = [
-        result[386],
-        result[393],
-        result[400],
+const nData = (result, positions) => {
+  const ncf = [];
+  const nValidade = [];
+  const nBO = [];
 
-    ];
-    const nBO = [
-        result[387],
-        result[394],
-        result[401],
-    ]
+  positions?.nucle?.forEach?.((element) => {
+    ncf.push(result[element.namePosition]);
+    nBO.push(result[element.bo]);
+    nValidade.push(result[element.validate]);
+  });
 
-    return { ncf, nValidade, nBO };
+  return { ncf, nValidade, nBO };
 };
 
 export default nData;

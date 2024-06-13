@@ -1,5 +1,5 @@
-import { CLabel } from '@coreui/react';
-import LeadersList from '../../helpers/LeadersList';
+import { CLabel } from "@coreui/react";
+import LeadersList from "../../helpers/LeadersList";
 
 const ChefiaDeGrupo = ({
   names,
@@ -12,7 +12,7 @@ const ChefiaDeGrupo = ({
   setListaDosNomes,
 }) => {
   const show = names.some((value) => value);
-  
+
   return (
     show && (
       <>
