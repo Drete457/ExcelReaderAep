@@ -151,7 +151,10 @@ const responsabilityPosition = (
     chefeRegionalAlreadyDone = true;
   }
 
-  if (responsibility.toLowerCase().includes(namesToSearch.ecra)) {
+  if (
+    chefeRegionalAlreadyDone &&
+    responsibility.toLowerCase().includes(namesToSearch.ecra)
+  ) {
     cfRegional.push({
       namePosition: index,
       bo: index + 5,
