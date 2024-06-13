@@ -1,5 +1,5 @@
-import { CLabel } from '@coreui/react';
-import NucleoList from '../../helpers/NucleoList';
+import { CLabel } from "@coreui/react";
+import NucleoList from "../../helpers/NucleoList";
 
 const Nucleo = ({ names, bo, votes, validation, title, setListaDosNomes }) => {
   const show = names.some((value) => value);

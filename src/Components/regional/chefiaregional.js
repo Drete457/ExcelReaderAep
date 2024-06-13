@@ -1,9 +1,17 @@
-import { CLabel } from '@coreui/react';
-import RegionalList from '../../helpers/RegionalList';
+import { CLabel } from "@coreui/react";
+import RegionalList from "../../helpers/RegionalList";
 
-const ChefiaRegional = ({ names, bo, votes, cfRData, region, mcr, setListaDosNomes }) => {
+const ChefiaRegional = ({
+  names,
+  bo,
+  votes,
+  cfRData,
+  region,
+  mcr,
+  setListaDosNomes,
+}) => {
   const show = names.some((value) => value);
-  
+
   return (
     show && (
       <>
