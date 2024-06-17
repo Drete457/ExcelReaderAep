@@ -1,12 +1,12 @@
 import xlsxFile from 'read-excel-file';
 
-let positionsFound = {
-  index: 0,
-  found: false,
-  dataStart: 0,
-};
 const exceltojson = (event, setPositionOfEachInformation) => {
   const file = event.target.files[0];
+  let positionsFound = {
+    index: 0,
+    found: false,
+    dataStart: 0,
+  };
 
   //read excel file
   const dataFilter = xlsxFile(file).then(rows => {
@@ -14,11 +14,11 @@ const exceltojson = (event, setPositionOfEachInformation) => {
       if (positionsFound.found) {
         if (positionsFound.dataStart === 0) {
           const dataStartFoundRow = row.find(element => {
-            return element === 'Name';
+            return element === 'Nome';
           });
 
           if (dataStartFoundRow) {
-            positionsFound.dataStart = index + 1;
+            positionsFound.dataStart = index;
             return null;
           }
         }
