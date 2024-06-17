@@ -1,29 +1,29 @@
-import { useState, useEffect, lazy, memo } from "react";
-import allbo from "../../Components/handle-data/allbo";
-import allleaders from "../../Components/handle-data/allleaders";
-import cfRegionalData from "../../Components/handle-data/cfRegional";
-import nData from "../../Components/handle-data/nucleos";
+import { useState, useEffect, lazy, memo } from 'react';
+import allbo from '../../Components/handle-data/allbo';
+import allleaders from '../../Components/handle-data/allleaders';
+import cfRegionalData from '../../Components/handle-data/cfRegional';
+import nData from '../../Components/handle-data/nucleos';
 
-const ChefiaDeGrupo = lazy(() =>
-  import("../../Components/groups/chefiadegrupo")
+const ChefiaDeGrupo = lazy(
+  () => import('../../Components/groups/chefiadegrupo'),
 );
-const ChefiaDaAlcateia = lazy(() =>
-  import("../../Components/groups/chefiadaalcateia")
+const ChefiaDaAlcateia = lazy(
+  () => import('../../Components/groups/chefiadaalcateia'),
 );
-const TribodeEscoteiros = lazy(() =>
-  import("../../Components/groups/tribodeescoteiros")
+const TribodeEscoteiros = lazy(
+  () => import('../../Components/groups/tribodeescoteiros'),
 );
-const TribodeExploradores = lazy(() =>
-  import("../../Components/groups/tribodeexploradores")
+const TribodeExploradores = lazy(
+  () => import('../../Components/groups/tribodeexploradores'),
 );
-const Cla = lazy(() => import("../../Components/groups/cla"));
-const RestoDaChefia = lazy(() =>
-  import("../../Components/groups/restodachefia")
+const Cla = lazy(() => import('../../Components/groups/cla'));
+const RestoDaChefia = lazy(
+  () => import('../../Components/groups/restodachefia'),
 );
-const ChefiaRegional = lazy(() =>
-  import("../../Components/regional/chefiaregional")
+const ChefiaRegional = lazy(
+  () => import('../../Components/regional/chefiaregional'),
 );
-const Nucleo = lazy(() => import("../../Components/nucleo/nucleo"));
+const Nucleo = lazy(() => import('../../Components/nucleo/nucleo'));
 
 const Result = ({ result, setListaDosNomes, setTotalDeNomes, positions }) => {
   const [votes, setVotes] = useState(0);
@@ -38,7 +38,7 @@ const Result = ({ result, setListaDosNomes, setTotalDeNomes, positions }) => {
   } = allleaders(result, positions);
   const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(
     result,
-    positions
+    positions,
   );
   const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result, positions);
   const { ncf, nValidade, nBO } = nData(result, positions);
@@ -54,7 +54,7 @@ const Result = ({ result, setListaDosNomes, setTotalDeNomes, positions }) => {
       ...cfRegional,
       ...ncf,
     ];
-    const allTheNamesNoNull = allTheNames.filter((value) => value);
+    const allTheNamesNoNull = allTheNames.filter(value => value);
 
     setVotes(allTheNamesNoNull.length);
     setListaDosNomes(allTheNamesNoNull);

@@ -1,22 +1,22 @@
 const namesToSearch = {
-  ecg: "ecg", // Escoteiro Chefe de Grupo
-  escg: "escg", // Escoteiro Sub-Chefe de Grupo
-  eca: "eca", // Escoteiro Chefe de Alcateia
-  esca: "esca", // Escoteiro Sub-Chefe de Alcateia
-  ectes: "ectes", // Escoteiro Chefe de Tribo de Escoteiros
-  esctes: "esctes", // Escoteiro Sub-Chefe de Tribo de Escoteiros
-  ectex: "ectex", // Escoteiro Chefe de Tribo de Exploradores
-  esctex: "esctex", // Escoteiro Sub-Chefe de Tribo de Exploradores
-  ecc: "ecc", // Escoteiro Chefe de Clã
-  escc: "escc", // Escoteiro Sub-Chefe de Clã
-  ecsa: "ecsa", // Escoteiro Chefe Dos Serviços Administrativos
-  ecacg: "ecacg", // Escoteiro Chefe Adjunto de Chefe de Grupo
-  ecr: "ecr", // Escoteiro Chefe Regional
-  ecra: "ecra", // Escoteiro Chefe Regional Adjunto
-  ecacr: "ecacr", // Escoteiro Chefe Adjunto de Chefe Regional
-  pmcr: "pmcr", // Presidente da Mesa do Conselho Regional
-  ecnucleo: "ecnúcleo", // Escoteiro Chefe de Núcleo
-  escn: "escn", // Escoteiro Sub-Chefe de Núcleo
+  ecg: 'ecg', // Escoteiro Chefe de Grupo
+  escg: 'escg', // Escoteiro Sub-Chefe de Grupo
+  eca: 'eca', // Escoteiro Chefe de Alcateia
+  esca: 'esca', // Escoteiro Sub-Chefe de Alcateia
+  ectes: 'ectes', // Escoteiro Chefe de Tribo de Escoteiros
+  esctes: 'esctes', // Escoteiro Sub-Chefe de Tribo de Escoteiros
+  ectex: 'ectex', // Escoteiro Chefe de Tribo de Exploradores
+  esctex: 'esctex', // Escoteiro Sub-Chefe de Tribo de Exploradores
+  ecc: 'ecc', // Escoteiro Chefe de Clã
+  escc: 'escc', // Escoteiro Sub-Chefe de Clã
+  ecsa: 'ecsa', // Escoteiro Chefe Dos Serviços Administrativos
+  ecacg: 'ecacg', // Escoteiro Chefe Adjunto de Chefe de Grupo
+  ecr: 'ecr', // Escoteiro Chefe Regional
+  ecra: 'ecra', // Escoteiro Chefe Regional Adjunto
+  ecacr: 'ecacr', // Escoteiro Chefe Adjunto de Chefe Regional
+  pmcr: 'pmcr', // Presidente da Mesa do Conselho Regional
+  ecnucleo: 'ecnúcleo', // Escoteiro Chefe de Núcleo
+  escn: 'escn', // Escoteiro Sub-Chefe de Núcleo
 };
 
 let alcateiaChefeAlreadyDone = false;
@@ -33,7 +33,7 @@ const responsabilityPosition = (
   cgData,
   cfRegional,
   mcr,
-  nucle
+  nucle,
 ) => {
   if (responsibility.toLowerCase().includes(namesToSearch.ecg)) {
     group.push({

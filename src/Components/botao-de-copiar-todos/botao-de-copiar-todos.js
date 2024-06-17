@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const BotaoDeCopiarTodos = ({ texto }) => {
   const [copiado, setCopiado] = useState(false);
@@ -6,7 +6,7 @@ const BotaoDeCopiarTodos = ({ texto }) => {
   const copiar = () => {
     const nomesASeremCopiados = texto.reduce(
       (acc, nome) => `${acc}${nome}, `,
-      ""
+      '',
     );
 
     navigator.clipboard.writeText(nomesASeremCopiados);
@@ -21,12 +21,12 @@ const BotaoDeCopiarTodos = ({ texto }) => {
     <button
       onClick={copiar}
       className={`botao-copiar-todos ${
-        copiado ? "botao-copiar-copiado" : "botao-copiar-nao-copiado"
+        copiado ? 'botao-copiar-copiado' : 'botao-copiar-nao-copiado'
       }`}
     >
       {copiado
-        ? "Copiado todos os nomes não selecionados"
-        : "Copiar todos os nomes não selecionados"}
+        ? 'Copiado todos os nomes não selecionados'
+        : 'Copiar todos os nomes não selecionados'}
     </button>
   );
 };

@@ -1,4 +1,4 @@
-import LeadersList from "../../helpers/LeadersList";
+import LeadersList from '../../helpers/LeadersList';
 
 const Cla = ({ names, bo, setListaDosNomes }) => (
   <LeadersList

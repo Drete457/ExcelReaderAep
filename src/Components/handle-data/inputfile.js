@@ -1,5 +1,5 @@
-import { CCol, CInputFile, CLabel } from "@coreui/react";
-import exceltojson from "./exceltojson";
+import { CCol, CInputFile, CLabel } from '@coreui/react';
+import exceltojson from './exceltojson';
 
 const getRandomTime = () => {
   const min = 10;
@@ -20,9 +20,9 @@ const InputFile = ({
         custom
         id="custom-file-input"
         accept=".xlsx"
-        onChange={(event) => {
+        onChange={event => {
           setIsLoading(true);
-          exceltojson(event, setPositionOfEachInformation).then((result) => {
+          exceltojson(event, setPositionOfEachInformation).then(result => {
             setExcelFile(result);
             setTimeout(() => {
               setIsLoading(false);

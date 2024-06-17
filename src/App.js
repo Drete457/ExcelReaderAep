@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from 'react';
 import {
   CRow,
   CCol,
@@ -6,20 +6,20 @@ import {
   CCardHeader,
   CCardBody,
   CButton,
-} from "@coreui/react";
-import Select from "react-select";
-import DefaultLayout from "./View/DefaultLayout";
-import LoadingScreen from "./Components/loading";
-import InputFile from "./Components/handle-data/inputfile";
-import optionList from "./helpers/optionlist";
-import BotaoDeCopiarTodos from "./Components/botao-de-copiar-todos/botao-de-copiar-todos";
-import Result from "./View/Result";
-import "./scss/style.scss";
-import responsabilityPosition from "./Components/handle-data/responsability-position";
+} from '@coreui/react';
+import Select from 'react-select';
+import DefaultLayout from './View/DefaultLayout';
+import LoadingScreen from './Components/loading';
+import InputFile from './Components/handle-data/inputfile';
+import optionList from './helpers/optionlist';
+import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copiar-todos';
+import Result from './View/Result';
+import './scss/style.scss';
+import responsabilityPosition from './Components/handle-data/responsability-position';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [excelFile, setExcelFile] = useState("");
+  const [excelFile, setExcelFile] = useState('');
   const [positionsOfEachInformation, setPositionOfEachInformation] =
     useState(undefined);
   const [currentline, setLine] = useState(undefined);
@@ -39,7 +39,7 @@ const App = () => {
   });
 
   function reset() {
-    setExcelFile("");
+    setExcelFile('');
     setLine(undefined);
     setIsLoading(false);
     setListaDosNomes([]);
@@ -74,7 +74,7 @@ const App = () => {
           cgData,
           cfRegional,
           mcr,
-          nucle
+          nucle,
         );
       });
 
@@ -118,8 +118,8 @@ const App = () => {
                         placeholder="Escolhe o grupo pretendido"
                         autoComplete="off"
                         options={optionList(excelFile)}
-                        onChange={(choose) => {
-                          const select = excelFile.find((value) => {
+                        onChange={choose => {
+                          const select = excelFile.find(value => {
                             if (value && value[0]) {
                               return value[0] === choose.value;
                             }

@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
-import { CFormGroup, CCol, CInput, CLabel } from "@coreui/react";
-import BotaoDeCopiar from "../Components/botao-de-copiar/botao-de-copiar";
+import { useState, useEffect } from 'react';
+import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
+import BotaoDeCopiar from '../Components/botao-de-copiar/botao-de-copiar';
 
 const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
-  let dataText = "";
+  let dataText = '';
   const [checkbox, setCheckbox] = useState([]);
 
-  const handleCheckbox = (index) => {
+  const handleCheckbox = index => {
     const newData = [...checkbox];
     newData[index].checked = !newData[index].checked;
 
     setCheckbox(newData);
-    setListaDosNomes((info) => {
+    setListaDosNomes(info => {
       const newInfo = [];
 
-      info.forEach((item) => {
-        const isCheckedInfo = newData.find((check) => check.name === item);
+      info.forEach(item => {
+        const isCheckedInfo = newData.find(check => check.name === item);
 
         if (!isCheckedInfo?.checked) newInfo.push(item);
       });
@@ -41,7 +41,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    dataText = day + "/" + month + "/" + year;
+    dataText = day + '/' + month + '/' + year;
   }
 
   return names.map((name, index) => (

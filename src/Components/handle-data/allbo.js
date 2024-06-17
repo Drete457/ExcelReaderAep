@@ -6,22 +6,22 @@ const allbo = (result, position) => {
   const groupBO = [];
   const othersBO = [];
 
-  position?.alcateia?.forEach?.((element) => {
+  position?.alcateia?.forEach?.(element => {
     alcateiaBO.push(result[element.bo]);
   });
-  position?.tes?.forEach?.((element) => {
+  position?.tes?.forEach?.(element => {
     tesBO.push(result[element.bo]);
   });
-  position?.tex?.forEach?.((element) => {
+  position?.tex?.forEach?.(element => {
     texBO.push(result[element.bo]);
   });
-  position?.cla?.forEach?.((element) => {
+  position?.cla?.forEach?.(element => {
     claBO.push(result[element.bo]);
   });
-  position?.group?.forEach?.((element) => {
+  position?.group?.forEach?.(element => {
     groupBO.push(result[element.bo]);
   });
-  position?.others?.forEach?.((element) => {
+  position?.others?.forEach?.(element => {
     othersBO.push(result[element.bo]);
   });
 

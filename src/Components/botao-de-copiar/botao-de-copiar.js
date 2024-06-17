@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const BotaoDeCopiar = ({ texto }) => {
   const [copiado, setCopiado] = useState(false);
@@ -12,10 +12,10 @@ const BotaoDeCopiar = ({ texto }) => {
     <button
       onClick={copiar}
       className={`botao-copiar ${
-        copiado ? "botao-copiar-copiado" : "botao-copiar-nao-copiado"
+        copiado ? 'botao-copiar-copiado' : 'botao-copiar-nao-copiado'
       }`}
     >
-      {copiado ? "Copiado" : "Copiar"}
+      {copiado ? 'Copiado' : 'Copiar'}
     </button>
   );
 };

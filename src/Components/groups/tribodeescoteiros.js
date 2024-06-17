@@ -1,4 +1,4 @@
-import LeadersList from "../../helpers/LeadersList";
+import LeadersList from '../../helpers/LeadersList';
 
 const TribodeEscoteiros = ({ names, bo, setListaDosNomes }) => (
   <LeadersList
