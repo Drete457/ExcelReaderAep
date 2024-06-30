@@ -2,8 +2,8 @@ import { CCol, CInputFile, CLabel } from '@coreui/react';
 import exceltojson from './exceltojson';
 
 const getRandomTime = () => {
-  const min = 10;
-  const max = 45;
+  const min = 2;
+  const max = 15;
   const randomTime = Math.floor(Math.random() * (max - min + 1) + min);
 
   return randomTime * 1000;
