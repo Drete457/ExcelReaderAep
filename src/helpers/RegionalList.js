@@ -68,16 +68,14 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
               <CLabel>BO</CLabel>
               <CInput id={index + name} placeholder={bo[index]} disabled />
             </CCol>
-            {dataText && (
-              <CCol md="2">
-                <CLabel>Validade</CLabel>
-                <CInput
-                  id={cfRData[index] + index}
-                  placeholder={dataText}
-                  disabled
-                />
-              </CCol>
-            )}
+            <CCol md="2">
+              <CLabel>Validade</CLabel>
+              <CInput
+                id={cfRData[index] + index}
+                placeholder={dataText}
+                disabled
+              />
+            </CCol>
           </CFormGroup>
         )}
       </section>
