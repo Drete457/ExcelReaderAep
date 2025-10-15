@@ -2,8 +2,8 @@
   "name": "excelreaderaep",
   "version": "1.0.0",
   "dependencies": {
-    "@coreui/coreui-pro": "^3.4.2",
-    "@coreui/react": "^3.4.6",
+    "@coreui/coreui-pro": "^5.0.0",
+    "@coreui/react": "^5.5.0",
     "@ramonak/react-excel": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

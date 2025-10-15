@@ -1,12 +1,16 @@
-import { CCol, CInputFile, CLabel } from '@coreui/react';
+import { CCol, CFormInput, CFormLabel } from '@coreui/react';
 
 const InputFile = ({ onFileSelected, isLoading }) => (
-  <CCol className="d-flex justify-content-between">
-    <CInputFile
-      custom
+  <CCol className="d-flex flex-column gap-2">
+    <CFormLabel htmlFor="custom-file-input" className="fw-semibold mb-0">
+      Pressiona aqui para escolheres o ficheiro
+    </CFormLabel>
+    <CFormInput
+      type="file"
       id="custom-file-input"
       accept=".xlsx"
       disabled={isLoading}
+      placeholder='Selecionar ficheiro Excel'
       aria-label="Selecionar ficheiro Excel"
       data-testid="excel-file-input"
       onChange={event => {
@@ -16,13 +20,9 @@ const InputFile = ({ onFileSelected, isLoading }) => (
           onFileSelected(file);
         }
 
-        // Allow re-selecting the same file consecutively.
         event.target.value = '';
       }}
     />
-    <CLabel htmlFor="custom-file-input" variant="custom-file">
-      Pressiona aqui para escolheres o ficheiro
-    </CLabel>
   </CCol>
 );
 

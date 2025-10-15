@@ -247,7 +247,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
+"@babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
   version: 7.24.4
   resolution: "@babel/runtime@npm:7.24.4"
   dependencies:
@@ -303,62 +303,42 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coreui/coreui-pro@npm:^3.4.2":
-  version: 3.4.2
-  resolution: "@coreui/coreui-pro@npm:3.4.2"
-  peerDependencies:
-    "@popperjs/core": ^2.5.4
-    perfect-scrollbar: ^1.5.0
-  checksum: d1fb86bcc73377722e64882b1be51d57f97fdb5934b461d1c415bcb903d4d7cfa3ee926d772458bfdc2e611aa7ac98ae2ff6a429c59f64aca072157fe18f88b0
-  languageName: node
-  linkType: hard
-
-"@coreui/icons-react@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@coreui/icons-react@npm:1.1.0"
+"@coreui/coreui-pro@npm:^5.0.0":
+  version: 5.21.0
+  resolution: "@coreui/coreui-pro@npm:5.21.0"
   dependencies:
-    classnames: ^2.2.6
-    prop-types: ^15.7.2
+    html-entities: ^2.6.0
+    html-to-md: ^0.8.8
+    sass: ^1.93.2
   peerDependencies:
-    react: ^17.0.1
-  checksum: 27f001f743e119ace80ecf107e4df7758f6815cedb7ad25450d1c1521f3682df430880d5ec9f2d2bfa042d5f9a98b979df4f10f625bfcb3339d0ce26bd1ee32a
+    "@popperjs/core": ^2.11.8
+  checksum: b478a4a85881945f30af10268b4da3e74ae67438b03b953297ea7ae719916a78d8dfefffb78b67bae5490d6913e0069d5f8befa550d4179957d567e1b0816e0d
   languageName: node
   linkType: hard
 
-"@coreui/icons@npm:^2.0.0-rc.0":
-  version: 2.1.0
-  resolution: "@coreui/icons@npm:2.1.0"
-  checksum: b3133895be0a81c16a59743ff38dd08dbde4c7e4592824517dd5284f737db5f8b896d562a87468d4d15a697fe7dcb245c781d9b5d9062c5457ecd97b6b032b67
-  languageName: node
-  linkType: hard
-
-"@coreui/react@npm:^3.4.6":
-  version: 3.4.6
-  resolution: "@coreui/react@npm:3.4.6"
+"@coreui/coreui@npm:^5.4.3":
+  version: 5.4.3
+  resolution: "@coreui/coreui@npm:5.4.3"
   dependencies:
-    "@babel/runtime": ^7.13.10
-    "@coreui/icons": ^2.0.0-rc.0
-    "@coreui/icons-react": ^1.1.0
-    "@coreui/utils": ~1.3.1
-    "@popperjs/core": ^2.9.1
-    classnames: ~2.2.6
-    core-js: ^3.9.1
-    perfect-scrollbar: ~1.5.0
-    prop-types: ~15.7.2
-    react-transition-group: ~4.4.1
-    tippy.js: ^6.3.1
+    html-entities: ^2.6.0
+    html-to-md: ^0.8.8
   peerDependencies:
-    react: ^17.0.1
-    react-dom: ^17.0.1
-    react-router-dom: ^5.2.0
-  checksum: d2b7e4543a085237f3e923d665d40e5669a7a302df7b2158a991f66c676fdbea5a5c9073e04053dcfee0484a28d89eebcdaafc0b115c75c70cb14f37a042698a
+    "@popperjs/core": ^2.11.8
+  checksum: 8f65abd03aaf89a5952de7e4a2181dc8c787a2c5cb573016c3350121d87f8dbe72e7ce07a05e4defff5740bda9b50836b7ac647f29c3585e9b1d98951ba605dc
   languageName: node
   linkType: hard
 
-"@coreui/utils@npm:~1.3.1":
-  version: 1.3.1
-  resolution: "@coreui/utils@npm:1.3.1"
-  checksum: 2767399fad4c99006f935dc2abf6d2264bfed9b4c6692e3162fb9d143ca1a027f6e7210cfbff5e8233644e5baaad7c31153bec7fd1dab5070f536ba5e293d363
+"@coreui/react@npm:^5.5.0":
+  version: 5.9.1
+  resolution: "@coreui/react@npm:5.9.1"
+  dependencies:
+    "@coreui/coreui": ^5.4.3
+    "@popperjs/core": ^2.11.8
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ">=17"
+    react-dom: ">=17"
+  checksum: 444269f2f45f10f6987ee5f83d1d2c5e02b526284d8ac0eb13f829036bc92e5d2701870182ddba8635635ad5abfc5f61313d1f4b7406f44e0bf2037e83784c32
   languageName: node
   linkType: hard
 
@@ -1072,7 +1052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.9.0, @popperjs/core@npm:^2.9.1":
+"@popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: e5c69fdebf52a4012f6a1f14817ca8e9599cb1be73dd1387e1785e2ed5e5f0862ff817f420a87c7fc532add1f88a12e25aeb010ffcbdc98eace3d55ce2139cf0
@@ -2064,20 +2044,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.6":
-  version: 2.5.1
-  resolution: "classnames@npm:2.5.1"
-  checksum: da424a8a6f3a96a2e87d01a432ba19315503294ac7e025f9fece656db6b6a0f7b5003bb1fbb51cbb0d9624d964f1b9bb35a51c73af9b2434c7b292c42231c1e5
-  languageName: node
-  linkType: hard
-
-"classnames@npm:~2.2.6":
-  version: 2.2.6
-  resolution: "classnames@npm:2.2.6"
-  checksum: 09a4fda780158aa8399079898eabeeca0c48c28641d9e4de140db7412e5e346843039ded1af0152f755afc2cc246ff8c3d6f227bf0dcb004e070b7fa14ec54cc
-  languageName: node
-  linkType: hard
-
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -2170,13 +2136,6 @@ __metadata:
   version: 2.0.0
   resolution: "convert-source-map@npm:2.0.0"
   checksum: 63ae9933be5a2b8d4509daca5124e20c14d023c820258e484e32dc324d34c2754e71297c94a05784064ad27615037ef677e3f0c00469fb55f409d2bb21261035
-  languageName: node
-  linkType: hard
-
-"core-js@npm:^3.9.1":
-  version: 3.36.1
-  resolution: "core-js@npm:3.36.1"
-  checksum: 6f6c152179bd0673da34e67a82c6a5c37f31f9fbe908e9caf93749dc62a25b6e07fbff2411de3b74bb2d0661b7f9fb247115ba8efabf9904f5fef26edead515e
   languageName: node
   linkType: hard
 
@@ -3014,8 +2973,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "excelreaderaep@workspace:."
   dependencies:
-    "@coreui/coreui-pro": ^3.4.2
-    "@coreui/react": ^3.4.6
+    "@coreui/coreui-pro": ^5.0.0
+    "@coreui/react": ^5.5.0
     "@ramonak/react-excel": ^1.0.1
     "@testing-library/jest-dom": ^6.4.4
     "@testing-library/react": ^16.1.0
@@ -3495,6 +3454,20 @@ __metadata:
   dependencies:
     whatwg-encoding: ^3.1.1
   checksum: 3339b71dab2723f3159a56acf541ae90a408ce2d11169f00fe7e0c4663d31d6398c8a4408b504b4eec157444e47b084df09b3cb039c816660f0dd04846b8957d
+  languageName: node
+  linkType: hard
+
+"html-entities@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "html-entities@npm:2.6.0"
+  checksum: 720643f7954019c80911430a7df2728524c07080edfe812610bfc5d8191cd772b470bee0ee151bf7426679314ae53cf28a1c845d702123714e625a8565b26567
+  languageName: node
+  linkType: hard
+
+"html-to-md@npm:^0.8.8":
+  version: 0.8.8
+  resolution: "html-to-md@npm:0.8.8"
+  checksum: d9ce6e420feef81aa5a26842e8ce8ca80079c4d63995fda9323da30725b82a1e414b343efb2458d639dfe960043d0af7dea32dc271ee62f31059390b97989bfb
   languageName: node
   linkType: hard
 
@@ -4722,13 +4695,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"perfect-scrollbar@npm:~1.5.0":
-  version: 1.5.5
-  resolution: "perfect-scrollbar@npm:1.5.5"
-  checksum: 7a8d3097e91df1dd112f28ee9539c1a36ae7a836d986798af2e0d1e32c3ef21380215b3c06bc12434d89547d7f763637ac19b877549049b6c2166da85956c9dc
-  languageName: node
-  linkType: hard
-
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -4817,7 +4783,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.0, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4825,17 +4791,6 @@ __metadata:
     object-assign: ^4.1.1
     react-is: ^16.13.1
   checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
-  languageName: node
-  linkType: hard
-
-"prop-types@npm:~15.7.2":
-  version: 15.7.2
-  resolution: "prop-types@npm:15.7.2"
-  dependencies:
-    loose-envify: ^1.4.0
-    object-assign: ^4.1.1
-    react-is: ^16.8.1
-  checksum: 5eef82fdda64252c7e75aa5c8cc28a24bbdece0f540adb60ce67c205cf978a5bd56b83e4f269f91c6e4dcfd80b36f2a2dec24d362e278913db2086ca9c6f9430
   languageName: node
   linkType: hard
 
@@ -4881,7 +4836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
+"react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
@@ -4939,7 +4894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-transition-group@npm:^4.3.0, react-transition-group@npm:~4.4.1":
+"react-transition-group@npm:^4.3.0":
   version: 4.4.5
   resolution: "react-transition-group@npm:4.4.5"
   dependencies:
@@ -5323,7 +5278,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.79.3":
+"sass@npm:^1.79.3, sass@npm:^1.93.2":
   version: 1.93.2
   resolution: "sass@npm:1.93.2"
   dependencies:
@@ -5835,15 +5790,6 @@ __metadata:
   version: 3.0.2
   resolution: "tinyspy@npm:3.0.2"
   checksum: 5db671b2ff5cd309de650c8c4761ca945459d7204afb1776db9a04fb4efa28a75f08517a8620c01ee32a577748802231ad92f7d5b194dc003ee7f987a2a06337
-  languageName: node
-  linkType: hard
-
-"tippy.js@npm:^6.3.1":
-  version: 6.3.7
-  resolution: "tippy.js@npm:6.3.7"
-  dependencies:
-    "@popperjs/core": ^2.9.0
-  checksum: cac955318a65288e8d2dca05059878b003c6e66f92c94f7810f5bc5448eb6646abdf7dacc9bd00020e2611592598d0aae3a28ec9a45349a159603c3fdddce5fb
   languageName: node
   linkType: hard
 

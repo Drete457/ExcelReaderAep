@@ -196,7 +196,7 @@ const useExcelData = () => {
           : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
       setRows([]);
       setHeaderRow(undefined);
-  scheduleStatus({ type: 'error', message }, { autoDismiss: true });
+      scheduleStatus({ type: 'error', message }, { autoDismiss: true });
     } finally {
       if (handleId.current === currentId) {
         setIsLoading(false);

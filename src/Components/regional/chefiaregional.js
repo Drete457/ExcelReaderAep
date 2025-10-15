@@ -1,4 +1,3 @@
-import { CLabel } from '@coreui/react';
 import RegionalList from '../../helpers/RegionalList';
 
 const ChefiaRegional = ({
@@ -15,9 +14,9 @@ const ChefiaRegional = ({
   return (
     show && (
       <>
-        <CLabel className="h2 d-flex justify-content-center p-3 pt-5">
+        <h2 className="d-flex justify-content-center p-3 pt-5">
           Região: {region}
-        </CLabel>
+        </h2>
         {names.some(value => value) && (
           <p className="h4 d-flex justify-content-center pt-5 pb-3">
             A Chefia Regional tem {votes} votos possíveis

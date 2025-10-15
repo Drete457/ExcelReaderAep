@@ -1,4 +1,3 @@
-import { CLabel } from '@coreui/react';
 import LeadersList from '../../helpers/LeadersList';
 
 const ChefiaDeGrupo = ({
@@ -16,12 +15,10 @@ const ChefiaDeGrupo = ({
   return (
     show && (
       <>
-        <CLabel className="h2 d-flex justify-content-center p-3 pt-5">
+        <h2 className="d-flex justify-content-center p-3 pt-5">
           Grupo Nº: {groupName} - Localidade: {location}
-        </CLabel>
-        <CLabel className="h3 d-flex justify-content-center">
-          Região: {region}
-        </CLabel>
+        </h2>
+        <h3 className="d-flex justify-content-center">Região: {region}</h3>
         <p className="h4 d-flex justify-content-center pt-5 pb-3">
           O grupo tem {votes} votos possíveis
         </p>

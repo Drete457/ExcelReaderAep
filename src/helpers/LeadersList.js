@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CFormGroup, CCol, CInput, CLabel } from '@coreui/react';
+import { CCol, CFormInput } from '@coreui/react';
 import BotaoDeCopiar from '../Components/botao-de-copiar/botao-de-copiar';
 
 const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
@@ -47,39 +47,59 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
   return names.map((name, index) => (
     <section key={index}>
       {name && (
-        <CFormGroup row className="pt-1 justify-content-center">
+        <div className="row pt-1 justify-content-center g-3">
           {index === 0 && cgData && (
             <CCol md="2">
-              <CLabel>Mandato</CLabel>
-              <CInput id={cgData[0]} placeholder={cgData[0]} disabled />
+              <label className="form-label fw-semibold">Mandato</label>
+              <CFormInput
+                id={`leaders-mandato-${index}`}
+                value={cgData[0] || ''}
+                readOnly
+                disabled
+              />
             </CCol>
           )}
           <CCol md="5">
-            <CLabel>
+            <label className="form-label d-flex align-items-center fw-semibold">
               {index === 0 ? t1 : t2 + index}
               <input
                 type="checkbox"
-                className="ml-2"
+                className="form-check-input ms-2"
                 checked={checkbox[index]?.checked}
                 onChange={() => handleCheckbox(index)}
               />
-            </CLabel>
-            <CLabel className="ml-2">
+            </label>
+            <div className="d-inline-block ms-2">
               <BotaoDeCopiar texto={name} />
-            </CLabel>
-            <CInput id={name} placeholder={name} disabled />
+            </div>
+            <CFormInput
+              id={`leaders-nome-${index}`}
+              value={name || ''}
+              readOnly
+              disabled
+            />
           </CCol>
           <CCol md="2" className="mt-auto">
-            <CLabel>BO</CLabel>
-            <CInput id={index + name} placeholder={bo[index]} disabled />
+            <label className="form-label fw-semibold">BO</label>
+            <CFormInput
+              id={`leaders-bo-${index}`}
+              value={bo[index] || ''}
+              readOnly
+              disabled
+            />
           </CCol>
           {index === 0 && cgData && (
             <CCol md="2">
-              <CLabel>Validade</CLabel>
-              <CInput id={dataText} placeholder={dataText} disabled />
+              <label className="form-label fw-semibold">Validade</label>
+              <CFormInput
+                id={`leaders-validade-${index}`}
+                value={dataText}
+                readOnly
+                disabled
+              />
             </CCol>
           )}
-        </CFormGroup>
+        </div>
       )}
     </section>
   ));
