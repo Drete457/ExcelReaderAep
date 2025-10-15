@@ -1,6 +1,24 @@
 // Import CoreUI styles using the module system to avoid @import deprecation warnings
 @use '@coreui/coreui-pro/scss/coreui';
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #a3c3c6;
+}
+
+#root,
+.c-app,
+.c-wrapper,
+.c-body {
+  min-height: 100vh;
+  background-color: #a3c3c6;
+}
+
 .c-app {
   --primary: #53a1a3;
   color: #000000;

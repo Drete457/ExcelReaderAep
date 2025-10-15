@@ -60,18 +60,20 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
             </CCol>
           )}
           <CCol md="5">
-            <label className="form-label d-flex align-items-center fw-semibold">
-              {index === 0 ? t1 : t2 + index}
-              <input
-                type="checkbox"
-                className="form-check-input ms-2"
-                checked={checkbox[index]?.checked}
-                onChange={() => handleCheckbox(index)}
-              />
-            </label>
-            <div className="d-inline-block ms-2">
-              <BotaoDeCopiar texto={name} />
-            </div>
+            <section className='d-flex'>
+              <label className="form-label d-flex align-items-center fw-semibold">
+                {index === 0 ? t1 : t2 + index}
+                <input
+                  type="checkbox"
+                  className="form-check-input ms-2"
+                  checked={checkbox[index]?.checked}
+                  onChange={() => handleCheckbox(index)}
+                />
+              </label>
+              <div className="d-inline-block ms-2">
+                <BotaoDeCopiar texto={name} />
+              </div>
+            </section>
             <CFormInput
               id={`leaders-nome-${index}`}
               value={name || ''}
@@ -101,7 +103,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
           )}
         </div>
       )}
-    </section>
+    </section >
   ));
 };
 
