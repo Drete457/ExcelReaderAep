@@ -72,7 +72,12 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
               />
             </CCol>
             <CCol md="2" className="mt-auto">
-              <label className="form-label fw-semibold">BO</label>
+              <label
+                className="form-label fw-semibold"
+                htmlFor={`nucleo-bo-${index}`}
+              >
+                BO
+              </label>
               <CFormInput
                 id={`nucleo-bo-${index}`}
                 value={bo[index] || ''}
@@ -83,7 +88,12 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
             </CCol>
             {dataText && (
               <CCol md="2">
-                <label className="form-label fw-semibold">Validade</label>
+                <label
+                  className="form-label fw-semibold"
+                  htmlFor={`nucleo-validade-${index}`}
+                >
+                  Validade
+                </label>
                 <CFormInput
                   id={`nucleo-validade-${index}`}
                   value={dataText}

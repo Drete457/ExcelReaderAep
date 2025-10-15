@@ -50,7 +50,12 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
         <div className="row pt-1 justify-content-center g-3">
           {index === 0 && cgData && (
             <CCol md="2">
-              <label className="form-label fw-semibold">Mandato</label>
+              <label
+                className="form-label fw-semibold"
+                htmlFor={`leaders-mandato-${index}`}
+              >
+                Mandato
+              </label>
               <CFormInput
                 id={`leaders-mandato-${index}`}
                 value={cgData[0] || ''}
@@ -84,7 +89,9 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
             />
           </CCol>
           <CCol md="2" className="mt-auto">
-            <label className="form-label fw-semibold">BO</label>
+            <label className="form-label fw-semibold" htmlFor={`leaders-bo-${index}`}>
+              BO
+            </label>
             <CFormInput
               id={`leaders-bo-${index}`}
               value={bo[index] || ''}
@@ -95,7 +102,12 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
           </CCol>
           {index === 0 && cgData && (
             <CCol md="2">
-              <label className="form-label fw-semibold">Validade</label>
+              <label
+                className="form-label fw-semibold"
+                htmlFor={`leaders-validade-${index}`}
+              >
+                Validade
+              </label>
               <CFormInput
                 id={`leaders-validade-${index}`}
                 value={dataText}

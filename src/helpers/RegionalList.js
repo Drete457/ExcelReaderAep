@@ -71,7 +71,12 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
               />
             </CCol>
             <CCol md="2" className="mt-auto">
-              <label className="form-label fw-semibold">BO</label>
+              <label
+                className="form-label fw-semibold"
+                htmlFor={`regional-bo-${index}`}
+              >
+                BO
+              </label>
               <CFormInput
                 id={`regional-bo-${index}`}
                 value={bo[index] || ''}
@@ -81,7 +86,12 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
               />
             </CCol>
             <CCol md="2">
-              <label className="form-label fw-semibold">Validade</label>
+              <label
+                className="form-label fw-semibold"
+                htmlFor={`regional-validade-${index}`}
+              >
+                Validade
+              </label>
               <CFormInput
                 id={`regional-validade-${index}`}
                 value={dataText}
