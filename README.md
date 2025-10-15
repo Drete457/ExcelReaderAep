@@ -14,7 +14,7 @@ With Git and Node.js installed on your machine, choose location and clone reposi
 git clone https://github.com/Drete457/ExcelReaderAep.git
 cd excelreaderaep
 yarn install
-yarn start
+yarn dev
 ```
 
 ## Tecnologies
@@ -25,8 +25,9 @@ yarn start
 - Reactjs
 - Coreui
 - React-excel
-- node-sass
-- react-select
+- Sass
+- React-select
+- Vite
 
 ## License
 

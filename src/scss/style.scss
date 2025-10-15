@@ -1,5 +1,5 @@
-// Import CoreUI styles
-@import '~@coreui/coreui-pro/scss/coreui.scss';
+// Import CoreUI styles using the module system to avoid @import deprecation warnings
+@use '@coreui/coreui-pro/scss/coreui';
 
 .c-app {
   --primary: #53a1a3;

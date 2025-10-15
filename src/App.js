@@ -111,7 +111,7 @@ const App = () => {
                   />
                 )}
                 {!isLoading && excelFile.length > 0 && (
-                  <Suspense>
+                  <Suspense fallback={null}>
                     <CCol className="d-flex justify-content-center">
                       <Select
                         className="w-50"
@@ -149,7 +149,7 @@ const App = () => {
                     >
                       <BotaoDeCopiarTodos texto={listaDosNomes} />
                     </div>
-                    <Suspense>
+                    <Suspense fallback={null}>
                       <Result
                         result={currentline}
                         setListaDosNomes={setListaDosNomes}

@@ -1,14 +1,2 @@
-import { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
-import LoadingScreen from './Components/loading';
-import App from './App';
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') || document.createElement('div'),
-);
-
-root.render(
-  <Suspense fallback={LoadingScreen}>
-    <App />
-  </Suspense>,
-);
+// Legacy CRA entry point retained only for reference.
+// Vite now boots the app from src/main.jsx.
