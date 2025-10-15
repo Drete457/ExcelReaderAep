@@ -119,8 +119,11 @@ const App = () => {
                 {currentline && (
                   <>
                     <div
-                      className="botao-copiar-todos-div"
-                      hidden={listaDosNomes.length === totalDeNomes}
+                      className={`botao-copiar-todos-div${
+                        listaDosNomes.length === totalDeNomes
+                          ? ' botao-copiar-todos-div--hidden'
+                          : ''
+                      }`}
                     >
                       <BotaoDeCopiarTodos texto={listaDosNomes} />
                     </div>

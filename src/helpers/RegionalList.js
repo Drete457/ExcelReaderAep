@@ -11,15 +11,15 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
 
     setCheckbox(newData);
     setListaDosNomes(info => {
-      const newInfo = [];
+      const sectionNames = newData
+        .map(entry => entry.name)
+        .filter(Boolean);
+      const uncheckedNames = newData
+        .filter(entry => !entry.checked && entry.name)
+        .map(entry => entry.name);
+      const preserved = info.filter(item => !sectionNames.includes(item));
 
-      info.forEach(item => {
-        const isCheckedInfo = newData.find(check => check.name === item);
-
-        if (!isCheckedInfo?.checked) newInfo.push(item);
-      });
-
-      return newInfo;
+      return [...preserved, ...uncheckedNames];
     });
   };
 

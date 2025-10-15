@@ -49,6 +49,13 @@ label {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+  min-height: 2.5rem;
+  align-items: center;
+}
+
+.botao-copiar-todos-div--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .botao-copiar-copiado {
