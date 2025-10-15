@@ -81,7 +81,8 @@ const App = () => {
                   >
                     <CCol className="d-flex justify-content-center">
                       <Select
-                        className="w-50"
+                        className="react-select-container w-50"
+                        classNamePrefix="app-select"
                         placeholder="Escolhe o grupo pretendido"
                         autoComplete="off"
                         options={options}
@@ -110,6 +111,7 @@ const App = () => {
                         variant="outline"
                         color="primary"
                         onClick={() => reset()}
+                        className="mx-3"
                       >
                         Apagar o Ficheiro
                       </CButton>
