@@ -67,6 +67,7 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
                 value={name || ''}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
             <CCol md="2" className="mt-auto">
@@ -76,6 +77,7 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
                 value={bo[index] || ''}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
             <CCol md="2">
@@ -85,6 +87,7 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
                 value={dataText}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
           </div>

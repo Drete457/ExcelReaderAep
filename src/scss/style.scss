@@ -35,6 +35,28 @@ label {
   font-weight: bold;
 }
 
+.form-control,
+.form-select,
+input[type='file'] {
+  border-color: #000000 !important;
+  box-shadow: none;
+}
+
+.form-control:focus,
+.form-select:focus,
+input[type='file']:focus {
+  border-color: #000000 !important;
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.35);
+}
+
+.c-form-input--contrast,
+.c-form-input--contrast:disabled,
+.c-form-input--contrast[readonly] {
+  border-color: #000000 !important;
+  background-color: #fdfdfd;
+  color: #000000;
+}
+
 .botao-copiar,
 .botao-copiar-todos {
   border: none;

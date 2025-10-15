@@ -56,6 +56,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
                 value={cgData[0] || ''}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
           )}
@@ -79,6 +80,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
               value={name || ''}
               readOnly
               disabled
+              className="c-form-input--contrast"
             />
           </CCol>
           <CCol md="2" className="mt-auto">
@@ -88,6 +90,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
               value={bo[index] || ''}
               readOnly
               disabled
+              className="c-form-input--contrast"
             />
           </CCol>
           {index === 0 && cgData && (
@@ -98,6 +101,7 @@ const LeadersList = ({ names, bo, t1, t2, cgData, setListaDosNomes }) => {
                 value={dataText}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
           )}

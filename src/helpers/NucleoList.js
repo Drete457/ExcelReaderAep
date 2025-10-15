@@ -68,6 +68,7 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
                 value={name || ''}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
             <CCol md="2" className="mt-auto">
@@ -77,6 +78,7 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
                 value={bo[index] || ''}
                 readOnly
                 disabled
+                className="c-form-input--contrast"
               />
             </CCol>
             {dataText && (
@@ -87,6 +89,7 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
                   value={dataText}
                   readOnly
                   disabled
+                  className="c-form-input--contrast"
                 />
               </CCol>
             )}
