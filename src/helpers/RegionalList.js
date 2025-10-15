@@ -54,7 +54,7 @@ const RegionalList = ({ names, bo, t1, t2, cfRData, setListaDosNomes }) => {
                 {index === 0 ? t1 : t2 + index}
                 <input
                   type="checkbox"
-                  className="form-check-input ms-2"
+                  className="form-check-input ms-2 list-checkbox"
                   checked={checkbox[index]?.checked}
                   onChange={() => handleCheckbox(index)}
                 />
