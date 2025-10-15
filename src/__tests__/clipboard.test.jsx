@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
 import BotaoDeCopiarTodos from '../Components/botao-de-copiar-todos/botao-de-copiar-todos';
 
 describe('BotaoDeCopiarTodos', () => {
@@ -38,7 +39,7 @@ describe('BotaoDeCopiarTodos', () => {
       }),
     ).toBeInTheDocument();
 
-    rerender(<BotaoDeCopiarTodos texto={['Carla']} />);
+    rerender(<BotaoDeCopiarTodos texto={['Sofia']} />);
 
     expect(
       screen.getByRole('button', {

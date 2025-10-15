@@ -1,14 +1,16 @@
 {
   "name": "excelreaderaep",
   "version": "1.0.0",
+  "type": "module",
   "dependencies": {
     "@coreui/coreui-pro": "^5.0.0",
     "@coreui/react": "^5.5.0",
+    "@popperjs/core": "^2.11.8",
     "@ramonak/react-excel": "^1.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^6.23.1",
-    "react-select": "^5.8.0",
+    "react-select": "^5.10.2",
     "read-excel-file": "^5.8.1",
     "sass": "^1.79.3",
     "web-vitals": "^3.5.2"
@@ -25,10 +27,11 @@
     "test:watch": "vitest watch"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.4",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@vitejs/plugin-react": "^4.4.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
