@@ -277,3 +277,19 @@ input[type='file']:focus {
   color: var(--scout-blue-dark);
   text-align: center;
 }
+
+.suspense-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid rgba(0, 87, 163, 0.2);
+  border-top-color: var(--scout-blue);
+  border-radius: 50%;
+  display: inline-block;
+  animation: suspense-spin 0.75s linear infinite;
+}
+
+@keyframes suspense-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

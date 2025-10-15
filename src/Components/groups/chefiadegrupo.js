@@ -15,7 +15,7 @@ const ChefiaDeGrupo = ({
   return (
     show && (
       <>
-        <h2 className="d-flex justify-content-center p-3 pt-5">
+        <h2 className="d-flex justify-content-center p-3">
           Grupo Nº: {groupName} - Localidade: {location}
         </h2>
         <h3 className="d-flex justify-content-center">Região: {region}</h3>
