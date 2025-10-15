@@ -16,6 +16,7 @@ import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copi
 import Result from './View/Result';
 import './scss/style.scss';
 import useExcelData from './hooks/useExcelData';
+import SuspenseFallback from './Components/feedback/SuspenseFallback';
 
 const App = () => {
   const {
@@ -23,7 +24,7 @@ const App = () => {
     positions,
     options,
     isLoading,
-    error,
+    status,
     handleFileUpload,
     reset: resetExcelData,
   } = useExcelData();
@@ -44,6 +45,15 @@ const App = () => {
     setTotalDeNomes(0);
   }, [rows]);
 
+  const statusColor =
+    status.type === 'error'
+      ? 'danger'
+      : status.type === 'success'
+        ? 'success'
+        : status.type === 'info'
+          ? 'info'
+          : 'secondary';
+
   return (
     <>
       <DefaultLayout>
@@ -54,7 +64,9 @@ const App = () => {
                 Conselho Jurisdicional - Visualizador do Controlo de Nomeações
               </CCardHeader>
               <CCardBody>
-                {error && <CAlert color="danger">{error}</CAlert>}
+                {status.message && status.type !== 'idle' && (
+                  <CAlert color={statusColor}>{status.message}</CAlert>
+                )}
                 {!isLoading && rows.length === 0 && (
                   <InputFile
                     onFileSelected={handleFileUpload}
@@ -62,7 +74,11 @@ const App = () => {
                   />
                 )}
                 {!isLoading && rows.length > 0 && (
-                  <Suspense fallback={null}>
+                  <Suspense
+                    fallback={
+                      <SuspenseFallback message="A carregar a lista de opções..." />
+                    }
+                  >
                     <CCol className="d-flex justify-content-center">
                       <Select
                         className="w-50"
@@ -108,7 +124,11 @@ const App = () => {
                     >
                       <BotaoDeCopiarTodos texto={listaDosNomes} />
                     </div>
-                    <Suspense fallback={null}>
+                    <Suspense
+                      fallback={
+                        <SuspenseFallback message="A carregar os detalhes selecionados..." />
+                      }
+                    >
                       <Result
                         result={currentline}
                         setListaDosNomes={setListaDosNomes}

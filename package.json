@@ -5,7 +5,6 @@
     "@coreui/coreui-pro": "^3.4.2",
     "@coreui/react": "^3.4.6",
     "@ramonak/react-excel": "^1.0.1",
-    "prettier": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -18,20 +17,28 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "pretty": "prettier --write .",
-    "test": "vitest"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.4",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@vitejs/plugin-react": "^4.4.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "jsdom": "^24.1.0",
+    "prettier": "^3.3.2",
     "vite": "^5.4.10",
     "vitest": "^2.1.5"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -47,5 +54,6 @@
   },
   "engines": {
     "node": ">=22.x"
-  }
+  },
+  "packageManager": "yarn@3.4.1+sha512.a333bf9c2557d71f5ba87dd1446cde24bb9c35301ec29dd2baba577b3f9d1ab61348b66a1324de9088c40a996c5b9203794da8bf14cab9fae6a6eccc00cb8078"
 }

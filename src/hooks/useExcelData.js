@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import exceltojson from '../Components/handle-data/exceltojson';
 import optionList from '../helpers/optionlist';
 import { namesToSearch } from '../Components/handle-data/responsability-position';
@@ -126,20 +126,54 @@ const useExcelData = () => {
   const [rows, setRows] = useState([]);
   const [headerRow, setHeaderRow] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
   const handleId = useRef(0);
+  const statusTimeoutRef = useRef(null);
+
+  const clearStatusTimeout = useCallback(() => {
+    if (statusTimeoutRef.current) {
+      clearTimeout(statusTimeoutRef.current);
+      statusTimeoutRef.current = null;
+    }
+  }, []);
+
+  const scheduleStatus = useCallback(
+    (nextStatus, { autoDismiss } = {}) => {
+      clearStatusTimeout();
+
+      const shouldAutoDismiss =
+        typeof autoDismiss === 'boolean'
+          ? autoDismiss
+          : nextStatus.type !== 'error' && nextStatus.type !== 'idle';
+
+      setStatus(nextStatus);
+
+      if (shouldAutoDismiss) {
+        statusTimeoutRef.current = setTimeout(() => {
+          setStatus({ type: 'idle', message: '' });
+          statusTimeoutRef.current = null;
+        }, 5000);
+      }
+    },
+    [clearStatusTimeout],
+  );
+
+  useEffect(() => () => clearStatusTimeout(), [clearStatusTimeout]);
 
   const handleFileUpload = useCallback(async file => {
     handleId.current += 1;
     const currentId = handleId.current;
 
-    setError(null);
+    const fileName = file?.name ? `"${file.name}"` : 'selecionado';
+    scheduleStatus({
+      type: 'info',
+      message: `A carregar o ficheiro ${fileName}. Isto pode demorar alguns segundos...`,
+    });
     setIsLoading(true);
 
     try {
-      const { rows: parsedRows, headerRow: parsedHeader } = await exceltojson(
-        file,
-      );
+      const { rows: parsedRows, headerRow: parsedHeader } =
+        await exceltojson(file);
 
       if (handleId.current !== currentId) {
         return;
@@ -147,6 +181,10 @@ const useExcelData = () => {
 
       setRows(parsedRows);
       setHeaderRow(parsedHeader);
+      scheduleStatus({
+        type: 'success',
+        message: `Ficheiro ${fileName} carregado com sucesso. Escolhe um item para visualizar os detalhes.`,
+      });
     } catch (err) {
       if (handleId.current !== currentId) {
         return;
@@ -158,21 +196,21 @@ const useExcelData = () => {
           : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
       setRows([]);
       setHeaderRow(undefined);
-      setError(message);
+  scheduleStatus({ type: 'error', message }, { autoDismiss: true });
     } finally {
       if (handleId.current === currentId) {
         setIsLoading(false);
       }
     }
-  }, []);
+  }, [scheduleStatus]);
 
   const reset = useCallback(() => {
     handleId.current += 1;
     setRows([]);
     setHeaderRow(undefined);
-    setError(null);
+    scheduleStatus({ type: 'idle', message: '' }, { autoDismiss: false });
     setIsLoading(false);
-  }, []);
+  }, [scheduleStatus]);
 
   const options = useMemo(() => optionList(rows), [rows]);
   const positions = useMemo(() => buildPositionsMap(headerRow), [headerRow]);
@@ -182,7 +220,7 @@ const useExcelData = () => {
     positions,
     options,
     isLoading,
-    error,
+    status,
     handleFileUpload,
     reset,
   };

@@ -24,9 +24,7 @@ const exceltojson = async file => {
   const payloadRows = [];
 
   rows.forEach((rawRow, index) => {
-    const row = Array.isArray(rawRow)
-      ? rawRow.map(normalizeValue)
-      : undefined;
+    const row = Array.isArray(rawRow) ? rawRow.map(normalizeValue) : undefined;
 
     if (!row || row.length === 0) {
       return;
@@ -56,7 +54,9 @@ const exceltojson = async file => {
   });
 
   if (!headerRow) {
-    throw new Error('Não foi possível localizar a linha de responsabilidades (ECG).');
+    throw new Error(
+      'Não foi possível localizar a linha de responsabilidades (ECG).',
+    );
   }
 
   if (dataHeaderIndex === -1) {
@@ -64,7 +64,9 @@ const exceltojson = async file => {
   }
 
   if (payloadRows.length === 0) {
-    throw new Error('Não foram encontradas linhas de dados após a linha "Nome".');
+    throw new Error(
+      'Não foram encontradas linhas de dados após a linha "Nome".',
+    );
   }
 
   return {
