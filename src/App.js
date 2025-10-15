@@ -6,92 +6,43 @@ import {
   CCardHeader,
   CCardBody,
   CButton,
+  CAlert,
 } from '@coreui/react';
 import Select from 'react-select';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
 import InputFile from './Components/handle-data/inputfile';
-import optionList from './helpers/optionlist';
 import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copiar-todos';
 import Result from './View/Result';
 import './scss/style.scss';
-import responsabilityPosition from './Components/handle-data/responsability-position';
+import useExcelData from './hooks/useExcelData';
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [excelFile, setExcelFile] = useState('');
-  const [positionsOfEachInformation, setPositionOfEachInformation] =
-    useState(undefined);
+  const {
+    rows,
+    positions,
+    options,
+    isLoading,
+    error,
+    handleFileUpload,
+    reset: resetExcelData,
+  } = useExcelData();
   const [currentline, setLine] = useState(undefined);
   const [listaDosNomes, setListaDosNomes] = useState([]);
   const [totalDeNomes, setTotalDeNomes] = useState(0);
-  const [positions, setPositions] = useState({
-    alcateia: [],
-    tes: [],
-    tex: [],
-    cla: [],
-    group: [],
-    others: [],
-    cgData: [],
-    cfRegional: [],
-    mcr: [],
-    nucle: [],
-  });
 
   function reset() {
-    setExcelFile('');
+    resetExcelData();
     setLine(undefined);
-    setIsLoading(false);
     setListaDosNomes([]);
     setTotalDeNomes(0);
   }
 
   useEffect(() => {
-    if (positionsOfEachInformation) {
-      const alcateia = [];
-      const tes = [];
-      const tex = [];
-      const cla = [];
-      const group = [];
-      const others = [];
-      const cgData = [];
-      const cfRegional = [];
-      const mcr = [];
-      const nucle = [];
-
-      positionsOfEachInformation.forEach((responsibility, index) => {
-        if (responsibility === null) return;
-
-        responsabilityPosition(
-          responsibility,
-          index,
-          alcateia,
-          tes,
-          tex,
-          cla,
-          group,
-          others,
-          cgData,
-          cfRegional,
-          mcr,
-          nucle,
-        );
-      });
-
-      setPositions({
-        alcateia,
-        tes,
-        tex,
-        cla,
-        group,
-        others,
-        cgData,
-        cfRegional,
-        mcr,
-        nucle,
-      });
-    }
-  }, [positionsOfEachInformation]);
+    setLine(undefined);
+    setListaDosNomes([]);
+    setTotalDeNomes(0);
+  }, [rows]);
 
   return (
     <>
@@ -103,28 +54,36 @@ const App = () => {
                 Conselho Jurisdicional - Visualizador do Controlo de Nomeações
               </CCardHeader>
               <CCardBody>
-                {!isLoading && !excelFile && (
+                {error && <CAlert color="danger">{error}</CAlert>}
+                {!isLoading && rows.length === 0 && (
                   <InputFile
-                    setExcelFile={setExcelFile}
-                    setPositionOfEachInformation={setPositionOfEachInformation}
-                    setIsLoading={setIsLoading}
+                    onFileSelected={handleFileUpload}
+                    isLoading={isLoading}
                   />
                 )}
-                {!isLoading && excelFile.length > 0 && (
+                {!isLoading && rows.length > 0 && (
                   <Suspense fallback={null}>
                     <CCol className="d-flex justify-content-center">
                       <Select
                         className="w-50"
                         placeholder="Escolhe o grupo pretendido"
                         autoComplete="off"
-                        options={optionList(excelFile)}
+                        options={options}
                         onChange={choose => {
-                          const select = excelFile.find(value => {
+                          if (!choose) {
+                            setLine(undefined);
+                            setListaDosNomes([]);
+                            setTotalDeNomes(0);
+                            return;
+                          }
+
+                          const select = rows.find(value => {
                             if (value && value[0]) {
                               return value[0] === choose.value;
                             }
                             return null;
                           });
+
                           setLine(select);
                           setListaDosNomes([]);
                           setTotalDeNomes(0);

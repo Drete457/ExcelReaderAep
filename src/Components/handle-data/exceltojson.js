@@ -1,51 +1,76 @@
 import xlsxFile from 'read-excel-file';
 
-const exceltojson = (event, setPositionOfEachInformation) => {
-  const file = event.target.files[0];
-  let positionsFound = {
-    index: 0,
-    found: false,
-    dataStart: 0,
-  };
+const isString = value => typeof value === 'string';
 
-  //read excel file
-  const dataFilter = xlsxFile(file).then(rows => {
-    const rowsFilter = rows.filter((row, index) => {
-      if (positionsFound.found) {
-        if (positionsFound.dataStart === 0) {
-          const dataStartFoundRow = row.find(element => {
-            return element === 'Nome';
-          });
+const normalizeValue = value => (isString(value) ? value.trim() : value);
 
-          if (dataStartFoundRow) {
-            positionsFound.dataStart = index;
-            return null;
-          }
+const exceltojson = async file => {
+  if (!file) {
+    throw new Error('Nenhum ficheiro foi selecionado.');
+  }
+
+  if (!file.name?.toLowerCase().endsWith('.xlsx')) {
+    throw new Error('Formato inválido. Por favor seleciona um ficheiro .xlsx.');
+  }
+
+  const rows = await xlsxFile(file);
+
+  if (!Array.isArray(rows) || rows.length === 0) {
+    throw new Error('O ficheiro não contém dados para processar.');
+  }
+
+  let headerRow;
+  let dataHeaderIndex = -1;
+  const payloadRows = [];
+
+  rows.forEach((rawRow, index) => {
+    const row = Array.isArray(rawRow)
+      ? rawRow.map(normalizeValue)
+      : undefined;
+
+    if (!row || row.length === 0) {
+      return;
+    }
+
+    if (headerRow) {
+      if (dataHeaderIndex === -1) {
+        const hasDataHeader = row.some(cell => cell === 'Nome');
+        if (hasDataHeader) {
+          dataHeaderIndex = index;
         }
-
-        if (index > positionsFound.dataStart) return row;
+        return;
       }
 
-      if (!positionsFound.found) {
-        const positionsFoundRow = row.find(element => {
-          return element === 'ECG';
-        });
-
-        if (positionsFoundRow) {
-          positionsFound.index = index;
-          positionsFound.found = true;
-
-          setPositionOfEachInformation(row);
-        }
+      if (index > dataHeaderIndex) {
+        payloadRows.push(row);
       }
 
-      return null;
-    });
+      return;
+    }
 
-    return rowsFilter;
+    const hasResponsibilityMarker = row.some(cell => cell === 'ECG');
+
+    if (hasResponsibilityMarker) {
+      headerRow = row;
+    }
   });
 
-  return dataFilter;
+  if (!headerRow) {
+    throw new Error('Não foi possível localizar a linha de responsabilidades (ECG).');
+  }
+
+  if (dataHeaderIndex === -1) {
+    throw new Error('Não foi possível localizar a linha de cabeçalhos (Nome).');
+  }
+
+  if (payloadRows.length === 0) {
+    throw new Error('Não foram encontradas linhas de dados após a linha "Nome".');
+  }
+
+  return {
+    rows: payloadRows,
+    headerRow,
+  };
 };
 
 export default exceltojson;

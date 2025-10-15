@@ -1,0 +1,191 @@
+import { useCallback, useMemo, useRef, useState } from 'react';
+import exceltojson from '../Components/handle-data/exceltojson';
+import optionList from '../helpers/optionlist';
+import { namesToSearch } from '../Components/handle-data/responsability-position';
+
+const createEmptyPositions = () => ({
+  alcateia: [],
+  tes: [],
+  tex: [],
+  cla: [],
+  group: [],
+  others: [],
+  cgData: [],
+  cfRegional: [],
+  mcr: [],
+  nucle: [],
+});
+
+const buildPositionsMap = headerRow => {
+  if (!Array.isArray(headerRow) || headerRow.length === 0) {
+    return createEmptyPositions();
+  }
+
+  const buckets = createEmptyPositions();
+  let alcateiaChefeAssigned = false;
+  let chefeRegionalAssigned = false;
+
+  headerRow.forEach((rawResponsibility, index) => {
+    if (typeof rawResponsibility !== 'string') {
+      return;
+    }
+
+    const responsibility = rawResponsibility.toLowerCase();
+
+    const pushRole = (collection, boOffset, validateOffset) => {
+      collection.push({
+        namePosition: index,
+        bo: index + boOffset,
+        validate: index + validateOffset,
+      });
+    };
+
+    if (responsibility.includes(namesToSearch.ecg)) {
+      pushRole(buckets.group, 8, 5);
+      buckets.cgData.push({
+        validate: index + 5,
+        mandate: index + 1,
+      });
+    }
+
+    if (responsibility.includes(namesToSearch.escg)) {
+      pushRole(buckets.group, 4, 5);
+    }
+
+    if (!alcateiaChefeAssigned && responsibility.includes(namesToSearch.eca)) {
+      pushRole(buckets.alcateia, 4, 5);
+      alcateiaChefeAssigned = true;
+    }
+
+    if (responsibility.includes(namesToSearch.esca)) {
+      pushRole(buckets.alcateia, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.ectes)) {
+      pushRole(buckets.tes, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.esctes)) {
+      pushRole(buckets.tes, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.ectex)) {
+      pushRole(buckets.tex, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.esctex)) {
+      pushRole(buckets.tex, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.ecc)) {
+      pushRole(buckets.cla, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.escc)) {
+      pushRole(buckets.cla, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.ecsa)) {
+      pushRole(buckets.others, 4, 5);
+    }
+
+    if (responsibility.includes(namesToSearch.ecacg)) {
+      pushRole(buckets.others, 4, 5);
+    }
+
+    if (!chefeRegionalAssigned && responsibility.includes(namesToSearch.ecr)) {
+      pushRole(buckets.cfRegional, 7, 8);
+      chefeRegionalAssigned = true;
+    }
+
+    if (chefeRegionalAssigned && responsibility.includes(namesToSearch.ecra)) {
+      pushRole(buckets.cfRegional, 5, 6);
+    }
+
+    if (responsibility.includes(namesToSearch.ecacr)) {
+      pushRole(buckets.cfRegional, 5, 6);
+    }
+
+    if (responsibility.includes(namesToSearch.pmcr)) {
+      pushRole(buckets.mcr, 5, 6);
+    }
+
+    if (responsibility.includes(namesToSearch.ecnucleo)) {
+      pushRole(buckets.nucle, 5, 6);
+    }
+
+    if (responsibility.includes(namesToSearch.escn)) {
+      pushRole(buckets.nucle, 5, 6);
+    }
+  });
+
+  return buckets;
+};
+
+const useExcelData = () => {
+  const [rows, setRows] = useState([]);
+  const [headerRow, setHeaderRow] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const handleId = useRef(0);
+
+  const handleFileUpload = useCallback(async file => {
+    handleId.current += 1;
+    const currentId = handleId.current;
+
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const { rows: parsedRows, headerRow: parsedHeader } = await exceltojson(
+        file,
+      );
+
+      if (handleId.current !== currentId) {
+        return;
+      }
+
+      setRows(parsedRows);
+      setHeaderRow(parsedHeader);
+    } catch (err) {
+      if (handleId.current !== currentId) {
+        return;
+      }
+
+      const message =
+        err instanceof Error
+          ? err.message
+          : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
+      setRows([]);
+      setHeaderRow(undefined);
+      setError(message);
+    } finally {
+      if (handleId.current === currentId) {
+        setIsLoading(false);
+      }
+    }
+  }, []);
+
+  const reset = useCallback(() => {
+    handleId.current += 1;
+    setRows([]);
+    setHeaderRow(undefined);
+    setError(null);
+    setIsLoading(false);
+  }, []);
+
+  const options = useMemo(() => optionList(rows), [rows]);
+  const positions = useMemo(() => buildPositionsMap(headerRow), [headerRow]);
+
+  return {
+    rows,
+    positions,
+    options,
+    isLoading,
+    error,
+    handleFileUpload,
+    reset,
+  };
+};
+
+export default useExcelData;

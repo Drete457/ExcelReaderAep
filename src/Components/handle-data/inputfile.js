@@ -1,32 +1,21 @@
 import { CCol, CInputFile, CLabel } from '@coreui/react';
-import exceltojson from './exceltojson';
 
-const getRandomTime = () => {
-  const min = 2;
-  const max = 15;
-  const randomTime = Math.floor(Math.random() * (max - min + 1) + min);
-
-  return randomTime * 1000;
-};
-
-const InputFile = ({
-  setExcelFile,
-  setPositionOfEachInformation,
-  setIsLoading,
-}) => (
+const InputFile = ({ onFileSelected, isLoading }) => (
   <CCol className="d-flex justify-content-between">
     <CInputFile
       custom
       id="custom-file-input"
       accept=".xlsx"
+      disabled={isLoading}
       onChange={event => {
-        setIsLoading(true);
-        exceltojson(event, setPositionOfEachInformation).then(result => {
-          setExcelFile(result);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, getRandomTime());
-        });
+        const file = event.target.files?.[0];
+
+        if (file && typeof onFileSelected === 'function') {
+          onFileSelected(file);
+        }
+
+        // Allow re-selecting the same file consecutively.
+        event.target.value = '';
       }}
     />
     <CLabel htmlFor="custom-file-input" variant="custom-file">

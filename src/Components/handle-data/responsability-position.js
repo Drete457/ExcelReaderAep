@@ -1,4 +1,4 @@
-const namesToSearch = {
+export const namesToSearch = {
   ecg: 'ecg', // Escoteiro Chefe de Grupo
   escg: 'escg', // Escoteiro Sub-Chefe de Grupo
   eca: 'eca', // Escoteiro Chefe de Alcateia
