@@ -16,6 +16,24 @@ const createEmptyPositions = () => ({
   nucle: [],
 });
 
+const MIN_LOADING_DURATION_MS = 5000;
+
+const waitForMinimumDuration = async (
+  startedAt,
+  minimumDuration = MIN_LOADING_DURATION_MS,
+) => {
+  const elapsed = Date.now() - startedAt;
+
+  if (elapsed >= minimumDuration) {
+    return;
+  }
+
+  const remaining = minimumDuration - elapsed;
+  await new Promise(resolve => {
+    setTimeout(resolve, remaining);
+  });
+};
+
 const buildPositionsMap = headerRow => {
   if (!Array.isArray(headerRow) || headerRow.length === 0) {
     return createEmptyPositions();
@@ -163,44 +181,53 @@ const useExcelData = () => {
   const handleFileUpload = useCallback(async file => {
     handleId.current += 1;
     const currentId = handleId.current;
+    const startedAt = Date.now();
 
     const fileName = file?.name ? `"${file.name}"` : 'selecionado';
-    scheduleStatus({
-      type: 'info',
-      message: `A carregar o ficheiro ${fileName}. Isto pode demorar alguns segundos...`,
-    });
+    scheduleStatus(
+      {
+        type: 'info',
+        message: `A carregar o ficheiro ${fileName}. Isto pode demorar alguns segundos...`,
+      },
+      { autoDismiss: false },
+    );
     setIsLoading(true);
+
+    let nextRows = [];
+    let nextHeaderRow;
+    let nextStatus = { type: 'idle', message: '' };
+    let nextStatusOptions;
 
     try {
       const { rows: parsedRows, headerRow: parsedHeader } =
         await exceltojson(file);
 
-      if (handleId.current !== currentId) {
-        return;
-      }
-
-      setRows(parsedRows);
-      setHeaderRow(parsedHeader);
-      scheduleStatus({
+      nextRows = parsedRows;
+      nextHeaderRow = parsedHeader;
+      nextStatus = {
         type: 'success',
         message: `Ficheiro ${fileName} carregado com sucesso. Escolhe um item para visualizar os detalhes.`,
-      });
+      };
     } catch (err) {
-      if (handleId.current !== currentId) {
-        return;
-      }
-
       const message =
         err instanceof Error
           ? err.message
           : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
-      setRows([]);
-      setHeaderRow(undefined);
-      scheduleStatus({ type: 'error', message }, { autoDismiss: true });
+      nextRows = [];
+      nextHeaderRow = undefined;
+      nextStatus = { type: 'error', message };
+      nextStatusOptions = { autoDismiss: true };
     } finally {
-      if (handleId.current === currentId) {
-        setIsLoading(false);
+      await waitForMinimumDuration(startedAt);
+
+      if (handleId.current !== currentId) {
+        return;
       }
+
+      setRows(nextRows);
+      setHeaderRow(nextHeaderRow);
+      scheduleStatus(nextStatus, nextStatusOptions);
+      setIsLoading(false);
     }
   }, [scheduleStatus]);
 

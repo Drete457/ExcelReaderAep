@@ -184,6 +184,14 @@ input[type='file']:focus {
   border-color: var(--scout-blue);
 }
 
+.status-alert-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1080;
+  max-width: min(90vw, 25rem);
+}
+
 .status-alert {
   border-radius: 14px;
   border: none;

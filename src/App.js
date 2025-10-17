@@ -56,6 +56,13 @@ const App = () => {
 
   return (
     <>
+      {status.message && status.type !== 'idle' && (
+        <div className="status-alert-container">
+          <CAlert color={statusColor} className="status-alert mb-0 shadow">
+            {status.message}
+          </CAlert>
+        </div>
+      )}
       <DefaultLayout>
         <CRow className="p-3">
           <CCol sm="12" className="d-flex justify-content-center">
@@ -64,9 +71,6 @@ const App = () => {
                 Conselho Jurisdicional - Visualizador do Controlo de Nomeações
               </CCardHeader>
               <CCardBody>
-                {status.message && status.type !== 'idle' && (
-                  <CAlert color={statusColor}>{status.message}</CAlert>
-                )}
                 {!isLoading && rows.length === 0 && (
                   <InputFile
                     onFileSelected={handleFileUpload}
