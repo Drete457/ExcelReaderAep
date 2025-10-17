@@ -3,9 +3,7 @@ import SuspenseFallback from '../../Components/feedback/SuspenseFallback';
 
 const DefaultLayout = ({ children }) => (
   <Suspense fallback={<SuspenseFallback message="A preparar o layout..." />}>
-    <div className="c-app">
-      {children}
-    </div>
+    <div className="c-app">{children}</div>
   </Suspense>
 );
 

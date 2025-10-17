@@ -1,12 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
-import {
-  CRow,
-  CCol,
-  CCard,
-  CCardBody,
-  CButton,
-  CAlert,
-} from '@coreui/react';
+import { CRow, CCol, CCard, CCardBody, CButton, CAlert } from '@coreui/react';
 import Select from 'react-select';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
