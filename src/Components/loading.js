@@ -1,18 +1,16 @@
-import { CRow, CSpinner } from '@coreui/react';
-
 const LoadingScreen = () => (
-  <>
-    <CRow className="d-flex flex-row justify-content-center">
-      <CSpinner
-        style={{ width: '4rem', height: '4rem' }}
-        color="primary"
-        variant="grow"
-      />
-    </CRow>
-    <p className="h4 d-flex justify-content-center pt-5 pb-3">
-      Controlo de Nomeações a ser carregado, por favor aguarde
+  <div className="loading-screen" role="status" aria-live="polite">
+    <div className="loading-screen__halo">
+      <span className="loading-screen__core" />
+    </div>
+    <p className="loading-screen__message">
+      Controlo de Nomeações a ser carregado, por favor aguarde.
     </p>
-  </>
+    <p className="loading-screen__hint">
+      Estamos a preparar os dados. Isto pode demorar alguns
+      segundos.
+    </p>
+  </div>
 );
 
 export default LoadingScreen;
