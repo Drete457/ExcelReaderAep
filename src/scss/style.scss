@@ -24,13 +24,6 @@ body {
 body {
   margin: 0;
   background-color: var(--scout-surface-alt);
-  background-image: radial-gradient(
-      120% 120% at 0% 0%,
-      rgba(97, 35, 153, 0.92) 0%,
-      rgba(46, 24, 86, 0.85) 38%,
-      rgba(46, 24, 86, 0) 68%
-    ),
-    linear-gradient(180deg, #f7f8ff 0%, #ffffff 60%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -39,9 +32,7 @@ body {
 }
 
 #root,
-.c-app,
-.c-wrapper,
-.c-body {
+.c-app {
   min-height: 100vh;
   background: transparent;
 }
@@ -627,16 +618,12 @@ input[type='file']:focus {
 }
 
 .botao-copiar-copiado {
-  background: linear-gradient(
-    135deg,
-    rgba(102, 114, 255, 0.35),
-    rgba(150, 134, 255, 0.4)
-  );
   color: #ffffff;
   border-color: rgba(124, 140, 255, 0.85);
   box-shadow: 0 12px 30px rgba(106, 94, 233, 0.24);
 }
 
+.botao-copiar-copiado, 
 .botao-copiar-nao-copiado {
   background: linear-gradient(
     135deg,
