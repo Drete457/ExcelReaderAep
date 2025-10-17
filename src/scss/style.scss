@@ -583,7 +583,7 @@ input[type='file']:focus {
 .botao-copiar-todos {
   border: none;
   border-radius: 999px;
-  color: #ffffff;
+  color: #f5f7ff;
   font-weight: 600;
   padding: 0.2rem 0.8rem;
   width: max-content;
@@ -593,14 +593,9 @@ input[type='file']:focus {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  border: 2px solid rgba(124, 140, 255, 0.55);
-  background: linear-gradient(
-    135deg,
-    rgba(124, 140, 255, 0.22),
-    rgba(163, 145, 255, 0.28)
-  );
-  color: #3f4ab2;
-  box-shadow: 0 10px 22px rgba(94, 86, 204, 0.22);
+  border: 2px solid rgba(138, 120, 255, 0.6);
+  background: linear-gradient(135deg, #7a5bff 0%, #9f6cff 100%);
+  box-shadow: 0 12px 26px rgba(110, 80, 220, 0.28);
   backdrop-filter: blur(2px);
   transition:
     transform 0.2s ease,
@@ -613,23 +608,22 @@ input[type='file']:focus {
 .botao-copiar-todos:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
-  border-color: rgba(124, 140, 255, 0.75);
-  box-shadow: 0 14px 28px rgba(94, 86, 204, 0.28);
+  border-color: rgba(138, 120, 255, 0.78);
+  box-shadow: 0 16px 32px rgba(110, 80, 220, 0.32);
 }
 
 .botao-copiar-copiado {
-  color: #ffffff;
-  border-color: rgba(124, 140, 255, 0.85);
-  box-shadow: 0 12px 30px rgba(106, 94, 233, 0.24);
+  color: #fdfcff;
+  border-color: rgba(93, 74, 240, 0.8);
+  background: linear-gradient(135deg, #5b44ff 0%, #7a54ff 100%);
+  box-shadow:
+    0 14px 34px rgba(90, 70, 230, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
 }
-
-.botao-copiar-copiado, 
+ 
 .botao-copiar-nao-copiado {
-  background: linear-gradient(
-    135deg,
-    rgba(124, 140, 255, 0.22),
-    rgba(163, 145, 255, 0.28)
-  );
+  color: #f5f7ff;
+  background: linear-gradient(135deg, #7a5bff 0%, #9f6cff 100%);
 }
 
 .botao-copiar-todos-div {
