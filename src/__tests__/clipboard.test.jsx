@@ -15,9 +15,7 @@ describe('BotaoDeCopiarTodos', () => {
 
     await userEvent.click(button);
 
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      'Alice, Bruno, ',
-    );
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Alice, Bruno');
     expect(
       screen.getByRole('button', {
         name: /Copiado todos os nomes não selecionados/i,

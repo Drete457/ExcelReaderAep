@@ -4,10 +4,10 @@ const BotaoDeCopiarTodos = ({ texto }) => {
   const [copiado, setCopiado] = useState(false);
 
   const copiar = () => {
-    const nomesASeremCopiados = texto.reduce(
-      (acc, nome) => `${acc}${nome}, `,
-      '',
-    );
+    const nomesASeremCopiados = texto
+      .filter(Boolean)
+      .map(nome => nome.trim())
+      .join(', ');
 
     navigator.clipboard.writeText(nomesASeremCopiados);
     setCopiado(true);
