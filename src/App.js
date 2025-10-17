@@ -64,94 +64,104 @@ const App = () => {
         </div>
       )}
       <DefaultLayout>
-        <CRow className="p-3">
-          <CCol sm="12" className="d-flex justify-content-center">
-            <CCard>
-              <CCardHeader className="h1 p-4">
-                Conselho Jurisdicional - Visualizador do Controlo de Nomeações
-              </CCardHeader>
-              <CCardBody>
-                {!isLoading && rows.length === 0 && (
-                  <InputFile
-                    onFileSelected={handleFileUpload}
-                    isLoading={isLoading}
-                  />
-                )}
-                {!isLoading && rows.length > 0 && (
-                  <Suspense
-                    fallback={
-                      <SuspenseFallback message="A carregar a lista de opções..." />
-                    }
-                  >
-                    <CCol className="d-flex justify-content-center">
-                      <Select
-                        className="react-select-container w-50"
-                        classNamePrefix="app-select"
-                        placeholder="Escolhe o grupo pretendido"
-                        autoComplete="off"
-                        options={options}
-                        onChange={choose => {
-                          if (!choose) {
-                            setLine(undefined);
-                            setListaDosNomes([]);
-                            setTotalDeNomes(0);
-                            return;
-                          }
-
-                          const select = rows.find(value => {
-                            if (value && value[0]) {
-                              return value[0] === choose.value;
-                            }
-                            return null;
-                          });
-
-                          setLine(select);
-                          setListaDosNomes([]);
-                          setTotalDeNomes(0);
-                        }}
+        <div className="app-shell">
+          <header className="app-hero">
+            <div className="app-hero__overlay" aria-hidden="true" />
+            <div className="app-hero__content">
+              <span className="app-hero__eyebrow">Associação dos Escoteiros de Portugal</span>
+              <h1 className="app-hero__title">Conselho Jurisdicional · Controlo de Nomeações</h1>
+            </div>
+          </header>
+          <main className="app-main" aria-live="polite">
+            <CRow className="app-row">
+              <CCol sm="12" className="d-flex justify-content-center">
+                <CCard className="app-card">
+                  <CCardBody>
+                    {!isLoading && rows.length === 0 && (
+                      <InputFile
+                        onFileSelected={handleFileUpload}
+                        isLoading={isLoading}
                       />
-                      <CButton
-                        size="sm"
-                        variant="outline"
-                        color="primary"
-                        onClick={() => reset()}
-                        className="mx-3"
+                    )}
+                    {!isLoading && rows.length > 0 && (
+                      <Suspense
+                        fallback={
+                          <SuspenseFallback message="A carregar a lista de opções..." />
+                        }
                       >
-                        Apagar o Ficheiro
-                      </CButton>
-                    </CCol>
-                  </Suspense>
-                )}
-                {currentline && (
-                  <>
-                    <div
-                      className={`botao-copiar-todos-div${
-                        listaDosNomes.length === totalDeNomes
-                          ? ' botao-copiar-todos-div--hidden'
-                          : ''
-                      }`}
-                    >
-                      <BotaoDeCopiarTodos texto={listaDosNomes} />
-                    </div>
-                    <Suspense
-                      fallback={
-                        <SuspenseFallback message="A carregar os detalhes selecionados..." />
-                      }
-                    >
-                      <Result
-                        result={currentline}
-                        setListaDosNomes={setListaDosNomes}
-                        setTotalDeNomes={setTotalDeNomes}
-                        positions={positions}
-                      />
-                    </Suspense>
-                  </>
-                )}
-                {isLoading && <LoadingScreen />}
-              </CCardBody>
-            </CCard>
-          </CCol>
-        </CRow>
+                        <CCol sm="12" className="app-actions">
+                          <Select
+                            className="react-select-container app-select"
+                            classNamePrefix="app-select"
+                            placeholder="Escolhe o grupo pretendido"
+                            autoComplete="off"
+                            options={options}
+                            menuPortalTarget={typeof document !== 'undefined' ? document.body : undefined}
+                            menuPosition="fixed"
+                            onChange={choose => {
+                              if (!choose) {
+                                setLine(undefined);
+                                setListaDosNomes([]);
+                                setTotalDeNomes(0);
+                                return;
+                              }
+
+                              const select = rows.find(value => {
+                                if (value && value[0]) {
+                                  return value[0] === choose.value;
+                                }
+                                return null;
+                              });
+
+                              setLine(select);
+                              setListaDosNomes([]);
+                              setTotalDeNomes(0);
+                            }}
+                          />
+                          <CButton
+                            size="sm"
+                            variant="outline"
+                            color="primary"
+                            onClick={() => reset()}
+                            className="app-reset-button"
+                          >
+                            Apagar o Ficheiro
+                          </CButton>
+                        </CCol>
+                      </Suspense>
+                    )}
+                    {currentline && (
+                      <>
+                        <div
+                          className={`botao-copiar-todos-div${
+                            listaDosNomes.length === totalDeNomes
+                              ? ' botao-copiar-todos-div--hidden'
+                              : ''
+                          }`}
+                        >
+                          <BotaoDeCopiarTodos texto={listaDosNomes} />
+                        </div>
+                        <Suspense
+                          fallback={
+                            <SuspenseFallback message="A carregar os detalhes selecionados..." />
+                          }
+                        >
+                          <Result
+                            result={currentline}
+                            setListaDosNomes={setListaDosNomes}
+                            setTotalDeNomes={setTotalDeNomes}
+                            positions={positions}
+                          />
+                        </Suspense>
+                      </>
+                    )}
+                    {isLoading && <LoadingScreen />}
+                  </CCardBody>
+                </CCard>
+              </CCol>
+            </CRow>
+          </main>
+        </div>
       </DefaultLayout>
     </>
   );

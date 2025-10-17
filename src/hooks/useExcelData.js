@@ -220,14 +220,12 @@ const useExcelData = () => {
     } finally {
       await waitForMinimumDuration(startedAt);
 
-      if (handleId.current !== currentId) {
-        return;
+      if (handleId.current === currentId) {
+        setRows(nextRows);
+        setHeaderRow(nextHeaderRow);
+        scheduleStatus(nextStatus, nextStatusOptions);
+        setIsLoading(false);
       }
-
-      setRows(nextRows);
-      setHeaderRow(nextHeaderRow);
-      scheduleStatus(nextStatus, nextStatusOptions);
-      setIsLoading(false);
     }
   }, [scheduleStatus]);
 
