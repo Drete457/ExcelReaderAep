@@ -98,7 +98,10 @@ input[type='file'] {
   color: var(--scout-text) !important;
   padding-block: 0.85rem !important;
   padding-inline: 1rem !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 
   &:hover:not(:disabled) {
     border-color: rgba(122, 91, 255, 0.65) !important;
@@ -126,7 +129,9 @@ input[type='file'] {
     background: linear-gradient(135deg, #7a5bff 0%, #9f6cff 100%);
     color: #f5f7ff;
     cursor: pointer;
-    transition: filter 0.2s ease, transform 0.2s ease;
+    transition:
+      filter 0.2s ease,
+      transform 0.2s ease;
 
     &:hover {
       filter: brightness(1.05);
@@ -440,7 +445,9 @@ input[type='file']:focus {
 
 .app-select__indicator {
   color: #7a5bff !important;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .app-select__indicator:hover {

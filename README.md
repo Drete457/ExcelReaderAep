@@ -1,31 +1,55 @@
 # Excel Reader · AEP
 
-Utilitário web que lê e mostra o ficheiro Excel de Controlo de Nomeações da Associação dos Escoteiros de Portugal (AEP). A aplicação interpreta o ficheiro, agrupa a informação por chefias e disponibiliza botões rápidos para copiar os nomes relevantes.
+Web utility that reads the Controlo de Nomeações workbook used by the Associação dos Escoteiros de Portugal (AEP). The app normalises the spreadsheet, groups responsibilities by section, and offers quick copy shortcuts for every relevant name.
 
-📍 Aplicação em produção: https://excel-reader-aep.vercel.app/
+📍 Production deployment: https://excel-reader-aep.vercel.app/
 
-## Funcionalidades
+## Highlights
 
-- Upload de ficheiros `.xlsx` diretamente no browser e conversão para estruturas utilizáveis.
-- Seleção do grupo ou núcleo através de `react-select`, com pesquisa e destaque visual.
-- Visualização dos cargos distribuídos por secções (Chefia de Grupo, Alcateia, Tribos, Clã, etc.).
-- Contagem automática de votos e lista dinâmica dos nomes ainda não selecionados.
-- Botões individuais e globais para copiar rapidamente os nomes para a área de transferência.
+- Upload `.xlsx` files entirely in the browser (no backend round-trip).
+- Pick a group or núcleo through a themed `react-select` dropdown with keyboard search.
+- See appointments grouped by section (Chefia de Grupo, Alcateia, Tribos, Clã, Chefia Regional, Núcleo) with live vote totals.
+- Use single or bulk clipboard actions to copy formatted name lists instantly.
+- Styled UI that mirrors the purple gradient across buttons, selects, and the file input for consistent branding.
 
-## Stack Tecnológica
+## Excel Input Requirements
 
-- React 19 com Vite 5
-- CoreUI Pro para componentes e layout
-- Sass para estilos globais
-- `read-excel-file` e `@ramonak/react-excel` para interpretar o Excel
-- Vitest + Testing Library para testes
+- Supported file: the official AEP Controlo de Nomeações workbook exported as `.xlsx`.
+- Expected sheets: `All BO`, `Chefia Regional`, `Núcleos`, `Responsabilidades`, and `CF Regional` (matching the helper modules in `src/Components/handle-data`).
+- Column headers should remain unchanged; the parser relies on exact labels set by AEP.
+- Remove blank spacer columns/rows before upload if the template has been altered manually.
+- The tool highlights any row that fails parsing directly in the browser console for quick debugging.
 
-## Requisitos
+## Tech Stack
 
-- Node.js >= 22 (verificado em `package.json`)
-- Yarn (o repositório utiliza Yarn 3; instale com `npm install -g yarn` se necessário)
+- React 19 + Vite 5
+- CoreUI Pro layout components
+- Sass (global tokens and BEM-style overrides)
+- `read-excel-file` and `@ramonak/react-excel` for parsing and previewing data
+- Vitest with Testing Library for unit and integration coverage
 
-## Como começar
+## Architecture Overview
+
+```
+
+  App.js                # Main shell that loads data and renders the layout
+  Components/           # Reusable UI (copy buttons, loaders, select wrappers)
+  View/                 # Top-level views (DefaultLayout, Result)
+  helpers/              # Parsing helpers and list builders
+  hooks/                # Custom hooks (useExcelData)
+  scss/style.scss       # Global styling entry point
+```
+
+Parsing responsibilities live inside `src/Components/handle-data`, grouped by the section they serve. Clipboard helpers sit in `src/helpers`, while lists displayed in the UI are memoised in `useExcelData` to avoid unnecessary re-computation.
+
+## Local Development
+
+### Prerequisites
+
+- Node.js 22 or newer (see `package.json` `engines`)
+- Yarn 3 (`npm install -g yarn` if needed)
+
+### Quick Start
 
 ```bash
 git clone https://github.com/Drete457/ExcelReaderAep.git
@@ -34,39 +58,31 @@ yarn install
 yarn dev
 ```
 
-Abra http://localhost:3000 para ver a aplicação em modo de desenvolvimento.
+Visit http://localhost:5173 to load the development build.
 
-## Scripts disponíveis
+### Available Scripts
 
-- `yarn dev` – inicia a aplicação em modo desenvolvimento.
-- `yarn build` – compila o bundle de produção.
-- `yarn preview` – serve localmente o bundle já construído.
-- `yarn test` / `yarn test:watch` – executa a suíte de testes com Vitest.
-- `yarn lint` / `yarn lint:fix` – valida o código com ESLint.
-- `yarn format` / `yarn format:check` – aplica ou verifica a formatação com Prettier.
+- `yarn dev` – start the Vite dev server
+- `yarn build` – emit the production bundle
+- `yarn preview` – serve the production build locally
+- `yarn test` / `yarn test:watch` – run the Vitest suite (once or watch mode)
+- `yarn lint` / `yarn lint:fix` – run ESLint and optionally auto-fix issues
+- `yarn format` / `yarn format:check` – enforce Prettier formatting in write/check mode
 
-## Estrutura principal
+## Testing & Quality
 
-```
-src/
-	App.js                # Shell principal da aplicação
-	Components/           # Componentes reutilizáveis (botões, loaders, etc.)
-	View/                 # Vistas de alto nível (layout e resultados)
-	helpers/              # Funções auxiliares de parsing e listagem
-	hooks/                # Hook personalizado que gere os dados do Excel
-	scss/style.scss       # Folha de estilos global
-```
+Tests live in `src/__tests__` and cover both the parsing helpers and key UI flows. `useExcelData` skips artificial loading delays when `NODE_ENV=test`, so the suite remains fast. Run `yarn test` for a single pass or `yarn test:watch` while iterating. Pair with `yarn lint` before commits to keep quality gates green.
 
-## Testes
+## Deployment Notes
 
-Os testes residem em `src/__tests__`. Execute `yarn test` para uma passagem única ou `yarn test:watch` durante o desenvolvimento. Os testes fazem renderização com Testing Library e simulam interações críticas.
+The production build ships through Vercel. A successful `yarn build` produces the optimized output under `dist/`. Any static hosting service that serves SPA routes can deploy the same artifact.
 
-## Contribuições
+## Contributing
 
-1. Faça um fork do repositório e crie uma branch para a sua alteração.
-2. Garanta que `yarn lint` e `yarn test` passam sem erros.
-3. Abra um Pull Request detalhando o contexto das alterações.
+1. Fork the repository and create a feature branch.
+2. Run `yarn lint` and `yarn test` to ensure the change stays green.
+3. Open a Pull Request describing the motivation and screenshots when relevant.
 
-## Licença
+## License
 
-Este projeto é distribuído sob a [licença MIT](LICENSE).
+Distributed under the [MIT License](LICENSE).

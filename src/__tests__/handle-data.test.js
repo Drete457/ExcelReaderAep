@@ -45,10 +45,7 @@ describe('exceltojson', () => {
   });
 
   it('throws when the workbook is missing the Nome header', async () => {
-    mockReadExcelFile.mockResolvedValueOnce([
-      ['ECG'],
-      ['Outro cabeçalho'],
-    ]);
+    mockReadExcelFile.mockResolvedValueOnce([['ECG'], ['Outro cabeçalho']]);
 
     const file = { name: 'dados.xlsx' };
 
@@ -184,25 +181,272 @@ describe('responsabilityPosition', () => {
     const mcr = [];
     const nucle = [];
 
-    responsabilityPosition(`${namesToSearch.ecg.toUpperCase()}`, 10, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`função ${namesToSearch.escg}`, 20, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.eca}`, 30, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.eca}`, 31, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.esca}`, 32, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ectes}`, 40, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.esctes}`, 41, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ectex}`, 50, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.esctex}`, 51, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecc}`, 60, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.escc}`, 61, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecsa}`, 70, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecacg}`, 71, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecr}`, 80, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecra}`, 81, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecacr}`, 82, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.pmcr}`, 90, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.ecnucleo}`, 100, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
-    responsabilityPosition(`cargo ${namesToSearch.escn}`, 101, alcateia, tes, tex, cla, group, others, cgData, cfRegional, mcr, nucle);
+    responsabilityPosition(
+      `${namesToSearch.ecg.toUpperCase()}`,
+      10,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `função ${namesToSearch.escg}`,
+      20,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.eca}`,
+      30,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.eca}`,
+      31,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.esca}`,
+      32,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ectes}`,
+      40,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.esctes}`,
+      41,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ectex}`,
+      50,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.esctex}`,
+      51,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecc}`,
+      60,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.escc}`,
+      61,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecsa}`,
+      70,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecacg}`,
+      71,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecr}`,
+      80,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecra}`,
+      81,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecacr}`,
+      82,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.pmcr}`,
+      90,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.ecnucleo}`,
+      100,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
+    responsabilityPosition(
+      `cargo ${namesToSearch.escn}`,
+      101,
+      alcateia,
+      tes,
+      tex,
+      cla,
+      group,
+      others,
+      cgData,
+      cfRegional,
+      mcr,
+      nucle,
+    );
 
     expect(group).toEqual([
       { namePosition: 10, bo: 18, validate: 15 },
