@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '../App';
@@ -48,11 +48,7 @@ describe('App key flows', () => {
 
     await userEvent.upload(fileInput, file);
 
-    await waitFor(() =>
-      expect(
-        screen.getByText(/Ficheiro "mock\.xlsx" carregado com sucesso/i),
-      ).toBeInTheDocument(),
-    );
+    await screen.findByText(/Ficheiro "mock\.xlsx" carregado com sucesso/i);
 
     const select = screen.getByRole('combobox');
     await userEvent.click(select);

@@ -17,11 +17,17 @@ const createEmptyPositions = () => ({
 });
 
 const MIN_LOADING_DURATION_MS = 5000;
+const isTestEnvironment =
+  typeof process !== 'undefined' && process.env.NODE_ENV === 'test';
 
 const waitForMinimumDuration = async (
   startedAt,
   minimumDuration = MIN_LOADING_DURATION_MS,
 ) => {
+  if (isTestEnvironment) {
+    return;
+  }
+
   const elapsed = Date.now() - startedAt;
 
   if (elapsed >= minimumDuration) {

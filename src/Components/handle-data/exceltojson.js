@@ -40,7 +40,21 @@ const exceltojson = async file => {
       }
 
       if (index > dataHeaderIndex) {
-        payloadRows.push(row);
+        const rowHasContent = row.some(cell => {
+          if (cell === undefined || cell === null) {
+            return false;
+          }
+
+          if (typeof cell === 'string') {
+            return cell.trim().length > 0;
+          }
+
+          return true;
+        });
+
+        if (rowHasContent) {
+          payloadRows.push(row);
+        }
       }
 
       return;
