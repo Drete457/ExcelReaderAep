@@ -198,8 +198,8 @@ input[type='file']:focus {
   position: relative;
   overflow: hidden;
   color: #ffffff;
-  padding: clamp(3rem, 8vw, 6.5rem) clamp(1.5rem, 8vw, 5rem)
-    clamp(4rem, 10vw, 7rem);
+  padding: clamp(3rem, 8vw, 2.5rem) clamp(1.5rem, 8vw, 5rem)
+    clamp(4rem, 10vw, 10rem);
   border-radius: 0 0 40px 40px;
   background: radial-gradient(
       140% 180% at 90% -30%,
@@ -275,7 +275,7 @@ input[type='file']:focus {
 
 .app-main {
   flex: 1;
-  margin-top: clamp(-4rem, -6vw, -3rem);
+  margin-top: clamp(-8rem, -12vw, -6rem);
   padding: 0 clamp(1.25rem, 6vw, 5rem) clamp(4rem, 10vw, 6rem);
   position: relative;
 }
