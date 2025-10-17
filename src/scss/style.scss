@@ -604,6 +604,10 @@ input[type='file']:focus {
     border-color 0.2s ease;
 }
 
+.botao-copiar {
+  margin-bottom: 0.2rem;
+}
+
 .botao-copiar:hover,
 .botao-copiar-todos:hover {
   transform: translateY(-1px);

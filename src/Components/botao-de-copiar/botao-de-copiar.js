@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const BotaoDeCopiar = ({ texto }) => {
   const [copiado, setCopiado] = useState(false);
@@ -7,6 +7,10 @@ const BotaoDeCopiar = ({ texto }) => {
     navigator.clipboard.writeText(texto);
     setCopiado(true);
   };
+
+  useEffect(() => {
+    setCopiado(false);
+  }, [texto]);
 
   return (
     <button
