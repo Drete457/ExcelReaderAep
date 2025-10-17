@@ -7,8 +7,7 @@ const LoadingScreen = () => (
       Controlo de Nomeações a ser carregado, por favor aguarde.
     </p>
     <p className="loading-screen__hint">
-      Estamos a preparar os dados. Isto pode demorar alguns
-      segundos.
+      Estamos a preparar os dados. Isto pode demorar alguns segundos.
     </p>
   </div>
 );
