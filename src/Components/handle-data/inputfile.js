@@ -8,6 +8,7 @@ const InputFile = ({ onFileSelected, isLoading }) => (
     <CFormInput
       type="file"
       id="custom-file-input"
+      className="file-input--accent"
       accept=".xlsx"
       disabled={isLoading}
       placeholder="Selecionar ficheiro Excel"
