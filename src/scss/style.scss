@@ -280,6 +280,17 @@ input[type='file']:focus {
   position: relative;
 }
 
+@media (max-width: 1280px) and (min-width: 993px) {
+  .app-hero {
+    padding: clamp(3rem, 8vw, 3.5rem) clamp(1.5rem, 7vw, 4rem)
+      clamp(4rem, 10vw, 6rem);
+  }
+
+  .app-main {
+    margin-top: clamp(-5rem, -9vw, -3rem);
+  }
+}
+
 .app-row {
   margin: 0;
 }
