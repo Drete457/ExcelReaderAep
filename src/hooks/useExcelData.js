@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import exceltojson from '../Components/handle-data/exceltojson';
+import excelToJson from '../Components/handle-data/excelToJson';
 import optionList from '../helpers/optionlist';
 import { namesToSearch } from '../Components/handle-data/responsability-position';
 
@@ -200,7 +200,7 @@ const useExcelData = () => {
 
     try {
       const { rows: parsedRows, headerRow: parsedHeader } =
-        await exceltojson(file);
+        await excelToJson(file);
 
       nextRows = parsedRows;
       nextHeaderRow = parsedHeader;
