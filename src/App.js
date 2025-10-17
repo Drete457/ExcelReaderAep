@@ -3,7 +3,6 @@ import {
   CRow,
   CCol,
   CCard,
-  CCardHeader,
   CCardBody,
   CButton,
   CAlert,
@@ -68,8 +67,12 @@ const App = () => {
           <header className="app-hero">
             <div className="app-hero__overlay" aria-hidden="true" />
             <div className="app-hero__content">
-              <span className="app-hero__eyebrow">Associação dos Escoteiros de Portugal</span>
-              <h1 className="app-hero__title">Conselho Jurisdicional · Controlo de Nomeações</h1>
+              <span className="app-hero__eyebrow">
+                Associação dos Escoteiros de Portugal
+              </span>
+              <h1 className="app-hero__title">
+                Conselho Jurisdicional · Controlo de Nomeações
+              </h1>
             </div>
           </header>
           <main className="app-main" aria-live="polite">
@@ -96,7 +99,11 @@ const App = () => {
                             placeholder="Escolhe o grupo pretendido"
                             autoComplete="off"
                             options={options}
-                            menuPortalTarget={typeof document !== 'undefined' ? document.body : undefined}
+                            menuPortalTarget={
+                              typeof document !== 'undefined'
+                                ? document.body
+                                : undefined
+                            }
                             menuPosition="fixed"
                             onChange={choose => {
                               if (!choose) {

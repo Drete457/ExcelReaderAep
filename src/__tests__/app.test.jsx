@@ -26,13 +26,16 @@ describe('App key flows', () => {
     mockReadExcelFile.mockImplementationOnce(
       () =>
         new Promise(resolve => {
-          setTimeout(() =>
-            resolve([
-              ['Dados iniciais'],
-              ['Código', 'Região', 'Local', 'Estado', 'ECG'],
-              ['Nome', 'Região', 'Local', 'Estado'],
-              ['123', 'Lisboa', 'Lisboa', 'Ativo', 'Chefe de Grupo'],
-            ]), 0);
+          setTimeout(
+            () =>
+              resolve([
+                ['Dados iniciais'],
+                ['Código', 'Região', 'Local', 'Estado', 'ECG'],
+                ['Nome', 'Região', 'Local', 'Estado'],
+                ['123', 'Lisboa', 'Lisboa', 'Ativo', 'Chefe de Grupo'],
+              ]),
+            0,
+          );
         }),
     );
 
@@ -78,7 +81,9 @@ describe('App key flows', () => {
 
     await userEvent.upload(fileInput, invalidFile);
 
-    await screen.findByText(/Formato inválido. Por favor seleciona um ficheiro/i);
+    await screen.findByText(
+      /Formato inválido. Por favor seleciona um ficheiro/i,
+    );
 
     expect(mockReadExcelFile).toHaveBeenCalledTimes(1);
   });

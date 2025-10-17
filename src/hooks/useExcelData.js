@@ -178,56 +178,59 @@ const useExcelData = () => {
 
   useEffect(() => () => clearStatusTimeout(), [clearStatusTimeout]);
 
-  const handleFileUpload = useCallback(async file => {
-    handleId.current += 1;
-    const currentId = handleId.current;
-    const startedAt = Date.now();
+  const handleFileUpload = useCallback(
+    async file => {
+      handleId.current += 1;
+      const currentId = handleId.current;
+      const startedAt = Date.now();
 
-    const fileName = file?.name ? `"${file.name}"` : 'selecionado';
-    scheduleStatus(
-      {
-        type: 'info',
-        message: `A carregar o ficheiro ${fileName}. Isto pode demorar alguns segundos...`,
-      },
-      { autoDismiss: false },
-    );
-    setIsLoading(true);
+      const fileName = file?.name ? `"${file.name}"` : 'selecionado';
+      scheduleStatus(
+        {
+          type: 'info',
+          message: `A carregar o ficheiro ${fileName}. Isto pode demorar alguns segundos...`,
+        },
+        { autoDismiss: false },
+      );
+      setIsLoading(true);
 
-    let nextRows = [];
-    let nextHeaderRow;
-    let nextStatus = { type: 'idle', message: '' };
-    let nextStatusOptions;
+      let nextRows = [];
+      let nextHeaderRow;
+      let nextStatus = { type: 'idle', message: '' };
+      let nextStatusOptions;
 
-    try {
-      const { rows: parsedRows, headerRow: parsedHeader } =
-        await excelToJson(file);
+      try {
+        const { rows: parsedRows, headerRow: parsedHeader } =
+          await excelToJson(file);
 
-      nextRows = parsedRows;
-      nextHeaderRow = parsedHeader;
-      nextStatus = {
-        type: 'success',
-        message: `Ficheiro ${fileName} carregado com sucesso. Escolhe um item para visualizar os detalhes.`,
-      };
-    } catch (err) {
-      const message =
-        err instanceof Error
-          ? err.message
-          : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
-      nextRows = [];
-      nextHeaderRow = undefined;
-      nextStatus = { type: 'error', message };
-      nextStatusOptions = { autoDismiss: true };
-    } finally {
-      await waitForMinimumDuration(startedAt);
+        nextRows = parsedRows;
+        nextHeaderRow = parsedHeader;
+        nextStatus = {
+          type: 'success',
+          message: `Ficheiro ${fileName} carregado com sucesso. Escolhe um item para visualizar os detalhes.`,
+        };
+      } catch (err) {
+        const message =
+          err instanceof Error
+            ? err.message
+            : 'Ocorreu um erro ao ler o ficheiro seleccionado.';
+        nextRows = [];
+        nextHeaderRow = undefined;
+        nextStatus = { type: 'error', message };
+        nextStatusOptions = { autoDismiss: true };
+      } finally {
+        await waitForMinimumDuration(startedAt);
 
-      if (handleId.current === currentId) {
-        setRows(nextRows);
-        setHeaderRow(nextHeaderRow);
-        scheduleStatus(nextStatus, nextStatusOptions);
-        setIsLoading(false);
+        if (handleId.current === currentId) {
+          setRows(nextRows);
+          setHeaderRow(nextHeaderRow);
+          scheduleStatus(nextStatus, nextStatusOptions);
+          setIsLoading(false);
+        }
       }
-    }
-  }, [scheduleStatus]);
+    },
+    [scheduleStatus],
+  );
 
   const reset = useCallback(() => {
     handleId.current += 1;

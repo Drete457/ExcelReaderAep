@@ -11,9 +11,7 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
 
     setCheckbox(newData);
     setListaDosNomes(info => {
-      const sectionNames = newData
-        .map(entry => entry.name)
-        .filter(Boolean);
+      const sectionNames = newData.map(entry => entry.name).filter(Boolean);
       const uncheckedNames = newData
         .filter(entry => !entry.checked && entry.name)
         .map(entry => entry.name);
@@ -51,8 +49,8 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
         {name && (
           <div className="row pt-1 justify-content-center g-3">
             <CCol md="5">
-              <section className='d-flex'>
-                <label className="form-label d-flex align-items-center fw-semibold">
+              <section className="d-flex justify-content-between mt-2">
+                <label className="form-label d-flex align-items-center fw-semibold mb-0">
                   {index === 0 ? t1 : t2 + index}
                   <input
                     type="checkbox"
@@ -61,7 +59,7 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
                     onChange={() => handleCheckbox(index)}
                   />
                 </label>
-                <div className="d-inline-block ms-2">
+                <div className="d-inline-flex">
                   <BotaoDeCopiar texto={name} />
                 </div>
               </section>

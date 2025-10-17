@@ -24,8 +24,12 @@ body {
 body {
   margin: 0;
   background-color: var(--scout-surface-alt);
-  background-image:
-    radial-gradient(120% 120% at 0% 0%, rgba(97, 35, 153, 0.92) 0%, rgba(46, 24, 86, 0.85) 38%, rgba(46, 24, 86, 0) 68%),
+  background-image: radial-gradient(
+      120% 120% at 0% 0%,
+      rgba(97, 35, 153, 0.92) 0%,
+      rgba(46, 24, 86, 0.85) 38%,
+      rgba(46, 24, 86, 0) 68%
+    ),
     linear-gradient(180deg, #f7f8ff 0%, #ffffff 60%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -80,7 +84,10 @@ input[type='file'] {
   color: var(--scout-text);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   border-radius: 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
   backdrop-filter: blur(6px);
 }
 
@@ -91,7 +98,11 @@ input[type='file']:focus {
   box-shadow:
     0 0 0 3px rgba(150, 186, 10, 0.28),
     0 0 0 6px rgba(97, 35, 153, 0.22);
-  background: linear-gradient(135deg, rgba(150, 186, 10, 0.14), rgba(97, 35, 153, 0.14));
+  background: linear-gradient(
+    135deg,
+    rgba(150, 186, 10, 0.14),
+    rgba(97, 35, 153, 0.14)
+  );
   transform: translateY(-1px);
 }
 
@@ -112,7 +123,9 @@ input[type='file']:focus {
   background-color: #ffffff;
   accent-color: var(--scout-blue);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .list-checkbox:focus-visible {
@@ -137,7 +150,9 @@ input[type='file']:focus {
   align-items: center;
   gap: 0.75rem;
   box-shadow: 0 16px 40px rgba(32, 23, 64, 0.16);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .file-uploader:hover {
@@ -150,7 +165,9 @@ input[type='file']:focus {
 .btn:active {
   font-weight: 600;
   border-radius: 999px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn-primary {
@@ -190,20 +207,38 @@ input[type='file']:focus {
   position: relative;
   overflow: hidden;
   color: #ffffff;
-  padding: clamp(3rem, 8vw, 6.5rem) clamp(1.5rem, 8vw, 5rem) clamp(4rem, 10vw, 7rem);
+  padding: clamp(3rem, 8vw, 6.5rem) clamp(1.5rem, 8vw, 5rem)
+    clamp(4rem, 10vw, 7rem);
   border-radius: 0 0 40px 40px;
-  background:
-    radial-gradient(140% 180% at 90% -30%, rgba(150, 186, 10, 0.75) 0%, rgba(150, 186, 10, 0) 55%),
-    radial-gradient(120% 120% at -10% 0%, rgba(97, 35, 153, 0.95) 0%, rgba(97, 35, 153, 0.6) 50%, rgba(97, 35, 153, 0) 70%),
-    linear-gradient(135deg, #2f1a57 0%, #4d2480 60%, #612399 100%);  
+  background: radial-gradient(
+      140% 180% at 90% -30%,
+      rgba(150, 186, 10, 0.75) 0%,
+      rgba(150, 186, 10, 0) 55%
+    ),
+    radial-gradient(
+      120% 120% at -10% 0%,
+      rgba(97, 35, 153, 0.95) 0%,
+      rgba(97, 35, 153, 0.6) 50%,
+      rgba(97, 35, 153, 0) 70%
+    ),
+    linear-gradient(135deg, #2f1a57 0%, #4d2480 60%, #612399 100%);
 }
 
 .app-hero__overlay {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 45%),
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0px, rgba(255, 255, 255, 0.06) 6px, rgba(255, 255, 255, 0) 6px, rgba(255, 255, 255, 0) 12px);
+  background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0) 45%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 6px,
+      rgba(255, 255, 255, 0) 6px,
+      rgba(255, 255, 255, 0) 12px
+    );
   opacity: 0.55;
 }
 
@@ -262,7 +297,11 @@ input[type='file']:focus {
   width: 100%;
   overflow: hidden;
   backdrop-filter: blur(4px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.92) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.92) 100%
+  );
 }
 
 .app-card__header {
@@ -271,9 +310,12 @@ input[type='file']:focus {
   gap: 0.75rem;
   padding: clamp(2rem, 4vw, 2.75rem) clamp(2rem, 4vw, 3rem);
   border-bottom: 1px solid rgba(97, 35, 153, 0.08);
-  background:
-    linear-gradient(90deg, rgba(97, 35, 153, 0.08) 0%, rgba(150, 186, 10, 0.06) 100%)
-    , var(--scout-surface);
+  background: linear-gradient(
+      90deg,
+      rgba(97, 35, 153, 0.08) 0%,
+      rgba(150, 186, 10, 0.06) 100%
+    ),
+    var(--scout-surface);
 }
 
 .app-card__badge {
@@ -326,7 +368,9 @@ input[type='file']:focus {
   border-radius: 18px !important;
   min-height: 56px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .app-select__control--is-focused {
@@ -392,7 +436,11 @@ input[type='file']:focus {
   padding-inline: clamp(1.25rem, 3vw, 1.75rem) !important;
   padding-block: 0.75rem !important;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(124, 140, 255, 0.14), rgba(163, 145, 255, 0.16));
+  background: linear-gradient(
+    135deg,
+    rgba(124, 140, 255, 0.14),
+    rgba(163, 145, 255, 0.16)
+  );
   border-width: 2px;
   border-color: rgba(124, 140, 255, 0.45);
 }
@@ -413,26 +461,39 @@ input[type='file']:focus {
 }
 
 .status-alert.alert-info {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 246, 223, 0.92));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(243, 246, 223, 0.92)
+  );
   color: var(--scout-purple-dark);
   border-color: rgba(150, 186, 10, 0.35);
 }
 
 .status-alert.alert-success {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(235, 247, 214, 0.96));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(235, 247, 214, 0.96)
+  );
   color: var(--scout-blue-dark);
   border-color: rgba(150, 186, 10, 0.42);
 }
 
 .status-alert.alert-danger {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(253, 232, 236, 0.93));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(253, 232, 236, 0.93)
+  );
   color: #a1223c;
   border-color: rgba(161, 34, 60, 0.2);
 }
 
 @media (max-width: 992px) {
   .app-hero {
-    padding: clamp(2.5rem, 10vw, 4rem) clamp(1.25rem, 7vw, 3rem) clamp(3rem, 9vw, 4.5rem);
+    padding: clamp(2.5rem, 10vw, 4rem) clamp(1.25rem, 7vw, 3rem)
+      clamp(3rem, 9vw, 4.5rem);
     border-radius: 0 0 28px 28px;
   }
 
@@ -502,10 +563,16 @@ input[type='file']:focus {
   border-radius: 16px !important;
   border: 1px solid rgba(29, 34, 54, 0.24) !important;
   min-height: 52px !important;
-  background: linear-gradient(135deg, rgba(0, 87, 163, 0.08), rgba(91, 43, 138, 0.08))
-    !important;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 87, 163, 0.08),
+    rgba(91, 43, 138, 0.08)
+  ) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .app-select__control--is-focused {
@@ -513,8 +580,11 @@ input[type='file']:focus {
   box-shadow:
     0 0 0 3px rgba(0, 87, 163, 0.25),
     0 0 0 6px rgba(91, 43, 138, 0.18) !important;
-  background: linear-gradient(135deg, rgba(0, 87, 163, 0.14), rgba(91, 43, 138, 0.14))
-    !important;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 87, 163, 0.14),
+    rgba(91, 43, 138, 0.14)
+  ) !important;
   transform: translateY(-1px);
 }
 
@@ -533,11 +603,19 @@ input[type='file']:focus {
   justify-content: center;
   line-height: 1;
   border: 2px solid rgba(124, 140, 255, 0.55);
-  background: linear-gradient(135deg, rgba(124, 140, 255, 0.22), rgba(163, 145, 255, 0.28));
+  background: linear-gradient(
+    135deg,
+    rgba(124, 140, 255, 0.22),
+    rgba(163, 145, 255, 0.28)
+  );
   color: #3f4ab2;
   box-shadow: 0 10px 22px rgba(94, 86, 204, 0.22);
   backdrop-filter: blur(2px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .botao-copiar:hover,
@@ -549,14 +627,22 @@ input[type='file']:focus {
 }
 
 .botao-copiar-copiado {
-  background: linear-gradient(135deg, rgba(102, 114, 255, 0.35), rgba(150, 134, 255, 0.4));
+  background: linear-gradient(
+    135deg,
+    rgba(102, 114, 255, 0.35),
+    rgba(150, 134, 255, 0.4)
+  );
   color: #ffffff;
   border-color: rgba(124, 140, 255, 0.85);
   box-shadow: 0 12px 30px rgba(106, 94, 233, 0.24);
 }
 
 .botao-copiar-nao-copiado {
-  background: linear-gradient(135deg, rgba(124, 140, 255, 0.22), rgba(163, 145, 255, 0.28));
+  background: linear-gradient(
+    135deg,
+    rgba(124, 140, 255, 0.22),
+    rgba(163, 145, 255, 0.28)
+  );
 }
 
 .botao-copiar-todos-div {

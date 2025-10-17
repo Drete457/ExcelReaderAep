@@ -10,7 +10,7 @@ const InputFile = ({ onFileSelected, isLoading }) => (
       id="custom-file-input"
       accept=".xlsx"
       disabled={isLoading}
-      placeholder='Selecionar ficheiro Excel'
+      placeholder="Selecionar ficheiro Excel"
       aria-label="Selecionar ficheiro Excel"
       data-testid="excel-file-input"
       onChange={event => {
