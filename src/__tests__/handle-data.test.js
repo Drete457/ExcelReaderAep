@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import exceltojson from '../Components/handle-data/excelToJson';
+import excelToJson from '../Components/handle-data/excelToJson';
 import allleaders from '../Components/handle-data/allleaders';
 import allbo from '../Components/handle-data/allbo';
 import cfRegionalData from '../Components/handle-data/cfRegional';
@@ -17,7 +17,7 @@ vi.mock('read-excel-file', () => ({
   default: mockReadExcelFile,
 }));
 
-describe('exceltojson', () => {
+describe('excelToJson', () => {
   beforeEach(() => {
     mockReadExcelFile.mockReset();
   });
@@ -34,7 +34,7 @@ describe('exceltojson', () => {
 
     const file = { name: 'dados.xlsx' };
 
-    const { rows, headerRow } = await exceltojson(file);
+  const { rows, headerRow } = await excelToJson(file);
 
     expect(mockReadExcelFile).toHaveBeenCalledWith(file);
     expect(headerRow).toEqual(['ECG', 'Another header']);
@@ -49,13 +49,13 @@ describe('exceltojson', () => {
 
     const file = { name: 'dados.xlsx' };
 
-    await expect(exceltojson(file)).rejects.toThrow(
+  await expect(excelToJson(file)).rejects.toThrow(
       'Não foi possível localizar a linha de cabeçalhos (Nome).',
     );
   });
 
   it('rejects when no file is provided', async () => {
-    await expect(exceltojson(undefined)).rejects.toThrow(
+  await expect(excelToJson(undefined)).rejects.toThrow(
       'Nenhum ficheiro foi selecionado.',
     );
   });

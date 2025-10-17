@@ -4,7 +4,7 @@ const isString = value => typeof value === 'string';
 
 const normalizeValue = value => (isString(value) ? value.trim() : value);
 
-const exceltojson = async file => {
+const excelToJson = async file => {
   if (!file) {
     throw new Error('Nenhum ficheiro foi selecionado.');
   }
@@ -89,4 +89,4 @@ const exceltojson = async file => {
   };
 };
 
-export default exceltojson;
+export default excelToJson;
