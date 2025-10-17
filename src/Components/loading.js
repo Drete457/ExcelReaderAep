@@ -10,7 +10,7 @@ const LoadingScreen = () => (
       />
     </CRow>
     <p className="h4 d-flex justify-content-center pt-5 pb-3">
-      Controlo de Nomeações a ser analisado por Machine Learning localmente,
+      Controlo de Nomeações a ser carregado,
       por favor aguarde
     </p>
   </>

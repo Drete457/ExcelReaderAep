@@ -51,18 +51,20 @@ const NucleoList = ({ names, bo, t1, t2, validation, setListaDosNomes }) => {
         {name && (
           <div className="row pt-1 justify-content-center g-3">
             <CCol md="5">
-              <label className="form-label d-flex align-items-center fw-semibold">
-                {index === 0 ? t1 : t2 + index}
-                <input
-                  type="checkbox"
-                  className="form-check-input ms-2 list-checkbox"
-                  checked={checkbox[index]?.checked}
-                  onChange={() => handleCheckbox(index)}
-                />
-              </label>
-              <div className="d-inline-block ms-2">
-                <BotaoDeCopiar texto={name} />
-              </div>
+              <section className='d-flex'>
+                <label className="form-label d-flex align-items-center fw-semibold">
+                  {index === 0 ? t1 : t2 + index}
+                  <input
+                    type="checkbox"
+                    className="form-check-input ms-2 list-checkbox"
+                    checked={checkbox[index]?.checked}
+                    onChange={() => handleCheckbox(index)}
+                  />
+                </label>
+                <div className="d-inline-block ms-2">
+                  <BotaoDeCopiar texto={name} />
+                </div>
+              </section>
               <CFormInput
                 id={`nucleo-nome-${index}`}
                 value={name || ''}
