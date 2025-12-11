@@ -1,4 +1,4 @@
-import type { ExcelRow, Positions, BOData, ExcelCellValue } from '../../types';
+import type { ExcelRow, Positions, BOData, ExcelCellValue } from '@/types';
 
 const allbo = (result: ExcelRow, position: Positions): BOData => {
   const alcateiaBO: ExcelCellValue[] = [];

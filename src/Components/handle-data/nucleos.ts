@@ -3,7 +3,7 @@ import type {
   Positions,
   NucleoData,
   ExcelCellValue,
-} from '../../types';
+} from '@/types';
 
 const nData = (result: ExcelRow, positions: Positions): NucleoData => {
   const ncf: ExcelCellValue[] = [];

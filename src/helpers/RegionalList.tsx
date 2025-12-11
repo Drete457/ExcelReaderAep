@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import BotaoDeCopiar from '../Components/botao-de-copiar/botao-de-copiar';
-import type { ExcelCellValue, CheckboxEntry } from '../types';
+import BotaoDeCopiar from '@/Components/botao-de-copiar/botao-de-copiar';
+import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
 interface RegionalListProps {
   names: ExcelCellValue[];

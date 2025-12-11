@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import excelToJson from '../Components/handle-data/excelToJson';
-import optionList from '../helpers/optionlist';
-import { namesToSearch } from '../Components/handle-data/responsability-position';
+import excelToJson from '@/Components/handle-data/excelToJson';
+import optionList from '@/helpers/optionlist';
+import { namesToSearch } from '@/Components/handle-data/responsability-position';
 import type {
   Positions,
   RolePosition,
@@ -10,7 +10,7 @@ import type {
   ExcelRow,
   ExcelCellValue,
   Status,
-} from '../types';
+} from '@/types';
 
 const createEmptyPositions = (): Positions => ({
   alcateia: [],

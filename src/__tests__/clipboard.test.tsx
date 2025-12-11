@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import BotaoDeCopiarTodos from '../Components/botao-de-copiar-todos/botao-de-copiar-todos';
+import BotaoDeCopiarTodos from '@/Components/botao-de-copiar-todos/botao-de-copiar-todos';
 
 describe('BotaoDeCopiarTodos', () => {
   it('copies all remaining names to the clipboard and updates the button label', async () => {

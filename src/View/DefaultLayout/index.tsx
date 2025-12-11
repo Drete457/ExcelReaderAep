@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import SuspenseFallback from '../../Components/feedback/SuspenseFallback';
+import SuspenseFallback from '@/Components/feedback/SuspenseFallback';
 
 interface DefaultLayoutProps {
   children: React.ReactNode;

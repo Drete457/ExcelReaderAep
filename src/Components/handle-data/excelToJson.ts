@@ -1,5 +1,5 @@
 import xlsxFile, { Row } from 'read-excel-file';
-import type { ExcelRow, ExcelCellValue } from '../../types';
+import type { ExcelRow, ExcelCellValue } from '@/types';
 
 const isString = (value: unknown): value is string => typeof value === 'string';
 

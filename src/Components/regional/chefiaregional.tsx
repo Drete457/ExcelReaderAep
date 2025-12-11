@@ -1,5 +1,5 @@
-import RegionalList from '../../helpers/RegionalList';
-import type { ExcelCellValue } from '../../types';
+import RegionalList from '@/helpers/RegionalList';
+import type { ExcelCellValue } from '@/types';
 
 interface ChefiaRegionalProps {
   names: ExcelCellValue[];

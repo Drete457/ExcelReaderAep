@@ -1,30 +1,30 @@
 import { useState, useEffect, lazy, memo } from 'react';
-import allbo from '../../Components/handle-data/allbo';
-import allleaders from '../../Components/handle-data/allleaders';
-import cfRegionalData from '../../Components/handle-data/cfRegional';
-import nData from '../../Components/handle-data/nucleos';
-import type { ExcelRow, Positions, ExcelCellValue } from '../../types';
+import allbo from '@/Components/handle-data/allbo';
+import allleaders from '@/Components/handle-data/allleaders';
+import cfRegionalData from '@/Components/handle-data/cfRegional';
+import nData from '@/Components/handle-data/nucleos';
+import type { ExcelRow, Positions, ExcelCellValue } from '@/types';
 
 const ChefiaDeGrupo = lazy(
-  () => import('../../Components/groups/chefiadegrupo'),
+  () => import('@/Components/groups/chefiadegrupo'),
 );
 const ChefiaDaAlcateia = lazy(
-  () => import('../../Components/groups/chefiadaalcateia'),
+  () => import('@/Components/groups/chefiadaalcateia'),
 );
 const TribodeEscoteiros = lazy(
-  () => import('../../Components/groups/tribodeescoteiros'),
+  () => import('@/Components/groups/tribodeescoteiros'),
 );
 const TribodeExploradores = lazy(
-  () => import('../../Components/groups/tribodeexploradores'),
+  () => import('@/Components/groups/tribodeexploradores'),
 );
-const Cla = lazy(() => import('../../Components/groups/cla'));
+const Cla = lazy(() => import('@/Components/groups/cla'));
 const RestoDaChefia = lazy(
-  () => import('../../Components/groups/restodachefia'),
+  () => import('@/Components/groups/restodachefia'),
 );
 const ChefiaRegional = lazy(
-  () => import('../../Components/regional/chefiaregional'),
+  () => import('@/Components/regional/chefiaregional'),
 );
-const Nucleo = lazy(() => import('../../Components/nucleo/nucleo'));
+const Nucleo = lazy(() => import('@/Components/nucleo/nucleo'));
 
 interface ResultProps {
   result: ExcelRow;

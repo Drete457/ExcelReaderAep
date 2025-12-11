@@ -3,7 +3,7 @@ import type {
   Positions,
   LeaderData,
   ExcelCellValue,
-} from '../../types';
+} from '@/types';
 
 const allleaders = (result: ExcelRow, position: Positions): LeaderData => {
   const alcateiaNames: ExcelCellValue[] = [];

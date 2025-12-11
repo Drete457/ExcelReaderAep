@@ -1,5 +1,5 @@
-import NucleoList from '../../helpers/NucleoList';
-import type { ExcelCellValue } from '../../types';
+import NucleoList from '@/helpers/NucleoList';
+import type { ExcelCellValue } from '@/types';
 
 interface NucleoProps {
   names: ExcelCellValue[];

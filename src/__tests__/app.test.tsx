@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import App from '../App';
+import App from '@/App';
 
 const { mockReadExcelFile } = vi.hoisted(() => ({
   mockReadExcelFile: vi.fn(),
@@ -12,7 +12,7 @@ vi.mock('read-excel-file', () => ({
   default: mockReadExcelFile,
 }));
 
-vi.mock('../View/Result', () => ({
+vi.mock('@/View/Result', () => ({
   __esModule: true,
   default: () => <div data-testid="result-panel">Resultado disponível</div>,
 }));

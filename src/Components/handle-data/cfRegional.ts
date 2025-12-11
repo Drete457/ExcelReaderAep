@@ -3,7 +3,7 @@ import type {
   Positions,
   RegionalData,
   ExcelCellValue,
-} from '../../types';
+} from '@/types';
 
 const cfRegionalData = (
   result: ExcelRow,

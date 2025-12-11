@@ -1,4 +1,4 @@
-import type { RolePosition, CGDataPosition } from '../../types';
+import type { RolePosition, CGDataPosition } from '@/types';
 
 export const namesToSearch = {
   ecg: 'ecg', // Escoteiro Chefe de Grupo

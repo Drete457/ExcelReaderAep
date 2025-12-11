@@ -1,4 +1,4 @@
-import type { ExcelRow, SelectOption } from '../types';
+import type { ExcelRow, SelectOption } from '@/types';
 
 const optionList = (list: ExcelRow[]): SelectOption[] => {
   const array: SelectOption[] = [];

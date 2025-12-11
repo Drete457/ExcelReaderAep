@@ -1,19 +1,19 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import excelToJson from '../Components/handle-data/excelToJson';
-import allleaders from '../Components/handle-data/allleaders';
-import allbo from '../Components/handle-data/allbo';
-import cfRegionalData from '../Components/handle-data/cfRegional';
-import nData from '../Components/handle-data/nucleos';
+import excelToJson from '@/Components/handle-data/excelToJson';
+import allleaders from '@/Components/handle-data/allleaders';
+import allbo from '@/Components/handle-data/allbo';
+import cfRegionalData from '@/Components/handle-data/cfRegional';
+import nData from '@/Components/handle-data/nucleos';
 import responsabilityPosition, {
   namesToSearch,
   type ResponsabilityPositionContext,
-} from '../Components/handle-data/responsability-position';
+} from '@/Components/handle-data/responsability-position';
 import type {
   Positions,
   RolePosition,
   CGDataPosition,
   ExcelRow,
-} from '../types';
+} from '@/types';
 
 const { mockReadExcelFile } = vi.hoisted(() => ({
   mockReadExcelFile: vi.fn(),
