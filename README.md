@@ -22,21 +22,21 @@ Web utility that reads the Controlo de Nomeações workbook used by the Associa�
 
 ## Tech Stack
 
-- React 19 + Vite 5
+- React 19 + Vite 7 + TypeScript
 - CoreUI Pro layout components
 - Sass (global tokens and BEM-style overrides)
-- `read-excel-file` and `@ramonak/react-excel` for parsing and previewing data
+- `read-excel-file` for parsing Excel data
 - Vitest with Testing Library for unit and integration coverage
 
 ## Architecture Overview
 
 ```
-
-  App.js                # Main shell that loads data and renders the layout
+  App.tsx               # Main shell that loads data and renders the layout
   Components/           # Reusable UI (copy buttons, loaders, select wrappers)
   View/                 # Top-level views (DefaultLayout, Result)
   helpers/              # Parsing helpers and list builders
   hooks/                # Custom hooks (useExcelData)
+  types/                # TypeScript type definitions
   scss/style.scss       # Global styling entry point
 ```
 
@@ -58,16 +58,17 @@ yarn install
 yarn dev
 ```
 
-Visit http://localhost:5173 to load the development build.
+Visit http://localhost:3000 to load the development build.
 
 ### Available Scripts
 
 - `yarn dev` – start the Vite dev server
-- `yarn build` – emit the production bundle
+- `yarn build` – type-check and emit the production bundle
 - `yarn preview` – serve the production build locally
 - `yarn test` / `yarn test:watch` – run the Vitest suite (once or watch mode)
 - `yarn lint` / `yarn lint:fix` – run ESLint and optionally auto-fix issues
 - `yarn format` / `yarn format:check` – enforce Prettier formatting in write/check mode
+- `yarn typecheck` – run TypeScript type checking without emitting files
 
 ## Testing & Quality
 
