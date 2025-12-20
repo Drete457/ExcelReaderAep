@@ -2,7 +2,7 @@
 @use '@coreui/coreui-pro/scss/coreui';
 
 // Import UI components styles
-@import '../Components/ui/Skeleton.scss';
+@use '../Components/ui/Skeleton.scss';
 
 // ==============================
 // Theme Tokens

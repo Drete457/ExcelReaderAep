@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import BotaoDeCopiarTodos from '@/Components/botao-de-copiar-todos/botao-de-copiar-todos';
+import CopyAllButton from '@/Components/copy-all-button/copy-all-button';
 
-describe('BotaoDeCopiarTodos', () => {
+describe('CopyAllButton', () => {
   it('copies all remaining names to the clipboard and updates the button label', async () => {
     const names = ['Alice', 'Bruno'];
 
-    render(<BotaoDeCopiarTodos texto={names} />);
+    render(<CopyAllButton names={names} />);
 
     const button = screen.getByRole('button', {
       name: /Copiar todos os nomes não selecionados/i,
@@ -24,7 +24,7 @@ describe('BotaoDeCopiarTodos', () => {
   });
 
   it('resets the copied state when the list of names changes', async () => {
-    const { rerender } = render(<BotaoDeCopiarTodos texto={['Ana']} />);
+    const { rerender } = render(<CopyAllButton names={['Ana']} />);
 
     const button = screen.getByRole('button', {
       name: /Copiar todos os nomes não selecionados/i,
@@ -37,7 +37,7 @@ describe('BotaoDeCopiarTodos', () => {
       }),
     ).toBeInTheDocument();
 
-    rerender(<BotaoDeCopiarTodos texto={['Sofia']} />);
+    rerender(<CopyAllButton names={['Sofia']} />);
 
     expect(
       screen.getByRole('button', {

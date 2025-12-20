@@ -3,7 +3,7 @@ import { createContext, useState, useCallback, ReactNode } from 'react';
 export interface ClipboardContextType {
   namesList: string[];
   totalNames: number;
-  setNamesList: (names: string[]) => void;
+  setNamesList: (names: string[] | ((prev: string[]) => string[])) => void;
   setTotalNames: (total: number) => void;
   resetClipboard: () => void;
 }

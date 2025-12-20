@@ -40,7 +40,7 @@ const RegionalList: React.FC<RegionalListProps> = ({
     newData[index].checked = !newData[index].checked;
 
     setCheckbox(newData);
-    setNamesList(info => {
+    setNamesList((info: string[]) => {
       const sectionNames = newData
         .map(entry => entry.name)
         .filter(
@@ -50,7 +50,9 @@ const RegionalList: React.FC<RegionalListProps> = ({
         .filter(entry => !entry.checked && entry.name)
         .map(entry => entry.name)
         .filter((name): name is string => typeof name === 'string');
-      const preserved = info.filter(item => !sectionNames.includes(item));
+      const preserved = info.filter(
+        (item: string) => !sectionNames.includes(item),
+      );
 
       return [...preserved, ...uncheckedNames];
     });
