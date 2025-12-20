@@ -3,11 +3,11 @@ import type { ExcelRow, Positions, NucleoData, ExcelCellValue } from '@/types';
 /**
  * Extracts núcleo (nucleus) data from Excel row.
  * Collects nucleus chief names, validation dates, and BO numbers.
- * 
+ *
  * @param result - Excel row containing nucleus data
  * @param positions - Position mappings with column indices
  * @returns Object containing nucleus chief, validity, and BO arrays
- * 
+ *
  * @example
  * ```tsx
  * const nucleus = nData(selectedRow, positions);

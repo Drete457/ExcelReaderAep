@@ -19,7 +19,7 @@ interface SelectProps
 /**
  * Standardized select dropdown component with accessibility and fixed positioning.
  * Wraps react-select with default configuration for menu portal and positioning.
- * 
+ *
  * @example
  * ```tsx
  * <Select
@@ -29,7 +29,7 @@ interface SelectProps
  *   placeholder="Choose..."
  * />
  * ```
- * 
+ *
  * @param props - Select properties including react-select props
  * @returns A select dropdown with fixed positioning and accessibility
  */

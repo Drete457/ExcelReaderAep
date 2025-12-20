@@ -1,23 +1,31 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 interface CopyAllButtonProps {
   names: string[];
 }
 
 const CopyAllButton: React.FC<CopyAllButtonProps> = ({ names }) => {
-  const [copied, setCopied] = useState<boolean>(false);
+  const [copiedNames, setCopiedNames] = useState<string>('');
+
+  // Memoize current names string for comparison
+  const currentNames = useMemo(
+    () =>
+      names
+        .filter(Boolean)
+        .map(name => name.trim())
+        .join(', '),
+    [names],
+  );
+
+  // Derive copied state by comparing current names with what was copied
+  const copied = copiedNames === currentNames && copiedNames !== '';
 
   const handleCopyAll = async (): Promise<void> => {
     try {
-      const namesToCopy = names
-        .filter(Boolean)
-        .map(name => name.trim())
-        .join(', ');
-
-      await navigator.clipboard.writeText(namesToCopy);
-      setCopied(true);
+      await navigator.clipboard.writeText(currentNames);
+      setCopiedNames(currentNames);
       // Auto-reset after 2 seconds
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopiedNames(''), 2000);
     } catch (error) {
       console.error('Failed to copy all names:', error);
     }

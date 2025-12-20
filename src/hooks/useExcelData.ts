@@ -64,7 +64,7 @@ const waitForMinimumDuration = async (
  * Builds a positions map from the header row of the Excel file.
  * Categorizes positions by role type and assigns column indices for data extraction.
  * @internal
- * 
+ *
  * @param headerRow - First row of Excel data containing position names
  * @returns Categorized positions with column indices
  */
@@ -209,19 +209,19 @@ interface UseExcelDataReturn {
 /**
  * Custom hook for managing Excel file data processing and state.
  * Handles file upload, parsing, position mapping, and loading states with error handling.
- * 
+ *
  * Features:
  * - Excel file parsing and validation
  * - Position categorization from header row
  * - Loading state with minimum duration for UX
  * - Status messages with auto-dismiss
  * - Group options generation for dropdowns
- * 
+ *
  * @example
  * ```tsx
  * function ExcelUploader() {
  *   const { handleFileUpload, rows, options, isLoading, status } = useExcelData();
- *   
+ *
  *   return (
  *     <div>
  *       <input type="file" onChange={(e) => handleFileUpload(e.target.files[0])} />
@@ -232,7 +232,7 @@ interface UseExcelDataReturn {
  *   );
  * }
  * ```
- * 
+ *
  * @returns Object containing Excel data, loading state, and control functions
  */
 const useExcelData = (): UseExcelDataReturn => {

@@ -3,11 +3,11 @@ import type { ExcelRow, Positions, LeaderData, ExcelCellValue } from '@/types';
 /**
  * Extracts leader names and group council data from Excel row.
  * Collects names from positions mapping for all sections plus council data.
- * 
+ *
  * @param result - Excel row containing group data
  * @param position - Position mappings with column indices
  * @returns Object containing name arrays for each section and council data
- * 
+ *
  * @example
  * ```tsx
  * const leaders = allleaders(selectedRow, positions);

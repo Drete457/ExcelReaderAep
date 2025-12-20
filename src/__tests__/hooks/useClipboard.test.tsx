@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { useClipboard } from '@/contexts/useClipboard';
 import { ClipboardProvider } from '@/contexts/ClipboardContext';

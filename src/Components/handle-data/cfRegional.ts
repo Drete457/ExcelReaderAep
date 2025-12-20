@@ -8,11 +8,11 @@ import type {
 /**
  * Extracts regional council (Conselho Fiscal Regional) data from Excel row.
  * Collects names, BO numbers, validation data, and MCR (Mesa do Conselho Regional) data.
- * 
+ *
  * @param result - Excel row containing regional data
  * @param positions - Position mappings with column indices
  * @returns Object containing regional council arrays and MCR data
- * 
+ *
  * @example
  * ```tsx
  * const regional = cfRegionalData(selectedRow, positions);

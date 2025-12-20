@@ -15,14 +15,14 @@ interface ButtonProps extends Omit<ComponentProps<typeof CButton>, 'children'> {
 /**
  * Standardized button component with built-in accessibility.
  * Wraps CoreUI's CButton with automatic aria-label generation from text content.
- * 
+ *
  * @example
  * ```tsx
  * <Button color="primary" onClick={handleClick}>
  *   Click Me
  * </Button>
  * ```
- * 
+ *
  * @param props - Button properties including CoreUI CButton props
  * @returns A button element with accessibility enhancements
  */

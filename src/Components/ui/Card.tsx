@@ -13,14 +13,14 @@ interface CardProps extends ComponentProps<typeof CCard> {
 /**
  * Standardized card container component.
  * Wraps CoreUI's CCard with automatic 'app-card' className.
- * 
+ *
  * @example
  * ```tsx
  * <Card>
  *   <CardBody>Content here</CardBody>
  * </Card>
  * ```
- * 
+ *
  * @param props - Card properties including CoreUI CCard props
  * @returns A card container element with standard styling
  */
@@ -48,7 +48,7 @@ interface CardBodyProps extends ComponentProps<typeof CCardBody> {
 /**
  * Standardized card body component.
  * Wraps CoreUI's CCardBody for consistent card content styling.
- * 
+ *
  * @example
  * ```tsx
  * <CardBody>
@@ -56,7 +56,7 @@ interface CardBodyProps extends ComponentProps<typeof CCardBody> {
  *   <p>Description</p>
  * </CardBody>
  * ```
- * 
+ *
  * @param props - CardBody properties including CoreUI CCardBody props
  * @returns A card body element
  */

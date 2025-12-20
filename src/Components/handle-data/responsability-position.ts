@@ -3,7 +3,7 @@ import type { RolePosition, CGDataPosition } from '@/types';
 /**
  * Mapping of position abbreviations to full Portuguese role names.
  * Used for matching header row values to categorize positions.
- * 
+ *
  * @example
  * 'ecg' -> 'Escoteiro Chefe de Grupo' (Group Chief Scout)
  * 'eca' -> 'Escoteiro Chefe de Alcateia' (Pack Chief Scout)
@@ -43,7 +43,7 @@ interface ResponsabilityPositionContext {
 /**
  * Categorizes a position from header row into appropriate role collection.
  * Assigns column indices for name, BO, and validation data based on position type.
- * 
+ *
  * @internal
  * @param responsibility - Position name from header row (lowercase)
  * @param index - Column index in Excel

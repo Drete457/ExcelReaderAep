@@ -11,7 +11,7 @@ const isString = (value: unknown): value is string => typeof value === 'string';
  * Normalizes Excel cell values to consistent types.
  * Trims strings and handles null/undefined/number/boolean/Date values.
  * @internal
- * 
+ *
  * @param value - Raw value from Excel cell
  * @returns Normalized value as ExcelCellValue
  */
@@ -44,11 +44,11 @@ interface ExcelToJsonResult {
 /**
  * Parses an Excel file and converts it to JSON format.
  * Validates file format, extracts header row, and normalizes all cell values.
- * 
+ *
  * @param file - Excel file to parse (.xlsx format required)
  * @returns Promise resolving to rows and headerRow
  * @throws {Error} If no file provided, invalid format, or empty file
- * 
+ *
  * @example
  * ```tsx
  * const result = await excelToJson(uploadedFile);

@@ -36,7 +36,7 @@ interface ClipboardProviderProps {
  * Provider component for clipboard state management.
  * Wraps application components to provide centralized clipboard state.
  * Eliminates prop drilling by making clipboard data accessible via useClipboard hook.
- * 
+ *
  * @example
  * ```tsx
  * function App() {
@@ -47,7 +47,7 @@ interface ClipboardProviderProps {
  *   );
  * }
  * ```
- * 
+ *
  * @param props - Provider properties
  * @returns Context provider with clipboard state
  */

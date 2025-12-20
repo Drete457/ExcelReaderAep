@@ -35,10 +35,9 @@ describe('CopyAllButton', () => {
 
     rerender(<CopyAllButton names={['Sofia']} />);
 
-    expect(
-      screen.getByRole('button', {
-        name: /Copiar todos os nomes não selecionados/i,
-      }),
-    ).toBeInTheDocument();
+    // After rerender with new names, button should reset to initial state
+    await screen.findByRole('button', {
+      name: /Copiar todos os nomes não selecionados/i,
+    });
   });
 });

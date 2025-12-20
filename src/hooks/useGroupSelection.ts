@@ -16,12 +16,12 @@ interface UseGroupSelectionReturn {
 /**
  * Hook for managing group selection state.
  * Handles selecting and clearing Excel row selections based on first column value.
- * 
+ *
  * @example
  * ```tsx
  * function GroupSelector({ rows }: { rows: ExcelRow[] }) {
  *   const { selectedLine, selectGroup, clearSelection } = useGroupSelection(rows);
- *   
+ *
  *   return (
  *     <div>
  *       <button onClick={() => selectGroup('Group A')}>Select A</button>
@@ -31,7 +31,7 @@ interface UseGroupSelectionReturn {
  *   );
  * }
  * ```
- * 
+ *
  * @param rows - Array of Excel rows to search within
  * @returns Object containing selected line and selection control functions
  */
