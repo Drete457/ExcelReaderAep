@@ -132,7 +132,7 @@ const AppContent: React.FC = () => {
                       <>
                         <div
                           className={`botao-copiar-todos-div${
-                            namesList.length === totalNames
+                            namesList.length === 0
                               ? ' botao-copiar-todos-div--hidden'
                               : ''
                           }`}
@@ -146,7 +146,11 @@ const AppContent: React.FC = () => {
                             <SuspenseFallback message="A carregar os detalhes selecionados..." />
                           }
                         >
-                          <Result result={selectedLine} positions={positions} />
+                          <Result
+                            key={selectedLine?.[0]?.toString()}
+                            result={selectedLine}
+                            positions={positions}
+                          />
                         </Suspense>
                       </>
                     )}

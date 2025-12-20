@@ -22,26 +22,16 @@ const LeadersList: React.FC<LeadersListProps> = ({
   const { setNamesList } = useClipboard();
   let dataText = '';
 
-  // Initialize checkbox state from names
-  const initialCheckbox = useMemo(() => {
-    return names.map(name => ({ name, checked: false }));
-  }, [names]);
-
-  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>(
-    () => initialCheckbox,
+  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>(() =>
+    names.map(name => ({ name, checked: false })),
   );
-
-  // Sync checkbox when names change (external data update)
-  useEffect(() => {
-    setCheckbox(initialCheckbox);
-  }, [initialCheckbox]);
 
   const handleCheckbox = (index: number): void => {
     const newData = [...checkbox];
     newData[index].checked = !newData[index].checked;
 
     setCheckbox(newData);
-    setNamesList((info: string[]) => {
+    setNamesList(prevList => {
       const sectionNames = newData
         .map(entry => entry.name)
         .filter(
@@ -51,8 +41,8 @@ const LeadersList: React.FC<LeadersListProps> = ({
         .filter(entry => !entry.checked && entry.name)
         .map(entry => entry.name)
         .filter((name): name is string => typeof name === 'string');
-      const preserved = info.filter(
-        (item: string) => !sectionNames.includes(item),
+      const preserved = prevList.filter(
+        item => !sectionNames.includes(item),
       );
 
       return [...preserved, ...uncheckedNames];

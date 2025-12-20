@@ -13,6 +13,7 @@ const CopyAllButton: React.FC<CopyAllButtonProps> = ({ names }) => {
       names
         .filter(Boolean)
         .map(name => name.trim())
+        .sort((a, b) => a.localeCompare(b, 'pt'))
         .join(', '),
     [names],
   );

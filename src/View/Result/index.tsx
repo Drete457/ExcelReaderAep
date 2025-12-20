@@ -78,10 +78,12 @@ const Result: React.FC<ResultProps> = ({ result, positions }) => {
   ]);
 
   // Sync with clipboard context (side effect)
+  // Reset namesList when result changes (new group selected)
   useEffect(() => {
     setNamesList(allNames);
     setTotalNames(votes);
-  }, [allNames, votes, setNamesList, setTotalNames]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
