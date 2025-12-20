@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
 import { useClipboard } from '@/contexts/useClipboard';
 import CopyButton from '@/Components/copy-button/copy-button';
@@ -41,9 +41,7 @@ const LeadersList: React.FC<LeadersListProps> = ({
         .filter(entry => !entry.checked && entry.name)
         .map(entry => entry.name)
         .filter((name): name is string => typeof name === 'string');
-      const preserved = prevList.filter(
-        item => !sectionNames.includes(item),
-      );
+      const preserved = prevList.filter(item => !sectionNames.includes(item));
 
       return [...preserved, ...uncheckedNames];
     });

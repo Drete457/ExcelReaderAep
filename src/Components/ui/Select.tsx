@@ -6,8 +6,10 @@ import type { SelectOption } from '@/types';
  * Props for the Select component.
  * Extends react-select props with simplified onChange handler and accessibility.
  */
-interface SelectProps
-  extends Omit<ReactSelectProps<SelectOption, false>, 'onChange'> {
+interface SelectProps extends Omit<
+  ReactSelectProps<SelectOption, false>,
+  'onChange'
+> {
   /** Callback when selection changes, receives the selected option */
   onChange?: (value: SingleValue<SelectOption>) => void;
   /** Accessible label for screen readers */

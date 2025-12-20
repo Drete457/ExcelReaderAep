@@ -28,7 +28,7 @@ const AppContent: React.FC = () => {
   } = useExcelData();
 
   const { selectedLine, selectGroup, clearSelection } = useGroupSelection(rows);
-  const { namesList, totalNames, resetClipboard } = useClipboard();
+  const { namesList, resetClipboard } = useClipboard();
 
   function reset(): void {
     resetExcelData();
