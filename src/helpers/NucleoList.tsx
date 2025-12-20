@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import BotaoDeCopiar from '@/Components/botao-de-copiar/botao-de-copiar';
+import { useClipboard } from '@/contexts/useClipboard';
+import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
 interface NucleoListProps {
@@ -9,7 +10,6 @@ interface NucleoListProps {
   t1: string;
   t2: string;
   validation: ExcelCellValue[];
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const NucleoList: React.FC<NucleoListProps> = ({
@@ -18,16 +18,19 @@ const NucleoList: React.FC<NucleoListProps> = ({
   t1,
   t2,
   validation,
-  setListaDosNomes,
 }) => {
-  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>([]);
+  const { setNamesList } = useClipboard();
+
+  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>(() =>
+    names.map(name => ({ name, checked: false })),
+  );
 
   const handleCheckbox = (index: number): void => {
     const newData = [...checkbox];
     newData[index].checked = !newData[index].checked;
 
     setCheckbox(newData);
-    setListaDosNomes(info => {
+    setNamesList(prevList => {
       const sectionNames = newData
         .map(entry => entry.name)
         .filter(
@@ -37,23 +40,11 @@ const NucleoList: React.FC<NucleoListProps> = ({
         .filter(entry => !entry.checked && entry.name)
         .map(entry => entry.name)
         .filter((name): name is string => typeof name === 'string');
-      const preserved = info.filter(item => !sectionNames.includes(item));
+      const preserved = prevList.filter(item => !sectionNames.includes(item));
 
       return [...preserved, ...uncheckedNames];
     });
   };
-
-  useEffect(() => {
-    if (names) {
-      const inicialCheckbox: CheckboxEntry[] = [];
-
-      names.forEach((name, index) => {
-        inicialCheckbox[index] = { name, checked: false };
-      });
-
-      setCheckbox(inicialCheckbox);
-    }
-  }, [names]);
 
   return (
     <>
@@ -81,10 +72,14 @@ const NucleoList: React.FC<NucleoListProps> = ({
                         className="form-check-input ms-2 list-checkbox"
                         checked={checkbox[index]?.checked ?? false}
                         onChange={() => handleCheckbox(index)}
+                        aria-label={`${index === 0 ? t1 : t2 + index} - Marcar para excluir da cópia`}
                       />
                     </label>
                     <div className="d-inline-flex">
-                      <BotaoDeCopiar texto={String(name)} />
+                      <CopyButton
+                        text={String(name)}
+                        ariaLabel={`Copiar nome: ${String(name)}`}
+                      />
                     </div>
                   </section>
                   <CFormInput

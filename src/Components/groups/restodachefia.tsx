@@ -4,20 +4,14 @@ import type { ExcelCellValue } from '@/types';
 interface RestoDaChefiaProps {
   names: ExcelCellValue[];
   bo: ExcelCellValue[];
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const RestoDaChefia: React.FC<RestoDaChefiaProps> = ({
-  names,
-  bo,
-  setListaDosNomes,
-}) => (
+const RestoDaChefia: React.FC<RestoDaChefiaProps> = ({ names, bo }) => (
   <LeadersList
     names={names}
     bo={bo}
     t1="Escoteiro Chefe Dos Serviços Admin."
     t2="Escoteiro Chefe Adj da CG - "
-    setListaDosNomes={setListaDosNomes}
   />
 );
 

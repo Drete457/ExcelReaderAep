@@ -12,6 +12,10 @@ import type {
   Status,
 } from '@/types';
 
+/**
+ * Creates an empty positions object with all role arrays initialized.
+ * @internal
+ */
 const createEmptyPositions = (): Positions => ({
   alcateia: [],
   tes: [],
@@ -25,10 +29,17 @@ const createEmptyPositions = (): Positions => ({
   nucle: [],
 });
 
+/** Minimum loading duration in milliseconds for better UX */
 const MIN_LOADING_DURATION_MS = 5000;
+/** Check if running in test environment to skip artificial delays */
 const isTestEnvironment =
   typeof process !== 'undefined' && process.env.NODE_ENV === 'test';
 
+/**
+ * Ensures a minimum duration for loading states to prevent jarring quick flashes.
+ * Skipped in test environment for faster test execution.
+ * @internal
+ */
 const waitForMinimumDuration = async (
   startedAt: number,
   minimumDuration: number = MIN_LOADING_DURATION_MS,
@@ -49,6 +60,14 @@ const waitForMinimumDuration = async (
   });
 };
 
+/**
+ * Builds a positions map from the header row of the Excel file.
+ * Categorizes positions by role type and assigns column indices for data extraction.
+ * @internal
+ *
+ * @param headerRow - First row of Excel data containing position names
+ * @returns Categorized positions with column indices
+ */
 const buildPositionsMap = (headerRow: ExcelRow | undefined): Positions => {
   if (!Array.isArray(headerRow) || headerRow.length === 0) {
     return createEmptyPositions();
@@ -167,16 +186,55 @@ const buildPositionsMap = (headerRow: ExcelRow | undefined): Positions => {
   return buckets;
 };
 
+/**
+ * Return type for useExcelData hook.
+ */
 interface UseExcelDataReturn {
+  /** Parsed Excel rows (excluding header) */
   rows: ExcelRow[];
+  /** Categorized position mappings from header row */
   positions: Positions;
+  /** Group selection options for dropdown */
   options: SelectOption[];
+  /** Loading state indicator */
   isLoading: boolean;
+  /** Current status message and type */
   status: Status;
+  /** Function to handle Excel file upload and parsing */
   handleFileUpload: (file: File) => Promise<void>;
+  /** Reset all state to initial values */
   reset: () => void;
 }
 
+/**
+ * Custom hook for managing Excel file data processing and state.
+ * Handles file upload, parsing, position mapping, and loading states with error handling.
+ *
+ * Features:
+ * - Excel file parsing and validation
+ * - Position categorization from header row
+ * - Loading state with minimum duration for UX
+ * - Status messages with auto-dismiss
+ * - Group options generation for dropdowns
+ *
+ * @example
+ * ```tsx
+ * function ExcelUploader() {
+ *   const { handleFileUpload, rows, options, isLoading, status } = useExcelData();
+ *
+ *   return (
+ *     <div>
+ *       <input type="file" onChange={(e) => handleFileUpload(e.target.files[0])} />
+ *       {isLoading && <Spinner />}
+ *       {status.message && <Alert type={status.type}>{status.message}</Alert>}
+ *       <Select options={options} />
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * @returns Object containing Excel data, loading state, and control functions
+ */
 const useExcelData = (): UseExcelDataReturn => {
   const [rows, setRows] = useState<ExcelRow[]>([]);
   const [headerRow, setHeaderRow] = useState<ExcelRow | undefined>(undefined);

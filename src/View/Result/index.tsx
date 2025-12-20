@@ -1,13 +1,12 @@
-import { useState, useEffect, lazy, memo } from 'react';
+import { useMemo, useEffect, lazy, memo } from 'react';
+import { useClipboard } from '@/contexts/useClipboard';
 import allbo from '@/Components/handle-data/allbo';
 import allleaders from '@/Components/handle-data/allleaders';
 import cfRegionalData from '@/Components/handle-data/cfRegional';
 import nData from '@/Components/handle-data/nucleos';
 import type { ExcelRow, Positions, ExcelCellValue } from '@/types';
 
-const ChefiaDeGrupo = lazy(
-  () => import('@/Components/groups/chefiadegrupo'),
-);
+const ChefiaDeGrupo = lazy(() => import('@/Components/groups/chefiadegrupo'));
 const ChefiaDaAlcateia = lazy(
   () => import('@/Components/groups/chefiadaalcateia'),
 );
@@ -18,9 +17,7 @@ const TribodeExploradores = lazy(
   () => import('@/Components/groups/tribodeexploradores'),
 );
 const Cla = lazy(() => import('@/Components/groups/cla'));
-const RestoDaChefia = lazy(
-  () => import('@/Components/groups/restodachefia'),
-);
+const RestoDaChefia = lazy(() => import('@/Components/groups/restodachefia'));
 const ChefiaRegional = lazy(
   () => import('@/Components/regional/chefiaregional'),
 );
@@ -28,18 +25,11 @@ const Nucleo = lazy(() => import('@/Components/nucleo/nucleo'));
 
 interface ResultProps {
   result: ExcelRow;
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
-  setTotalDeNomes: React.Dispatch<React.SetStateAction<number>>;
   positions: Positions;
 }
 
-const Result: React.FC<ResultProps> = ({
-  result,
-  setListaDosNomes,
-  setTotalDeNomes,
-  positions,
-}) => {
-  const [votes, setVotes] = useState<number>(0);
+const Result: React.FC<ResultProps> = ({ result, positions }) => {
+  const { setNamesList, setTotalNames } = useClipboard();
   const {
     alcateiaNames,
     tesNames,
@@ -56,7 +46,8 @@ const Result: React.FC<ResultProps> = ({
   const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result, positions);
   const { ncf, nValidade, nBO } = nData(result, positions);
 
-  useEffect(() => {
+  // Calculate all names and votes (pure computation)
+  const { allNames, votes } = useMemo(() => {
     const allTheNames: ExcelCellValue[] = [
       ...alcateiaNames,
       ...tesNames,
@@ -71,9 +62,10 @@ const Result: React.FC<ResultProps> = ({
       (value): value is string => typeof value === 'string' && Boolean(value),
     );
 
-    setVotes(allTheNamesNoNull.length);
-    setListaDosNomes(allTheNamesNoNull);
-    setTotalDeNomes(allTheNamesNoNull.length);
+    return {
+      allNames: allTheNamesNoNull,
+      votes: allTheNamesNoNull.length,
+    };
   }, [
     alcateiaNames,
     tesNames,
@@ -83,9 +75,15 @@ const Result: React.FC<ResultProps> = ({
     othersNames,
     cfRegional,
     ncf,
-    setListaDosNomes,
-    setTotalDeNomes,
   ]);
+
+  // Sync with clipboard context (side effect)
+  // Reset namesList when result changes (new group selected)
+  useEffect(() => {
+    setNamesList(allNames);
+    setTotalNames(votes);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -97,30 +95,13 @@ const Result: React.FC<ResultProps> = ({
         groupName={result[0]}
         location={result[2]}
         region={result[1]}
-        setListaDosNomes={setListaDosNomes}
       />
 
-      <ChefiaDaAlcateia
-        names={alcateiaNames}
-        bo={alcateiaBO}
-        setListaDosNomes={setListaDosNomes}
-      />
-      <TribodeEscoteiros
-        names={tesNames}
-        bo={tesBO}
-        setListaDosNomes={setListaDosNomes}
-      />
-      <TribodeExploradores
-        names={texNames}
-        bo={texBO}
-        setListaDosNomes={setListaDosNomes}
-      />
-      <Cla names={claNames} bo={claBO} setListaDosNomes={setListaDosNomes} />
-      <RestoDaChefia
-        names={othersNames}
-        bo={othersBO}
-        setListaDosNomes={setListaDosNomes}
-      />
+      <ChefiaDaAlcateia names={alcateiaNames} bo={alcateiaBO} />
+      <TribodeEscoteiros names={tesNames} bo={tesBO} />
+      <TribodeExploradores names={texNames} bo={texBO} />
+      <Cla names={claNames} bo={claBO} />
+      <RestoDaChefia names={othersNames} bo={othersBO} />
 
       <ChefiaRegional
         names={cfRegional}
@@ -129,7 +110,6 @@ const Result: React.FC<ResultProps> = ({
         cfRData={cfRData}
         region={result[0]}
         mcr={mcr}
-        setListaDosNomes={setListaDosNomes}
       />
 
       <Nucleo
@@ -138,7 +118,6 @@ const Result: React.FC<ResultProps> = ({
         validation={nValidade}
         votes={votes}
         title={result[0]}
-        setListaDosNomes={setListaDosNomes}
       />
     </>
   );

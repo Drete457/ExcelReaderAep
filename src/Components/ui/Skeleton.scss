@@ -1,0 +1,70 @@
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(97, 35, 153, 0.08) 0%,
+    rgba(97, 35, 153, 0.16) 50%,
+    rgba(97, 35, 153, 0.08) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: 8px;
+  display: block;
+}
+
+.skeleton-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &__line {
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.skeleton-card {
+  padding: 1.5rem;
+  background: var(--scout-surface);
+  border: 1px solid rgba(97, 35, 153, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 24px rgba(22, 23, 52, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.skeleton-group {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--scout-surface-alt);
+  border-radius: 12px;
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    margin-top: 1rem;
+  }
+}

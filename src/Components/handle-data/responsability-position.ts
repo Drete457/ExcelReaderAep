@@ -1,5 +1,13 @@
 import type { RolePosition, CGDataPosition } from '@/types';
 
+/**
+ * Mapping of position abbreviations to full Portuguese role names.
+ * Used for matching header row values to categorize positions.
+ *
+ * @example
+ * 'ecg' -> 'Escoteiro Chefe de Grupo' (Group Chief Scout)
+ * 'eca' -> 'Escoteiro Chefe de Alcateia' (Pack Chief Scout)
+ */
 export const namesToSearch = {
   ecg: 'ecg', // Escoteiro Chefe de Grupo
   escg: 'escg', // Escoteiro Sub-Chefe de Grupo
@@ -21,11 +29,36 @@ export const namesToSearch = {
   escn: 'escn', // Escoteiro Sub-Chefe de Núcleo
 } as const;
 
+/**
+ * Context for tracking position assignment state during header parsing.
+ * @internal
+ */
 interface ResponsabilityPositionContext {
+  /** Whether Alcateia chief position has been assigned */
   alcateiaChefeAlreadyDone: boolean;
+  /** Whether regional chief position has been assigned */
   chefeRegionalAlreadyDone: boolean;
 }
 
+/**
+ * Categorizes a position from header row into appropriate role collection.
+ * Assigns column indices for name, BO, and validation data based on position type.
+ *
+ * @internal
+ * @param responsibility - Position name from header row (lowercase)
+ * @param index - Column index in Excel
+ * @param alcateia - Collection for Alcateia (Cubs) positions
+ * @param tes - Collection for Tribo de Escoteiros (Scouts) positions
+ * @param tex - Collection for Tribo de Exploradores (Explorers) positions
+ * @param cla - Collection for Clã (Rovers) positions
+ * @param group - Collection for group-level positions
+ * @param others - Collection for other/miscellaneous positions
+ * @param cgData - Collection for group council data
+ * @param cfRegional - Collection for regional council positions
+ * @param mcr - Collection for regional council board positions
+ * @param nucle - Collection for nucleus positions
+ * @param context - Tracking state for special position assignments
+ */
 const responsabilityPosition = (
   responsibility: string,
   index: number,
