@@ -1,8 +1,20 @@
 import xlsxFile, { Row } from 'read-excel-file';
 import type { ExcelRow, ExcelCellValue } from '@/types';
 
+/**
+ * Type guard to check if a value is a string.
+ * @internal
+ */
 const isString = (value: unknown): value is string => typeof value === 'string';
 
+/**
+ * Normalizes Excel cell values to consistent types.
+ * Trims strings and handles null/undefined/number/boolean/Date values.
+ * @internal
+ * 
+ * @param value - Raw value from Excel cell
+ * @returns Normalized value as ExcelCellValue
+ */
 const normalizeValue = (value: unknown): ExcelCellValue => {
   if (isString(value)) {
     return value.trim();
@@ -19,11 +31,31 @@ const normalizeValue = (value: unknown): ExcelCellValue => {
   return String(value);
 };
 
+/**
+ * Result type from Excel to JSON conversion.
+ */
 interface ExcelToJsonResult {
+  /** Parsed data rows (excluding header) */
   rows: ExcelRow[];
+  /** Header row containing column names */
   headerRow: ExcelRow;
 }
 
+/**
+ * Parses an Excel file and converts it to JSON format.
+ * Validates file format, extracts header row, and normalizes all cell values.
+ * 
+ * @param file - Excel file to parse (.xlsx format required)
+ * @returns Promise resolving to rows and headerRow
+ * @throws {Error} If no file provided, invalid format, or empty file
+ * 
+ * @example
+ * ```tsx
+ * const result = await excelToJson(uploadedFile);
+ * console.log(result.headerRow); // ['Name', 'Position', ...]
+ * console.log(result.rows);      // [['John', 'Leader', ...], ...]
+ * ```
+ */
 const excelToJson = async (
   file: File | undefined,
 ): Promise<ExcelToJsonResult> => {

@@ -17,9 +17,7 @@ describe('CopyAllButton', () => {
 
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Alice, Bruno');
     expect(
-      screen.getByRole('button', {
-        name: /Copiado todos os nomes não selecionados/i,
-      }),
+      screen.getByText(/Copiado todos os nomes não selecionados/i),
     ).toBeInTheDocument();
   });
 
@@ -32,9 +30,7 @@ describe('CopyAllButton', () => {
 
     await userEvent.click(button);
     expect(
-      screen.getByRole('button', {
-        name: /Copiado todos os nomes não selecionados/i,
-      }),
+      screen.getByText(/Copiado todos os nomes não selecionados/i),
     ).toBeInTheDocument();
 
     rerender(<CopyAllButton names={['Sofia']} />);

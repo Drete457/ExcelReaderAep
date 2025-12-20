@@ -1,5 +1,19 @@
 import type { ExcelRow, Positions, BOData, ExcelCellValue } from '@/types';
 
+/**
+ * Extracts BO (Boletim de Ocorrências) data for all group sections.
+ * Collects BO values from positions mapping for each section type.
+ * 
+ * @param result - Excel row containing group data
+ * @param position - Position mappings with column indices
+ * @returns Object containing BO arrays for each section
+ * 
+ * @example
+ * ```tsx
+ * const boData = allbo(selectedRow, positions);
+ * console.log(boData.alcateiaBO); // [12345, 67890, ...]
+ * ```
+ */
 const allbo = (result: ExcelRow, position: Positions): BOData => {
   const alcateiaBO: ExcelCellValue[] = [];
   const tesBO: ExcelCellValue[] = [];
