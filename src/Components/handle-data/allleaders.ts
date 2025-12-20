@@ -1,9 +1,4 @@
-import type {
-  ExcelRow,
-  Positions,
-  LeaderData,
-  ExcelCellValue,
-} from '@/types';
+import type { ExcelRow, Positions, LeaderData, ExcelCellValue } from '@/types';
 
 const allleaders = (result: ExcelRow, position: Positions): LeaderData => {
   const alcateiaNames: ExcelCellValue[] = [];

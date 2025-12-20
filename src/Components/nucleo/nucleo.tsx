@@ -7,7 +7,6 @@ interface NucleoProps {
   votes: number;
   validation: ExcelCellValue[];
   title: ExcelCellValue;
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const Nucleo: React.FC<NucleoProps> = ({
@@ -16,7 +15,6 @@ const Nucleo: React.FC<NucleoProps> = ({
   votes,
   validation,
   title,
-  setListaDosNomes,
 }) => {
   const show = names.some(value => value);
 
@@ -37,7 +35,6 @@ const Nucleo: React.FC<NucleoProps> = ({
           validation={validation}
           t1="Escoteiro Chefe de Núcleo"
           t2="Escoteiro Sub-Chefe de Núcleo - "
-          setListaDosNomes={setListaDosNomes}
         />
       </>
     )

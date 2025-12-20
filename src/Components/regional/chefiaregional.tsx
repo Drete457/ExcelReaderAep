@@ -8,7 +8,6 @@ interface ChefiaRegionalProps {
   cfRData: ExcelCellValue[];
   region: ExcelCellValue;
   mcr: ExcelCellValue[];
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
@@ -18,7 +17,6 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
   cfRData,
   region,
   mcr,
-  setListaDosNomes,
 }) => {
   const show = names.some(value => value);
 
@@ -39,7 +37,6 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
           t1="Escoteiro Chefe Regional"
           t2="Escoteiro Sub-Chefe Regional - "
           cfRData={cfRData}
-          setListaDosNomes={setListaDosNomes}
         />
         <RegionalList
           names={[mcr[0]]}
@@ -47,7 +44,6 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
           t1="Presidente da Mesa do Conselho Regional"
           t2=" "
           cfRData={[mcr[1]]}
-          setListaDosNomes={setListaDosNomes}
         />
       </>
     )

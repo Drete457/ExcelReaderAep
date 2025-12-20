@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import BotaoDeCopiar from '@/Components/botao-de-copiar/botao-de-copiar';
+import { useClipboard } from '@/contexts/useClipboard';
+import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
 interface LeadersListProps {
@@ -9,7 +10,6 @@ interface LeadersListProps {
   t1: string;
   t2: string;
   cgData?: ExcelCellValue[];
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const LeadersList: React.FC<LeadersListProps> = ({
@@ -18,17 +18,30 @@ const LeadersList: React.FC<LeadersListProps> = ({
   t1,
   t2,
   cgData,
-  setListaDosNomes,
 }) => {
+  const { setNamesList } = useClipboard();
   let dataText = '';
-  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>([]);
+
+  // Initialize checkbox state from names
+  const initialCheckbox = useMemo(() => {
+    return names.map(name => ({ name, checked: false }));
+  }, [names]);
+
+  const [checkbox, setCheckbox] = useState<CheckboxEntry[]>(
+    () => initialCheckbox,
+  );
+
+  // Sync checkbox when names change (external data update)
+  useEffect(() => {
+    setCheckbox(initialCheckbox);
+  }, [initialCheckbox]);
 
   const handleCheckbox = (index: number): void => {
     const newData = [...checkbox];
     newData[index].checked = !newData[index].checked;
 
     setCheckbox(newData);
-    setListaDosNomes(info => {
+    setNamesList(info => {
       const sectionNames = newData
         .map(entry => entry.name)
         .filter(
@@ -43,18 +56,6 @@ const LeadersList: React.FC<LeadersListProps> = ({
       return [...preserved, ...uncheckedNames];
     });
   };
-
-  useEffect(() => {
-    if (names) {
-      const inicialCheckbox: CheckboxEntry[] = [];
-
-      names.forEach((name, index) => {
-        inicialCheckbox[index] = { name, checked: false };
-      });
-
-      setCheckbox(inicialCheckbox);
-    }
-  }, [names]);
 
   if (cgData && cgData[1]) {
     const date = new Date(cgData[1] as string | number);
@@ -96,10 +97,14 @@ const LeadersList: React.FC<LeadersListProps> = ({
                       className="form-check-input ms-2 list-checkbox"
                       checked={checkbox[index]?.checked ?? false}
                       onChange={() => handleCheckbox(index)}
+                      aria-label={`${index === 0 ? t1 : t2 + index} - Marcar para excluir da cópia`}
                     />
                   </label>
                   <div className="d-inline-flex">
-                    <BotaoDeCopiar texto={String(name)} />
+                    <CopyButton
+                      text={String(name)}
+                      ariaLabel={`Copiar nome: ${String(name)}`}
+                    />
                   </div>
                 </section>
                 <CFormInput

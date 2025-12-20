@@ -1,9 +1,4 @@
-import type {
-  ExcelRow,
-  Positions,
-  NucleoData,
-  ExcelCellValue,
-} from '@/types';
+import type { ExcelRow, Positions, NucleoData, ExcelCellValue } from '@/types';
 
 const nData = (result: ExcelRow, positions: Positions): NucleoData => {
   const ncf: ExcelCellValue[] = [];

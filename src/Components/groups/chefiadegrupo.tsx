@@ -9,7 +9,6 @@ interface ChefiaDeGrupoProps {
   groupName: ExcelCellValue;
   location: ExcelCellValue;
   region: ExcelCellValue;
-  setListaDosNomes: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ChefiaDeGrupo: React.FC<ChefiaDeGrupoProps> = ({
@@ -20,7 +19,6 @@ const ChefiaDeGrupo: React.FC<ChefiaDeGrupoProps> = ({
   groupName,
   location,
   region,
-  setListaDosNomes,
 }) => {
   const show = names.some(value => value);
 
@@ -42,7 +40,6 @@ const ChefiaDeGrupo: React.FC<ChefiaDeGrupoProps> = ({
           t1="Escoteiro Chefe de Grupo"
           t2="Escoteiro Sub-Chefe de Grupo - "
           cgData={cgData}
-          setListaDosNomes={setListaDosNomes}
         />
       </>
     )

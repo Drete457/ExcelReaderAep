@@ -1,18 +1,22 @@
-import { Suspense, useEffect, useState } from 'react';
-import { CRow, CCol, CCard, CCardBody, CButton, CAlert } from '@coreui/react';
-import Select, { SingleValue } from 'react-select';
+import { Suspense, useEffect } from 'react';
+import { CRow, CCol, CAlert } from '@coreui/react';
+import type { SingleValue } from 'react-select';
 import DefaultLayout from './View/DefaultLayout';
 import LoadingScreen from './Components/loading';
 import InputFile from './Components/handle-data/inputfile';
-import BotaoDeCopiarTodos from './Components/botao-de-copiar-todos/botao-de-copiar-todos';
+import CopyAllButton from './Components/copy-all-button/copy-all-button';
 import Result from './View/Result';
 import './scss/style.scss';
 import useExcelData from './hooks/useExcelData';
+import { useGroupSelection } from './hooks/useGroupSelection';
+import { ClipboardProvider } from './contexts/ClipboardContext';
+import { useClipboard } from './contexts/useClipboard';
 import SuspenseFallback from './Components/feedback/SuspenseFallback';
 import ErrorBoundary from './Components/feedback/ErrorBoundary';
-import type { SelectOption, ExcelRow } from './types';
+import { Button, Card, CardBody, Select, SkeletonCard } from './Components/ui';
+import type { SelectOption } from './types';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const {
     rows,
     positions,
@@ -22,22 +26,20 @@ const App: React.FC = () => {
     handleFileUpload,
     reset: resetExcelData,
   } = useExcelData();
-  const [currentline, setLine] = useState<ExcelRow | undefined>(undefined);
-  const [listaDosNomes, setListaDosNomes] = useState<string[]>([]);
-  const [totalDeNomes, setTotalDeNomes] = useState<number>(0);
+
+  const { selectedLine, selectGroup, clearSelection } = useGroupSelection(rows);
+  const { namesList, totalNames, resetClipboard } = useClipboard();
 
   function reset(): void {
     resetExcelData();
-    setLine(undefined);
-    setListaDosNomes([]);
-    setTotalDeNomes(0);
+    clearSelection();
+    resetClipboard();
   }
 
   useEffect(() => {
-    setLine(undefined);
-    setListaDosNomes([]);
-    setTotalDeNomes(0);
-  }, [rows]);
+    clearSelection();
+    resetClipboard();
+  }, [rows, clearSelection, resetClipboard]);
 
   const statusColor =
     status.type === 'error'
@@ -48,11 +50,26 @@ const App: React.FC = () => {
           ? 'info'
           : 'secondary';
 
+  const handleGroupChange = (choose: SingleValue<SelectOption>): void => {
+    if (!choose) {
+      clearSelection();
+      resetClipboard();
+      return;
+    }
+    selectGroup(choose.value);
+    resetClipboard();
+  };
+
   return (
     <ErrorBoundary>
       {status.message && status.type !== 'idle' && (
         <div className="status-alert-container">
-          <CAlert color={statusColor} className="status-alert mb-0 shadow">
+          <CAlert
+            color={statusColor}
+            className="status-alert mb-0 shadow"
+            role="alert"
+            aria-live="polite"
+          >
             {status.message}
           </CAlert>
         </div>
@@ -73,8 +90,8 @@ const App: React.FC = () => {
           <main className="app-main" aria-live="polite">
             <CRow className="app-row">
               <CCol sm={12} className="d-flex justify-content-center">
-                <CCard className="app-card">
-                  <CCardBody>
+                <Card>
+                  <CardBody>
                     {!isLoading && rows.length === 0 && (
                       <InputFile
                         onFileSelected={handleFileUpload}
@@ -82,89 +99,74 @@ const App: React.FC = () => {
                       />
                     )}
                     {!isLoading && rows.length > 0 && (
-                      <Suspense
-                        fallback={
-                          <SuspenseFallback message="A carregar a lista de opções..." />
-                        }
-                      >
+                      <Suspense fallback={<SkeletonCard />}>
                         <CCol sm={12} className="app-actions">
-                          <Select<SelectOption>
-                            className="react-select-container app-select"
-                            classNamePrefix="app-select"
+                          <Select
                             placeholder="Escolhe o grupo pretendido"
                             options={options}
-                            menuPortalTarget={
-                              typeof document !== 'undefined'
-                                ? document.body
-                                : undefined
-                            }
-                            menuPosition="fixed"
-                            onChange={(choose: SingleValue<SelectOption>) => {
-                              if (!choose) {
-                                setLine(undefined);
-                                setListaDosNomes([]);
-                                setTotalDeNomes(0);
-                                return;
-                              }
-
-                              const select = rows.find(value => {
-                                if (value && value[0]) {
-                                  return value[0] === choose.value;
-                                }
-                                return null;
-                              });
-
-                              setLine(select);
-                              setListaDosNomes([]);
-                              setTotalDeNomes(0);
-                            }}
+                            onChange={handleGroupChange}
+                            aria-label="Selecionar grupo ou núcleo"
+                            aria-describedby="group-select-help"
                           />
-                          <CButton
+                          <span
+                            id="group-select-help"
+                            className="visually-hidden"
+                          >
+                            Use as setas ou digite para encontrar o grupo
+                            pretendido
+                          </span>
+                          <Button
                             size="sm"
                             variant="outline"
                             color="primary"
-                            onClick={() => reset()}
+                            onClick={reset}
                             className="app-reset-button"
+                            aria-label="Apagar o ficheiro carregado e reiniciar"
                           >
                             Apagar o Ficheiro
-                          </CButton>
+                          </Button>
                         </CCol>
                       </Suspense>
                     )}
-                    {currentline && (
+                    {selectedLine && (
                       <>
                         <div
                           className={`botao-copiar-todos-div${
-                            listaDosNomes.length === totalDeNomes
+                            namesList.length === totalNames
                               ? ' botao-copiar-todos-div--hidden'
                               : ''
                           }`}
+                          role="region"
+                          aria-label="Ação de cópia rápida"
                         >
-                          <BotaoDeCopiarTodos texto={listaDosNomes} />
+                          <CopyAllButton names={namesList} />
                         </div>
                         <Suspense
                           fallback={
                             <SuspenseFallback message="A carregar os detalhes selecionados..." />
                           }
                         >
-                          <Result
-                            result={currentline}
-                            setListaDosNomes={setListaDosNomes}
-                            setTotalDeNomes={setTotalDeNomes}
-                            positions={positions}
-                          />
+                          <Result result={selectedLine} positions={positions} />
                         </Suspense>
                       </>
                     )}
                     {isLoading && <LoadingScreen />}
-                  </CCardBody>
-                </CCard>
+                  </CardBody>
+                </Card>
               </CCol>
             </CRow>
           </main>
         </div>
       </DefaultLayout>
     </ErrorBoundary>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <ClipboardProvider>
+      <AppContent />
+    </ClipboardProvider>
   );
 };
 
