@@ -2,6 +2,7 @@ import type { ExcelRow, SelectOption } from '@/types';
 
 const optionList = (list: ExcelRow[]): SelectOption[] => {
   const array: SelectOption[] = [];
+  const seen = new Set<string>();
 
   list.forEach(data => {
     if (
@@ -23,25 +24,38 @@ const optionList = (list: ExcelRow[]): SelectOption[] => {
 
       if (typeof firstCell === 'string' && isNaN(Number(firstCell))) {
         if (firstCell.includes('Núcleo')) {
-          array.push({
-            value: firstCell,
-            label: firstCell,
-          });
+          const key = String(firstCell);
+          if (!seen.has(key)) {
+            seen.add(key);
+            array.push({
+              value: firstCell,
+              label: firstCell,
+            });
+          }
         } else {
-          array.push({
-            value: firstCell,
-            label: `Chefia Regional: ${firstCell}`,
-          });
+          const key = String(firstCell);
+          if (!seen.has(key)) {
+            seen.add(key);
+            array.push({
+              value: firstCell,
+              label: `Chefia Regional: ${firstCell}`,
+            });
+          }
         }
       } else if (firstCell !== null && firstCell !== undefined) {
-        array.push({
-          value: firstCell as string | number,
-          label: `Grupo: ${firstCell} Região: ${data[1]}`,
-        });
+        const key = String(firstCell);
+        if (!seen.has(key)) {
+          seen.add(key);
+          array.push({
+            value: firstCell as string | number,
+            label: `Grupo: ${firstCell} Região: ${data[1]}`,
+          });
+        }
       }
     }
   });
 
+  // Preserve the original file order while ensuring uniqueness.
   return array;
 };
 

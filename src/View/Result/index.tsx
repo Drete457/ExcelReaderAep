@@ -82,8 +82,7 @@ const Result: React.FC<ResultProps> = ({ result, positions }) => {
   useEffect(() => {
     setNamesList(allNames);
     setTotalNames(votes);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [allNames, votes, setNamesList, setTotalNames]);
 
   return (
     <>

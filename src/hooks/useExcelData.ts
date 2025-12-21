@@ -315,7 +315,8 @@ const useExcelData = (): UseExcelDataReturn => {
         nextRows = [];
         nextHeaderRow = undefined;
         nextStatus = { type: 'error', message };
-        nextStatusOptions = { autoDismiss: true };
+        // Keep error visible until the user resets; do not auto-dismiss.
+        nextStatusOptions = { autoDismiss: false };
       } finally {
         await waitForMinimumDuration(startedAt);
 

@@ -4,6 +4,27 @@ import { useClipboard } from '@/contexts/useClipboard';
 import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
+const formatDateSafe = (value: ExcelCellValue): string => {
+  if (value === null || value === undefined) {
+    return '';
+  }
+
+  if (typeof value === 'number' && !Number.isNaN(value)) {
+    const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+    const asDate = new Date(excelEpoch.getTime() + value * 86400000);
+    return Number.isNaN(asDate.getTime())
+      ? ''
+      : `${asDate.getUTCDate()}/${asDate.getUTCMonth() + 1}/${asDate.getUTCFullYear()}`;
+  }
+
+  const parsed = new Date(value as string);
+  if (Number.isNaN(parsed.getTime())) {
+    return '';
+  }
+
+  return `${parsed.getDate()}/${parsed.getMonth() + 1}/${parsed.getFullYear()}`;
+};
+
 interface RegionalListProps {
   names: ExcelCellValue[];
   bo: ExcelCellValue[];
@@ -51,11 +72,7 @@ const RegionalList: React.FC<RegionalListProps> = ({
       {names.map((name, index) => {
         let dataText = '';
         if (cfRData[index]) {
-          const date = new Date(cfRData[index] as string | number);
-          const year = date.getFullYear();
-          const month = date.getMonth() + 1;
-          const day = date.getDate();
-          dataText = day + '/' + month + '/' + year;
+          dataText = formatDateSafe(cfRData[index]);
         }
 
         return (
