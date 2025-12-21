@@ -55,7 +55,8 @@ const optionList = (list: ExcelRow[]): SelectOption[] => {
     }
   });
 
-  return array.sort((a, b) => a.label.localeCompare(b.label, 'pt'));
+  // Preserve the original file order while ensuring uniqueness.
+  return array;
 };
 
 export default optionList;

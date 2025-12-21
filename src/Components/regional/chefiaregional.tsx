@@ -19,7 +19,7 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
   region,
   mcr,
 }) => {
-  const show = names.some(value => value);
+  const show = names.some(value => value) || mcr.some(value => value);
 
   const mcrEntries = useMemo(() => {
     const entries: {
@@ -47,7 +47,7 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
         <h2 className="d-flex justify-content-center p-3 pt-5">
           Região: {String(region)}
         </h2>
-        {names.some(value => value) && (
+        {show && (
           <p className="h4 d-flex justify-content-center pt-5 pb-3">
             A Chefia Regional tem {votes} votos possíveis
           </p>
@@ -64,8 +64,12 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
             key={`mcr-${index}`}
             names={[entry.name]}
             bo={[entry.bo]}
-            t1="Presidente da Mesa do Conselho Regional"
-            t2="Membro da Mesa do Conselho Regional - "
+            t1={
+              index === 0
+                ? 'Presidente da Mesa do Conselho Regional'
+                : 'Membro da Mesa do Conselho Regional'
+            }
+            t2={index === 0 ? '' : 'Membro da Mesa do Conselho Regional - '}
             cfRData={[entry.validate]}
           />
         ))}
