@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import RegionalList from '@/helpers/RegionalList';
 import type { ExcelCellValue } from '@/types';
 
@@ -20,6 +21,26 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
 }) => {
   const show = names.some(value => value);
 
+  const mcrEntries = useMemo(() => {
+    const entries: {
+      name: ExcelCellValue;
+      bo: ExcelCellValue;
+      validate: ExcelCellValue;
+    }[] = [];
+
+    for (let i = 0; i < mcr.length; i += 3) {
+      const name = mcr[i];
+      const validate = mcr[i + 1];
+      const bo = mcr[i + 2];
+
+      if (name || bo || validate) {
+        entries.push({ name, bo, validate });
+      }
+    }
+
+    return entries;
+  }, [mcr]);
+
   return (
     show && (
       <>
@@ -38,13 +59,16 @@ const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
           t2="Escoteiro Sub-Chefe Regional - "
           cfRData={cfRData}
         />
-        <RegionalList
-          names={[mcr[0]]}
-          bo={[mcr[2]]}
-          t1="Presidente da Mesa do Conselho Regional"
-          t2=" "
-          cfRData={[mcr[1]]}
-        />
+        {mcrEntries.map((entry, index) => (
+          <RegionalList
+            key={`mcr-${index}`}
+            names={[entry.name]}
+            bo={[entry.bo]}
+            t1="Presidente da Mesa do Conselho Regional"
+            t2="Membro da Mesa do Conselho Regional - "
+            cfRData={[entry.validate]}
+          />
+        ))}
       </>
     )
   );

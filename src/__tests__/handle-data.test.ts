@@ -163,14 +163,7 @@ describe('role mapping helpers', () => {
     expect(output.cfRegional).toEqual(['VAL-50']);
     expect(output.cfBO).toEqual(['VAL-51']);
     expect(output.cfRData).toEqual(['VAL-52']);
-    expect(output.mcr).toEqual([
-      'VAL-403',
-      'VAL-407',
-      'VAL-408',
-      'VAL-60',
-      'VAL-61',
-      'VAL-62',
-    ]);
+    expect(output.mcr).toEqual(['VAL-60', 'VAL-61', 'VAL-62']);
   });
 
   it('collects núcleo data', () => {

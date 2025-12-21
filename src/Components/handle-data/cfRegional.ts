@@ -27,7 +27,7 @@ const cfRegionalData = (
   const cfRegional: ExcelCellValue[] = [];
   const cfBO: ExcelCellValue[] = [];
   const cfRData: ExcelCellValue[] = [];
-  const mcr: ExcelCellValue[] = [result[403], result[407], result[408]];
+  const mcr: ExcelCellValue[] = [];
 
   positions?.cfRegional?.forEach?.(element => {
     cfRegional.push(result[element.namePosition]);
