@@ -1,7 +1,7 @@
 import { useMemo, useEffect, lazy, memo, FC } from 'react';
 import { useClipboard } from '@/contexts';
 import allbo from '@/Components/handle-data/allbo';
-import allleaders from '@/Components/handle-data/allleaders';
+import allLeaders from '@/Components/handle-data/allleaders';
 import cfRegionalData from '@/Components/handle-data/cfRegional';
 import nData from '@/Components/handle-data/nucleos';
 import type { ExcelRow, Positions, ExcelCellValue } from '@/types';
@@ -38,13 +38,22 @@ const Result: FC<ResultProps> = ({ result, positions }) => {
     groupNames,
     othersNames,
     cgData,
-  } = allleaders(result, positions);
-  const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = allbo(
-    result,
-    positions,
+  } = useMemo(() => allLeaders(result, positions), [result, positions]);
+
+  const { alcateiaBO, tesBO, texBO, claBO, groupBO, othersBO } = useMemo(
+    () => allbo(result, positions),
+    [result, positions],
   );
-  const { cfRegional, cfBO, cfRData, mcr } = cfRegionalData(result, positions);
-  const { ncf, nValidade, nBO } = nData(result, positions);
+
+  const { cfRegional, cfBO, cfRData, mcr } = useMemo(
+    () => cfRegionalData(result, positions),
+    [result, positions],
+  );
+
+  const { ncf, nValidade, nBO } = useMemo(
+    () => nData(result, positions),
+    [result, positions],
+  );
 
   // Calculate all names and votes (pure computation)
   const { allNames, votes } = useMemo(() => {
@@ -76,7 +85,7 @@ const Result: FC<ResultProps> = ({ result, positions }) => {
     cfRegional,
     ncf,
   ]);
-
+  
   // Sync with clipboard context (side effect)
   // Reset namesList when result changes (new group selected)
   useEffect(() => {
