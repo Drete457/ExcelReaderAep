@@ -85,7 +85,7 @@ const Result: FC<ResultProps> = ({ result, positions }) => {
     cfRegional,
     ncf,
   ]);
-  
+
   // Sync with clipboard context (side effect)
   // Reset namesList when result changes (new group selected)
   useEffect(() => {
