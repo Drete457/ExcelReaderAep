@@ -1,7 +1,6 @@
 import { render, renderHook, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { ClipboardProvider } from '@/contexts/ClipboardContext';
-import { useClipboard } from '@/contexts/useClipboard';
+import { useClipboard, ClipboardProvider } from '@/contexts';
 import { ReactNode } from 'react';
 
 describe('ClipboardContext', () => {

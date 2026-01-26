@@ -1,8 +1,8 @@
-export { Button } from './Button';
-export { Card, CardBody } from './Card';
-export { Select } from './Select';
+export { default as Button } from './Button';
+export { default as Card, CardBody } from './Card';
+export { default as Select } from './Select';
 export {
-  Skeleton,
+  default as Skeleton,
   SkeletonText,
   SkeletonCard,
   SkeletonGroup,

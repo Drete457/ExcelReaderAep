@@ -1,5 +1,6 @@
 import LeadersList from '@/helpers/LeadersList';
 import type { ExcelCellValue } from '@/types';
+import { FC } from 'react';
 
 interface ChefiaDeGrupoProps {
   names: ExcelCellValue[];
@@ -11,7 +12,7 @@ interface ChefiaDeGrupoProps {
   region: ExcelCellValue;
 }
 
-const ChefiaDeGrupo: React.FC<ChefiaDeGrupoProps> = ({
+const ChefiaDeGrupo: FC<ChefiaDeGrupoProps> = ({
   names,
   bo,
   votes,

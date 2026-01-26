@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import RegionalList from '@/helpers/RegionalList';
 import type { ExcelCellValue } from '@/types';
 
@@ -11,7 +11,7 @@ interface ChefiaRegionalProps {
   mcr: ExcelCellValue[];
 }
 
-const ChefiaRegional: React.FC<ChefiaRegionalProps> = ({
+const ChefiaRegional: FC<ChefiaRegionalProps> = ({
   names,
   bo,
   votes,

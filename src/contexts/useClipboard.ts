@@ -28,10 +28,12 @@ import { ClipboardContext, ClipboardContextType } from './ClipboardContext';
  * @throws {Error} If used outside ClipboardProvider
  * @returns {ClipboardContextType} Clipboard state and setter functions
  */
-export const useClipboard = (): ClipboardContextType => {
+const useClipboard = (): ClipboardContextType => {
   const context = useContext(ClipboardContext);
   if (!context) {
     throw new Error('useClipboard must be used within a ClipboardProvider');
   }
   return context;
 };
+
+export default useClipboard;

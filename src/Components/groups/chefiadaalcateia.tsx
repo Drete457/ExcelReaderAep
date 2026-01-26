@@ -1,12 +1,13 @@
 import LeadersList from '@/helpers/LeadersList';
 import type { ExcelCellValue } from '@/types';
+import { FC } from 'react';
 
 interface ChefiaDaAlcateiaProps {
   names: ExcelCellValue[];
   bo: ExcelCellValue[];
 }
 
-const ChefiaDaAlcateia: React.FC<ChefiaDaAlcateiaProps> = ({ names, bo }) => (
+const ChefiaDaAlcateia: FC<ChefiaDaAlcateiaProps> = ({ names, bo }) => (
   <LeadersList
     names={names}
     bo={bo}

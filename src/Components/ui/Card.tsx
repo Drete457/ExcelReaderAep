@@ -1,5 +1,5 @@
 import { CCard, CCardBody } from '@coreui/react';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, FC } from 'react';
 
 /**
  * Props for the Card component.
@@ -24,17 +24,11 @@ interface CardProps extends ComponentProps<typeof CCard> {
  * @param props - Card properties including CoreUI CCard props
  * @returns A card container element with standard styling
  */
-export const Card: React.FC<CardProps> = ({
-  children,
-  className = '',
-  ...props
-}) => {
-  return (
-    <CCard className={`app-card ${className}`} {...props}>
-      {children}
-    </CCard>
-  );
-};
+const Card: FC<CardProps> = ({ children, className = '', ...props }) => (
+  <CCard className={`app-card ${className}`} {...props}>
+    {children}
+  </CCard>
+);
 
 /**
  * Props for the CardBody component.
@@ -60,14 +54,15 @@ interface CardBodyProps extends ComponentProps<typeof CCardBody> {
  * @param props - CardBody properties including CoreUI CCardBody props
  * @returns A card body element
  */
-export const CardBody: React.FC<CardBodyProps> = ({
+const CardBody: FC<CardBodyProps> = ({
   children,
   className = '',
   ...props
-}) => {
-  return (
-    <CCardBody className={className} {...props}>
-      {children}
-    </CCardBody>
-  );
-};
+}) => (
+  <CCardBody className={className} {...props}>
+    {children}
+  </CCardBody>
+);
+
+export default Card;
+export { CardBody };

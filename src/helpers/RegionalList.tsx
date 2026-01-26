@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import { useClipboard } from '@/contexts/useClipboard';
+import { useClipboard } from '@/contexts';
 import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
@@ -33,7 +33,7 @@ interface RegionalListProps {
   cfRData: ExcelCellValue[];
 }
 
-const RegionalList: React.FC<RegionalListProps> = ({
+const RegionalList: FC<RegionalListProps> = ({
   names,
   bo,
   t1,

@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { useGroupSelection } from '@/hooks/useGroupSelection';
+import { useGroupSelection } from '@/hooks';
 import type { ExcelRow } from '@/types';
 
 describe('useGroupSelection', () => {

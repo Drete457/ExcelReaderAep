@@ -1,15 +1,13 @@
 import LeadersList from '@/helpers/LeadersList';
 import type { ExcelCellValue } from '@/types';
+import { FC } from 'react';
 
 interface TribodeExploradoresProps {
   names: ExcelCellValue[];
   bo: ExcelCellValue[];
 }
 
-const TribodeExploradores: React.FC<TribodeExploradoresProps> = ({
-  names,
-  bo,
-}) => (
+const TribodeExploradores: FC<TribodeExploradoresProps> = ({ names, bo }) => (
   <LeadersList
     names={names}
     bo={bo}

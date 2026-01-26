@@ -1,10 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, FC } from 'react';
 
 interface CopyAllButtonProps {
   names: string[];
 }
 
-const CopyAllButton: React.FC<CopyAllButtonProps> = ({ names }) => {
+const CopyAllButton: FC<CopyAllButtonProps> = ({ names }) => {
   const [copiedNames, setCopiedNames] = useState<string>('');
 
   // Memoize current names string for comparison

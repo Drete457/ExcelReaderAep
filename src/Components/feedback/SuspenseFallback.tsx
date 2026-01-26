@@ -1,8 +1,10 @@
+import { FC } from 'react';
+
 interface SuspenseFallbackProps {
   message?: string;
 }
 
-const SuspenseFallback: React.FC<SuspenseFallbackProps> = ({
+const SuspenseFallback: FC<SuspenseFallbackProps> = ({
   message = 'A carregar conteúdo...',
 }) => (
   <div

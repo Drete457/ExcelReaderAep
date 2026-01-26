@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import { useClipboard } from '@/contexts/useClipboard';
+import { useClipboard } from '@/contexts';
 import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
@@ -34,13 +34,7 @@ interface LeadersListProps {
   cgData?: ExcelCellValue[];
 }
 
-const LeadersList: React.FC<LeadersListProps> = ({
-  names,
-  bo,
-  t1,
-  t2,
-  cgData,
-}) => {
+const LeadersList: FC<LeadersListProps> = ({ names, bo, t1, t2, cgData }) => {
   const { setNamesList } = useClipboard();
   let dataText = '';
 

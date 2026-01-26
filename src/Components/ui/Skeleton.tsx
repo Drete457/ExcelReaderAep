@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import './Skeleton.scss';
 
 /**
@@ -26,25 +27,23 @@ interface SkeletonProps {
  * @param props - Skeleton styling properties
  * @returns An animated skeleton element with ARIA attributes
  */
-export const Skeleton: React.FC<SkeletonProps> = ({
+const Skeleton: FC<SkeletonProps> = ({
   width = '100%',
   height = '1rem',
   borderRadius = '8px',
   className = '',
-}) => {
-  return (
-    <div
-      className={`skeleton ${className}`}
-      style={{
-        width,
-        height,
-        borderRadius,
-      }}
-      aria-busy="true"
-      aria-live="polite"
-    />
-  );
-};
+}) => (
+  <div
+    className={`skeleton ${className}`}
+    style={{
+      width,
+      height,
+      borderRadius,
+    }}
+    aria-busy="true"
+    aria-live="polite"
+  />
+);
 
 /**
  * Skeleton loading placeholder for multiple lines of text.
@@ -59,20 +58,18 @@ export const Skeleton: React.FC<SkeletonProps> = ({
  * @param props.lines - Number of text lines to display (default: 3)
  * @returns Multiple skeleton lines representing text content
  */
-export const SkeletonText: React.FC<{ lines?: number }> = ({ lines = 3 }) => {
-  return (
-    <div className="skeleton-text">
-      {Array.from({ length: lines }).map((_, index) => (
-        <Skeleton
-          key={index}
-          height="1rem"
-          width={index === lines - 1 ? '80%' : '100%'}
-          className="skeleton-text__line"
-        />
-      ))}
-    </div>
-  );
-};
+const SkeletonText: FC<{ lines?: number }> = ({ lines = 3 }) => (
+  <div className="skeleton-text">
+    {Array.from({ length: lines }).map((_, index) => (
+      <Skeleton
+        key={index}
+        height="1rem"
+        width={index === lines - 1 ? '80%' : '100%'}
+        className="skeleton-text__line"
+      />
+    ))}
+  </div>
+);
 
 /**
  * Skeleton loading placeholder for card components.
@@ -87,18 +84,16 @@ export const SkeletonText: React.FC<{ lines?: number }> = ({ lines = 3 }) => {
  *
  * @returns A card-shaped skeleton with title, content, and actions
  */
-export const SkeletonCard: React.FC = () => {
-  return (
-    <div className="skeleton-card" aria-busy="true" aria-live="polite">
-      <Skeleton height="2rem" width="60%" className="skeleton-card__title" />
-      <SkeletonText lines={2} />
-      <div className="skeleton-card__actions">
-        <Skeleton height="2.5rem" width="120px" borderRadius="12px" />
-        <Skeleton height="2.5rem" width="120px" borderRadius="12px" />
-      </div>
+const SkeletonCard: React.FC = () => (
+  <div className="skeleton-card" aria-busy="true" aria-live="polite">
+    <Skeleton height="2rem" width="60%" className="skeleton-card__title" />
+    <SkeletonText lines={2} />
+    <div className="skeleton-card__actions">
+      <Skeleton height="2.5rem" width="120px" borderRadius="12px" />
+      <Skeleton height="2.5rem" width="120px" borderRadius="12px" />
     </div>
-  );
-};
+  </div>
+);
 
 /**
  * Skeleton loading placeholder for group components.
@@ -113,17 +108,14 @@ export const SkeletonCard: React.FC = () => {
  *
  * @returns A group-shaped skeleton with header and content sections
  */
-export const SkeletonGroup: React.FC = () => {
-  return (
-    <div className="skeleton-group" aria-busy="true" aria-live="polite">
-      <Skeleton
-        height="2.5rem"
-        width="70%"
-        className="skeleton-group__header"
-      />
-      <div className="skeleton-group__content">
-        <SkeletonText lines={4} />
-      </div>
+const SkeletonGroup: React.FC = () => (
+  <div className="skeleton-group" aria-busy="true" aria-live="polite">
+    <Skeleton height="2.5rem" width="70%" className="skeleton-group__header" />
+    <div className="skeleton-group__content">
+      <SkeletonText lines={4} />
     </div>
-  );
-};
+  </div>
+);
+
+export default Skeleton;
+export { SkeletonCard, SkeletonGroup, SkeletonText };

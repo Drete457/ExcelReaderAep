@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { FC, Suspense, useEffect } from 'react';
 import { CRow, CCol, CAlert } from '@coreui/react';
 import type { SingleValue } from 'react-select';
 import DefaultLayout from './View/DefaultLayout';
@@ -7,16 +7,14 @@ import InputFile from './Components/handle-data/inputfile';
 import CopyAllButton from './Components/copy-all-button/copy-all-button';
 import Result from './View/Result';
 import './scss/style.scss';
-import useExcelData from './hooks/useExcelData';
-import { useGroupSelection } from './hooks/useGroupSelection';
-import { ClipboardProvider } from './contexts/ClipboardContext';
-import { useClipboard } from './contexts/useClipboard';
+import { useGroupSelection, useExcelData } from './hooks';
+import { useClipboard, ClipboardProvider } from './contexts';
 import SuspenseFallback from './Components/feedback/SuspenseFallback';
 import ErrorBoundary from './Components/feedback/ErrorBoundary';
 import { Button, Card, CardBody, Select, SkeletonCard } from './Components/ui';
 import type { SelectOption } from './types';
 
-const AppContent: React.FC = () => {
+const AppContent: FC = () => {
   const {
     rows,
     positions,
@@ -30,11 +28,11 @@ const AppContent: React.FC = () => {
   const { selectedLine, selectGroup, clearSelection } = useGroupSelection(rows);
   const { namesList, resetClipboard } = useClipboard();
 
-  function reset(): void {
+  const reset = (): void => {
     resetExcelData();
     clearSelection();
     resetClipboard();
-  }
+  };
 
   useEffect(() => {
     clearSelection();

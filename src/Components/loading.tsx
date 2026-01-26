@@ -1,4 +1,6 @@
-const LoadingScreen: React.FC = () => (
+import { FC } from 'react';
+
+const LoadingScreen: FC = () => (
   <div className="loading-screen" role="status" aria-live="polite">
     <div className="loading-screen__halo">
       <span className="loading-screen__core" />

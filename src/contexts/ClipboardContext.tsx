@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback, ReactNode } from 'react';
+import { createContext, useState, useCallback, ReactNode, FC } from 'react';
 
 /**
  * Context type for clipboard state management.
@@ -51,9 +51,7 @@ interface ClipboardProviderProps {
  * @param props - Provider properties
  * @returns Context provider with clipboard state
  */
-export const ClipboardProvider: React.FC<ClipboardProviderProps> = ({
-  children,
-}) => {
+const ClipboardProvider: FC<ClipboardProviderProps> = ({ children }) => {
   const [namesList, setNamesList] = useState<string[]>([]);
   const [totalNames, setTotalNames] = useState<number>(0);
 
@@ -76,3 +74,5 @@ export const ClipboardProvider: React.FC<ClipboardProviderProps> = ({
     </ClipboardContext.Provider>
   );
 };
+
+export default ClipboardProvider;

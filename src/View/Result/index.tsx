@@ -1,5 +1,5 @@
-import { useMemo, useEffect, lazy, memo } from 'react';
-import { useClipboard } from '@/contexts/useClipboard';
+import { useMemo, useEffect, lazy, memo, FC } from 'react';
+import { useClipboard } from '@/contexts';
 import allbo from '@/Components/handle-data/allbo';
 import allleaders from '@/Components/handle-data/allleaders';
 import cfRegionalData from '@/Components/handle-data/cfRegional';
@@ -28,7 +28,7 @@ interface ResultProps {
   positions: Positions;
 }
 
-const Result: React.FC<ResultProps> = ({ result, positions }) => {
+const Result: FC<ResultProps> = ({ result, positions }) => {
   const { setNamesList, setTotalNames } = useClipboard();
   const {
     alcateiaNames,

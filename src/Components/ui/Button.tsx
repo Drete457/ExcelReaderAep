@@ -1,5 +1,5 @@
 import { CButton } from '@coreui/react';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, FC } from 'react';
 
 /**
  * Props for the Button component.
@@ -26,21 +26,21 @@ interface ButtonProps extends Omit<ComponentProps<typeof CButton>, 'children'> {
  * @param props - Button properties including CoreUI CButton props
  * @returns A button element with accessibility enhancements
  */
-export const Button: React.FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   children,
   className = '',
   'aria-label': ariaLabel,
   ...props
-}) => {
-  return (
-    <CButton
-      className={className}
-      aria-label={
-        ariaLabel || (typeof children === 'string' ? children : undefined)
-      }
-      {...props}
-    >
-      {children}
-    </CButton>
-  );
-};
+}) => (
+  <CButton
+    className={className}
+    aria-label={
+      ariaLabel || (typeof children === 'string' ? children : undefined)
+    }
+    {...props}
+  >
+    {children}
+  </CButton>
+);
+
+export default Button;

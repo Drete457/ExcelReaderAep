@@ -1,5 +1,6 @@
 import NucleoList from '@/helpers/NucleoList';
 import type { ExcelCellValue } from '@/types';
+import { FC } from 'react';
 
 interface NucleoProps {
   names: ExcelCellValue[];
@@ -9,13 +10,7 @@ interface NucleoProps {
   title: ExcelCellValue;
 }
 
-const Nucleo: React.FC<NucleoProps> = ({
-  names,
-  bo,
-  votes,
-  validation,
-  title,
-}) => {
+const Nucleo: FC<NucleoProps> = ({ names, bo, votes, validation, title }) => {
   const show = names.some(value => value);
 
   return (

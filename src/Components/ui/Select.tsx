@@ -1,6 +1,7 @@
 import ReactSelect, { SingleValue } from 'react-select';
 import type { Props as ReactSelectProps } from 'react-select';
 import type { SelectOption } from '@/types';
+import { FC } from 'react';
 
 /**
  * Props for the Select component.
@@ -35,7 +36,7 @@ interface SelectProps extends Omit<
  * @param props - Select properties including react-select props
  * @returns A select dropdown with fixed positioning and accessibility
  */
-export const Select: React.FC<SelectProps> = ({
+const Select: FC<SelectProps> = ({
   className = '',
   classNamePrefix = 'app-select',
   menuPortalTarget = typeof document !== 'undefined'
@@ -45,16 +46,16 @@ export const Select: React.FC<SelectProps> = ({
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedBy,
   ...props
-}) => {
-  return (
-    <ReactSelect<SelectOption>
-      className={`react-select-container ${className}`}
-      classNamePrefix={classNamePrefix}
-      menuPortalTarget={menuPortalTarget}
-      menuPosition={menuPosition}
-      aria-label={ariaLabel}
-      aria-describedby={ariaDescribedBy}
-      {...props}
-    />
-  );
-};
+}) => (
+  <ReactSelect<SelectOption>
+    className={`react-select-container ${className}`}
+    classNamePrefix={classNamePrefix}
+    menuPortalTarget={menuPortalTarget}
+    menuPosition={menuPosition}
+    aria-label={ariaLabel}
+    aria-describedby={ariaDescribedBy}
+    {...props}
+  />
+);
+
+export default Select;

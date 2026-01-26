@@ -1,12 +1,13 @@
 import LeadersList from '@/helpers/LeadersList';
 import type { ExcelCellValue } from '@/types';
+import { FC } from 'react';
 
 interface ClaProps {
   names: ExcelCellValue[];
   bo: ExcelCellValue[];
 }
 
-const Cla: React.FC<ClaProps> = ({ names, bo }) => (
+const Cla: FC<ClaProps> = ({ names, bo }) => (
   <LeadersList
     names={names}
     bo={bo}

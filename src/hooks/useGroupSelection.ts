@@ -35,9 +35,7 @@ interface UseGroupSelectionReturn {
  * @param rows - Array of Excel rows to search within
  * @returns Object containing selected line and selection control functions
  */
-export const useGroupSelection = (
-  rows: ExcelRow[],
-): UseGroupSelectionReturn => {
+const useGroupSelection = (rows: ExcelRow[]): UseGroupSelectionReturn => {
   const [selectedLine, setSelectedLine] = useState<ExcelRow | undefined>(
     undefined,
   );
@@ -68,3 +66,5 @@ export const useGroupSelection = (
     [selectedLine, selectGroup, clearSelection],
   );
 };
+
+export default useGroupSelection;

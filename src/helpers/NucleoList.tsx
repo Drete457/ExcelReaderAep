@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { CCol, CFormInput } from '@coreui/react';
-import { useClipboard } from '@/contexts/useClipboard';
+import { useClipboard } from '@/contexts';
 import CopyButton from '@/Components/copy-button/copy-button';
 import type { ExcelCellValue, CheckboxEntry } from '@/types';
 
@@ -33,13 +33,7 @@ interface NucleoListProps {
   validation: ExcelCellValue[];
 }
 
-const NucleoList: React.FC<NucleoListProps> = ({
-  names,
-  bo,
-  t1,
-  t2,
-  validation,
-}) => {
+const NucleoList: FC<NucleoListProps> = ({ names, bo, t1, t2, validation }) => {
   const { setNamesList } = useClipboard();
 
   const [checkbox, setCheckbox] = useState<CheckboxEntry[]>(() =>

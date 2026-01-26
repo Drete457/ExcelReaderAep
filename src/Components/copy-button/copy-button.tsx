@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 interface CopyButtonProps {
   text: string;
   ariaLabel?: string;
 }
 
-const CopyButton: React.FC<CopyButtonProps> = ({ text, ariaLabel }) => {
+const CopyButton: FC<CopyButtonProps> = ({ text, ariaLabel }) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   const handleCopy = async (): Promise<void> => {
