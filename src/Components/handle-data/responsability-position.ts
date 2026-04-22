@@ -85,6 +85,7 @@ const responsabilityPosition = (
     cgData.push({
       validate: index + 5,
       mandate: index + 1,
+      age: index + 3,
     });
   }
 

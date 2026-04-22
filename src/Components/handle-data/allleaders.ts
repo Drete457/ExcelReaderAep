@@ -45,6 +45,7 @@ const allleaders = (result: ExcelRow, position: Positions): LeaderData => {
   position?.cgData?.forEach?.(element => {
     cgData.push(result[element.mandate]);
     cgData.push(result[element.validate]);
+    cgData.push(result[element.age]);
   });
 
   return {

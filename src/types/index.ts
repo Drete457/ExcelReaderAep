@@ -8,6 +8,7 @@ export interface RolePosition {
 export interface CGDataPosition {
   validate: number;
   mandate: number;
+  age: number;
 }
 
 export interface Positions {

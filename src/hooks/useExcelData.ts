@@ -81,7 +81,7 @@ const buildPositionsMap = (headerRow: ExcelRow | undefined): Positions => {
     if (typeof rawResponsibility !== 'string') {
       return;
     }
-
+ 
     const responsibility = rawResponsibility.toLowerCase();
 
     const pushRole = (
@@ -100,16 +100,18 @@ const buildPositionsMap = (headerRow: ExcelRow | undefined): Positions => {
       collection: CGDataPosition[],
       mandateOffset: number,
       validateOffset: number,
+      ageOffset: number,
     ): void => {
       collection.push({
         validate: index + validateOffset,
         mandate: index + mandateOffset,
+        age: index + ageOffset,
       });
     };
 
     if (responsibility.includes(namesToSearch.ecg)) {
       pushRole(buckets.group, 8, 5);
-      pushCGData(buckets.cgData, 1, 5);
+      pushCGData(buckets.cgData, 1, 5, 3);
     }
 
     if (responsibility.includes(namesToSearch.escg)) {

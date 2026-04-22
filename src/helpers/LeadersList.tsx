@@ -90,7 +90,7 @@ const LeadersList: FC<LeadersListProps> = ({ names, bo, t1, t2, cgData }) => {
                   />
                 </CCol>
               )}
-              <CCol md={5}>
+              <CCol md={4}>
                 <section className="d-flex justify-content-between mt-2">
                   <label className="form-label d-flex align-items-center fw-semibold mb-0">
                     {index === 0 ? t1 : t2 + index}
@@ -143,6 +143,23 @@ const LeadersList: FC<LeadersListProps> = ({ names, bo, t1, t2, cgData }) => {
                   <CFormInput
                     id={`leaders-validade-${index}`}
                     value={dataText}
+                    readOnly
+                    disabled
+                    className="c-form-input--contrast"
+                  />
+                </CCol>
+              )}
+              {index === 0 && cgData && (
+                <CCol md={1}>
+                  <label
+                    className="form-label fw-semibold"
+                    htmlFor={`leaders-idade-${index}`}
+                  >
+                    Idade
+                  </label>
+                  <CFormInput
+                    id={`leaders-idade-${index}`}
+                    value={String(cgData[2] ?? '')}
                     readOnly
                     disabled
                     className="c-form-input--contrast"
