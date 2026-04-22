@@ -78,7 +78,7 @@ describe('role mapping helpers', () => {
   resultRow[10] = 'Outro Cargo';
   resultRow[20] = 'Mandato';
   resultRow[21] = 'Validade';
-  resultRow[22] = 17;
+  resultRow[22] = 'Idade';
 
   const positions: Positions = {
     alcateia: [{ namePosition: 5, bo: 30, validate: 35 }],
@@ -505,7 +505,7 @@ describe('responsabilityPosition', () => {
       { namePosition: 10, bo: 18, validate: 15 },
       { namePosition: 20, bo: 24, validate: 25 },
     ]);
-    expect(cgData).toEqual([{ validate: 15, mandate: 11, age: 17 }]);
+    expect(cgData).toEqual([{ validate: 15, mandate: 11, age: 13 }]);
     expect(alcateia).toEqual([
       { namePosition: 30, bo: 34, validate: 35 },
       { namePosition: 32, bo: 36, validate: 37 },

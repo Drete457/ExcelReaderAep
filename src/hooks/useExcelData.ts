@@ -81,7 +81,7 @@ const buildPositionsMap = (headerRow: ExcelRow | undefined): Positions => {
     if (typeof rawResponsibility !== 'string') {
       return;
     }
- 
+
     const responsibility = rawResponsibility.toLowerCase();
 
     const pushRole = (
